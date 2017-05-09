@@ -1,8 +1,6 @@
-# web-dev-template
+Welcome to my github repository!!
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+I am a graduate student at NEU. I am working in Boston area. My area of expertise is systems (C and linux).
+This repo is used for web development.
+
+Heroku root: https://dashboard.heroku.com/apps/parasnis-archana-webdev
