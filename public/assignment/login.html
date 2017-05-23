@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+   <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/> -->
+    <link href="lib/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <h1>Login</h1>
-        <input type="text"
+        <label for="username"> Username </label>
+        <input id="username" type="text"
                class="form-control"
-               placeholder="username"/>
-        <input type="password"
+               placeholder="your username"/>
+        <label for="password"> Passowrd </label>
+        <input id="password" type="password"
                class="form-control"
-               placeholder="password"/>
+               placeholder="your password"/>
         <a class="btn btn-primary btn-block"
-           href="profile.html">Login</a>
+           href="website-list.html">Login</a>
         <a class="btn btn-success btn-block"
            href="register.html">Register</a>
     </div>
