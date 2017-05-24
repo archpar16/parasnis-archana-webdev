@@ -10,6 +10,13 @@ input.form-control {
 ul {
     margin-top: 10px;
 }
+.navbar-default .navbar-text {
+    color: white;
+}
+
+.navbar-text {
+    margin-right: 15px;
+}
 /*.glyphicon {*/
     /*top: 17px;*/
 /*}*/
