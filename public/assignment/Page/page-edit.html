@@ -10,13 +10,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
+            <a href="page-list.html" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left pull-left">
+
             </span>
+            </a>
             <a class="navbar-brand" href="#">
-                Edit Website
+                Edit Page for Website
             </a>
             <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
+                <a href="page-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok pull-right">
           </span>
                 </a>
@@ -24,13 +27,62 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
-    <label for="websitename"> Website Name </label>
-    <input id="websitename" type="text"
-           class="form-control"
-           value="Food Blogger"/>
-    <label for="description"> Website Description </label>
-    <textarea id="description" class="form-control" rows="5">This is some text about the descripion</textarea>
+
+<div class="row">
+    <div class="container-fluid">
+        <div class="col col-sm-4 visible-md visible-lg">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page1
+                    </a>
+                    <a href="page-edit.html">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page2
+                    </a>
+                    <a href="page-edit.html">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page3
+                    </a>
+                    <a href="page-edit.html">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page4
+                    </a>
+                    <a href="page-edit.html">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page5
+                    </a>
+                    <a href="page-edit.html">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col col-md-8 col-sm-12">
+            <label for="websitename"> Page Name </label>
+            <input id="websitename" type="text"
+                   class="form-control"
+                   value="Food Blogger Page"/>
+            <label for="description"> Page Description </label>
+            <textarea id="description" class="form-control" rows="5">This is some text about the descripion of the page</textarea>
+        </div>
+    </div>
 
 
 </div>
