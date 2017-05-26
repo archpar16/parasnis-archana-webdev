@@ -4,43 +4,42 @@
     <link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create new website</title>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <span class="glyphicon glyphicon-chevron-left pull-left">
-            </span>
+            <a href="website-list.html">
+            <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
             <a class="navbar-brand" href="#">
                 New Website
             </a>
-            <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
-          <span class="glyphicon glyphicon-ok pull-right">
-          </span>
-                </a>
-            </p>
+            <a href="website-list.html">
+            <span class="wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
+            </a>
+            <!--</p>-->
         </div>
     </div>
 </nav>
+
+
 <div class="container-fluid">
-    <label for="websitename"> Name </label>
+    <label for="websitename"> Website Name </label>
     <input id="websitename" type="text"
            class="form-control"
            placeholder="new website name"/>
-    <label for="description"> Description </label>
+    <label for="description"> Website Description </label>
     <textarea id="description" class="form-control" rows="5"></textarea>
-
-
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="row navbar-text">
             <div>
-                <a href="#">
-                    <span class="glyphicon glyphicon-user pull-right"></span>
+                <a href="../User/profile.html">
+                    <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
                 </a>
             </div>
 
