@@ -1,97 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
     <link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Website</title>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="page-list.html" class="navbar-link">
-            <span class="wd-back glyphicon glyphicon-chevron-left pull-left">
-
-            </span>
-            </a>
-            <a class="navbar-brand" href="#">
-                Edit Page for Website
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
-          <span class="wd-navbar-right glyphicon glyphicon-ok pull-right">
-          </span>
+<nav class="navbar navbar-default  navbar-inverse navbar-fixed-top">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="navbar-header col-sm-4 hidden-xs">
+                <a href="page-list.html">
+                    <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
                 </a>
-            </p>
+                <a class="navbar-brand wd-split-navbar" href="#">
+                    Pages
+                </a>
+
+                <a href="page-new.html" class="navbar-link">
+                    <span class="wd-navbar-right glyphicon glyphicon-plus pull-right"></span>
+                </a>
+            </div>
+            <div class="navbar-header col-sm-8 col-xs-12">
+                <div class="container-fluid">
+                    <a class="navbar-brand" style="left: 10px" href="#">
+                        Edit Page
+                    </a>
+                    <a href="page-list.html" class="navbar-link">
+                        <span class="wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 </nav>
 
+
 <div class="row">
     <div class="container-fluid">
-        <div class="col col-sm-4 visible-md visible-lg">
+        <div class="col col-sm-4 hidden-xs wd-scroll-split">
             <ul class="list-group">
-                <li class="list-group-item">
+                <li class="list-group-item wd-li">
                     <a href="../Page/page-list.html">
                         Food Blogger Page1
                     </a>
-                    <a href="page-edit.html">
+                    <a href="#">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item wd-li">
                     <a href="../Page/page-list.html">
                         Food Blogger Page2
                     </a>
-                    <a href="page-edit.html">
+                    <a href="#">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item wd-li">
                     <a href="../Page/page-list.html">
                         Food Blogger Page3
                     </a>
-                    <a href="page-edit.html">
+                    <a href="#">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item wd-li">
                     <a href="../Page/page-list.html">
                         Food Blogger Page4
                     </a>
-                    <a href="page-edit.html">
+                    <a href="#">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item wd-li">
                     <a href="../Page/page-list.html">
                         Food Blogger Page5
                     </a>
-                    <a href="page-edit.html">
+                    <a href="#">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </li>
             </ul>
+
         </div>
-        <div class="col col-md-8 col-sm-12">
-            <label for="websitename"> Page Name </label>
-            <input id="websitename" type="text"
+        <div class="col col-sm-8 col-xs-12">
+            <label for="pagename"> Page Name </label>
+            <input id="pagename" type="text"
                    class="form-control"
-                   value="Food Blogger Page"/>
-            <label for="description"> Page Description </label>
-            <textarea id="description" class="form-control" rows="5">This is some text about the descripion of the page</textarea>
+                   value="Food Blogger"/>
+            <label for="pagedescription"> Page Description </label>
+            <textarea id="pagedescription" class="form-control" rows="5">This is some text about the page description</textarea>
+            <a class="btn btn-danger btn-block wd-btn-style"
+               href="page-list.html">Delete</a>
         </div>
     </div>
-
-
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="navbar-text">
             <div>
-                <a href="#">
+                <a href="../User/profile.html">
                     <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
                 </a>
             </div>
@@ -99,15 +111,6 @@
         </div>
     </div>
 </nav>
-<!--<div class=""row">-->
-<!--<div class="col-lg-3">-->
-<!--Food Blogger-->
-<!--</div>-->
-<!--<div class="col-lg-3 hidden-sm">-->
 
-<!--</div>-->
-<!--<div class="col-lg-3">-->
-
-<!--</div>-->
 </body>
 </html>

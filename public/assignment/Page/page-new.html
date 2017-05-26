@@ -1,48 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--<link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
-    <title>New Page</title>
+    <title>Create New Page Website</title>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="page-list.html">
-            <span class="wd-back glyphicon glyphicon-chevron-left pull-left">
-            </span>
-            </a>
-            <a class="navbar-brand" href="#">
-                New Page
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
-          <span class="wd-navbar-right glyphicon glyphicon-ok pull-right">
-          </span>
+<nav class="navbar navbar-default  navbar-inverse navbar-fixed-top">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="navbar-header col-sm-4 hidden-xs">
+                <a href="page-list.html">
+                    <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
                 </a>
-            </p>
+                <a class="navbar-brand wd-split-navbar" href="#">
+                    Pages
+                </a>
+
+                <a href="page-new.html" class="navbar-link">
+                    <span class="wd-navbar-right glyphicon glyphicon-plus pull-right"></span>
+                </a>
+            </div>
+            <div class="navbar-header col-sm-8 col-xs-12">
+                <div class="container-fluid">
+                    <a class="navbar-brand" style="left: 10px" href="#">
+                        New Page
+                    </a>
+                    <a href="page-list.html" class="navbar-link">
+                        <span class="wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 </nav>
 
-<div class="container-fluid">
-    <label for="websitename"> Page Name </label>
-    <input id="websitename"
-           type="text"
-           class="form-control"
-           placeholder="New page name"/>
-    <label for="description"> Page Description </label>
-    <textarea id="description"
-              class="form-control"
-              rows="5" placeholder="Enter description for your page"></textarea>
+
+<div class="row">
+    <div class="container-fluid">
+        <div class="col col-sm-4 hidden-xs wd-scroll-split">
+            <ul class="list-group">
+                <li class="list-group-item wd-li">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page1
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+                <li class="list-group-item wd-li">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page2
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+                <li class="list-group-item wd-li">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page3
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+                <li class="list-group-item wd-li">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page4
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+                <li class="list-group-item wd-li">
+                    <a href="../Page/page-list.html">
+                        Food Blogger Page5
+                    </a>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col col-sm-8 col-xs-12">
+            <label for="page-name"> Page Name </label>
+            <input id="page-name" type="text"
+                   class="form-control"
+                   placeholder="New page name"/>
+            <label for="page-description"> Page Description </label>
+            <textarea id="page-description" class="form-control" rows="5" placeholder="Your page description"></textarea>
+        </div>
+    </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
-        <div class="row navbar-text">
+        <div class="navbar-text">
             <div>
                 <a href="../User/profile.html">
                     <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>

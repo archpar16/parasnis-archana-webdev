@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
     <link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/style.css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <title>Edit Website</title>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default  navbar-inverse navbar-fixed-top">
     <div class="row">
         <div class="container-fluid">
             <div class="navbar-header col-sm-4 hidden-xs">
@@ -18,7 +19,7 @@
                     Websites
                 </a>
 
-                <a href="website-list.html" class="navbar-link">
+                <a href="website-new.html" class="navbar-link">
                     <span class="wd-navbar-right glyphicon glyphicon-plus pull-right"></span>
                 </a>
             </div>
@@ -40,7 +41,6 @@
 
 <div class="row">
     <div class="container-fluid">
-        <!--visible-md visible-lg-->
         <div class="col col-sm-4 hidden-xs wd-scroll-split">
             <ul class="list-group">
                 <li class="list-group-item wd-li">
@@ -234,6 +234,8 @@
                    value="Food Blogger"/>
             <label for="description"> Website Description </label>
             <textarea id="description" class="form-control" rows="5">This is some text about the descripion</textarea>
+            <a class="btn btn-danger btn-block wd-btn-style"
+               href="website-list.html">Delete</a>
         </div>
     </div>
 </div>
