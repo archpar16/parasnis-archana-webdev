@@ -1,6 +1,8 @@
 input.form-control {
     margin-bottom: 5px;
 }
+
+
 .navbar-default {
     background-color: blue;
 }
@@ -30,10 +32,11 @@ ul {
     top: 14px;
     left: 15px;
     margin-right: 15px;
-
     padding-right: 20px;
     color: crimson;
 }
+
+
 .wd-li {
     border: none;
 }
@@ -53,15 +56,15 @@ ul {
     position: absolute;
     top: 50px;
     bottom: 0px;
-    overflow: scroll;
-    padding-bottom: 15px;
+    overflow: auto;
+    padding-bottom: 30px;
 }
-.col-sm-8 {
-    margin-left: 33%;
+@media (min-width: 768px) {
+    .col-sm-8 {
+        margin-left: 33%;
+    }
 }
-/*.glyphicon {*/
-    /*top: 17px;*/
-/*}*/
+
 body {
     padding-top: 60px;
     padding-bottom: 70px;
