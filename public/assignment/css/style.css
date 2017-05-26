@@ -5,17 +5,31 @@ input.form-control {
     background-color: blue;
 }
 .navbar-default .navbar-brand {
-    color: white;
+    color: crimson;
 }
 ul {
     margin-top: 10px;
 }
 .navbar-default .navbar-text {
-    color: white;
+    color: crimson;
 }
 
 .navbar-text {
     margin-right: 15px;
+}
+.wd-back {
+    top: 17px;
+    left: 15px;
+    margin-right: 15px;
+    padding-right: 20px;
+    color: crimson;
+}
+
+.wd-navbar-right {
+    position: absolute;
+    top: 17px;
+    right: 15px;
+    color: crimson;
 }
 /*.glyphicon {*/
     /*top: 17px;*/
