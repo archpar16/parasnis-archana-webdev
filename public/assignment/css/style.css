@@ -72,7 +72,40 @@ body {
     margin-left: 15px;
 }
 
+a:link {
+    text-decoration: none;
+}
 
 .wd-btn-style {
     margin-top: 10px;
+}
+
+.wd-widget {
+    position: relative;
+    padding-bottom: 15px;
+}
+.wd-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.wd-video-container iframe {
+    position: absolute;
+    padding-top: 0px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.wd-widget .wd-toolbar {
+    position: absolute;
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    opacity: 0.8;
+    z-index: 2;
+    top: 0px;
+    right: 0px;
 }
