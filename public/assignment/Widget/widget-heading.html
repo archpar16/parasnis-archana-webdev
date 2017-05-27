@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Heading</title>
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />-->
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
+
+<body class="wd-body-style">
 
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -24,25 +26,33 @@
     </div>
 </nav>
 
-<body>
 <div class="container-fluid">
 
     <label for="widget-name"> Name </label>
     <input id="widget-name" type="text"
            class="form-control"
            placeholder="your widget name"/>
+
     <label for="widget-text"> Text </label>
     <input id="widget-text" type="text"
            class="form-control"
            placeholder="Text of heading"/>
+
     <label for="widget-text-size"> Size </label>
-    <input id="widget-text-size" type="text"
-           class="form-control"
-           placeholder="Size of heading"/>
+    <select class="form-control" id="widget-text-size">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+    <!--<input id="widget-text-size" type="text"-->
+           <!--class="form-control"-->
+           <!--placeholder="Size of heading"/>-->
+    </select>
     <a class="btn btn-danger btn-block wd-btn-style"
        href="widget-list.html">Delete</a>
 </div>
-</body>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
@@ -56,5 +66,6 @@
         </div>
     </div>
 </nav>
+</body>
 
 </html>

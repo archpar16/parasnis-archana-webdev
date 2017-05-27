@@ -12,6 +12,13 @@ input.form-control {
     color: crimson;
 }
 
+.navbar-default .navbar-header .wd-navbar-brand {
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    color: crimson;
+}
+
 .wd-navbar-brand {
     left: 0px;
 }
@@ -68,9 +75,9 @@ body {
     padding-top: 60px;
     padding-bottom: 70px;
 }
-.h2 {
-    margin-left: 15px;
-}
+/*.h2 {*/
+    /*margin-left: 15px;*/
+/*}*/
 
 a:link {
     text-decoration: none;
@@ -108,4 +115,8 @@ a:link {
     z-index: 2;
     top: 0px;
     right: 0px;
+}
+
+.wd-body-style {
+    overflow-x: hidden;
 }

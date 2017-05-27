@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Heading</title>
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Edit Image</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="../lib/dist/css/bootstrap.min.css" rel="stylesheet" />-->
     <link href="../css/style.css" rel="stylesheet"/>
 </head>
 
+<body class="wd-body-style">
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -15,7 +16,7 @@
                 <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
             </a>
             <a class="navbar-brand" href="#">
-                Widget Header Edit
+                Widget Image Edit
             </a>
             <a href="widget-list.html" class="navbar-link">
                 <span class="wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
@@ -24,7 +25,6 @@
     </div>
 </nav>
 
-<body>
 <div class="container-fluid">
 
     <label for="widget-image-name"> Name </label>
@@ -45,7 +45,8 @@
            class="form-control"
            value="100%"/>
     <label for="widget-name"> Upload </label>
-    <input id="widget-name" type="text"
+    <input id="widget-name" type="file"
+           multiple
            class="form-control"
            placeholder="your widget name"/>
     <a class="btn btn-primary btn-block wd-btn-style"
@@ -53,7 +54,7 @@
     <a class="btn btn-danger btn-block wd-btn-style"
        href="widget-list.html">Delete</a>
 </div>
-</body>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
@@ -67,5 +68,6 @@
         </div>
     </div>
 </nav>
+</body>
 
 </html>
