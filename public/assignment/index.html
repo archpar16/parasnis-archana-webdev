@@ -2,42 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Assignment Home Page</title>
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link href="lib/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="lib/dist/css/bootstrap.min.css" rel="stylesheet" />-->
+    <!--<link href="lib/dist/css/bootstrap-theme.css" rel="stylesheet"/>-->
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 
+<body>
 
-
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand wd-navbar-brand" href="#">Build Your Website</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#wd-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Build Your Website</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+        <div class="collapse navbar-collapse" id="wd-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="User/login.html">Login</a></li>
-                <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <li><a href="User/register.html">Register</a></li>
-                        <li><a href="User/profile.html">Profile</a></li>
-                    <!--</ul>-->
-                <!--</li>-->
+                <li><a href="User/register.html">Register</a></li>
+                <li><a href="User/profile.html">Profile</a></li>
+                <li><a href="" class="disabled">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
-<body>
+
+
 <div class="container-fluid">
-    <h2> Welcome to Build Your Website</h2>
+    <h2 class="wd-header"> Welcome to Build Your</h2>
+    <img width="100%" src="http://www.techmethods.com/images/build_a_website_24.png">
 </div>
+
 
 </body>
 </html>
+

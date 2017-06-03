@@ -5,31 +5,34 @@ select.form-control {
 }
 
 .navbar-default {
-    background-color: blue;
+    background-color: indigo;
 }
 .navbar-default .navbar-header .navbar-brand {
     position: absolute;
     top: 0px;
     left: 50px;
-    color: crimson;
+    color: lavenderblush;
+    margin-left: 15px;
 }
 
 .navbar-default .navbar-header .wd-navbar-brand {
+    left: 12px;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
     position: absolute;
     top: 0px;
-    left: 5px;
-    color: crimson;
+    color: lavenderblush;
 }
 
-.wd-navbar-brand {
-    left: 0px;
-}
 
 ul {
     margin-top: 10px;
 }
 .navbar-default .navbar-text {
-    color: crimson;
+    color: lavenderblush;
 }
 
 .navbar-text {
@@ -37,11 +40,12 @@ ul {
 }
 .wd-back {
     position: absolute;
-    top: 14px;
+    top: 17px;
     left: 15px;
+    padding-left: 15px;
     margin-right: 15px;
     padding-right: 20px;
-    color: crimson;
+    color: lavenderblush;
 }
 
 
@@ -58,7 +62,7 @@ ul {
     position: absolute;
     top: 17px;
     right: 30px;
-    color: crimson;
+    color: lavenderblush;
 }
 .wd-scroll-split {
     position: absolute;
@@ -67,6 +71,7 @@ ul {
     overflow: auto;
     padding-bottom: 30px;
 }
+
 @media (min-width: 768px) {
     .col-sm-8 {
         margin-left: 33%;
@@ -77,9 +82,6 @@ body {
     padding-top: 60px;
     padding-bottom: 70px;
 }
-/*.h2 {*/
-    /*margin-left: 15px;*/
-/*}*/
 
 a:link {
     text-decoration: none;
@@ -121,4 +123,19 @@ a:link {
 
 .wd-body-style {
     overflow-x: hidden;
+}
+
+.wd-text-align {
+    text-align: justify;
+}
+
+.wd-x {
+    color: lavenderblush;
+}
+
+.wd-header {
+    position: absolute;
+    top: 200px;
+    left: 110px;
+    color: greenyellow;
 }
