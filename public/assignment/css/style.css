@@ -5,15 +5,39 @@ select.form-control {
 }
 
 .navbar-default {
-    background-color: indigo;
+    background-color: darkkhaki;
 }
 .navbar-default .navbar-header .navbar-brand {
     position: absolute;
     top: 0px;
     left: 50px;
-    color: lavenderblush;
+    color: darkblue;
     margin-left: 15px;
 }
+
+.navbar-default .navbar-header .wd-home-navbar-brand {
+    left: 0px;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    position: absolute;
+    top: 0px;
+    color: darkblue;
+}
+
+/*.navbar-default .navbar-header .wd-profile-navbar-brand {*/
+    /*left: 20px;*/
+    /*float: left;*/
+    /*height: 50px;*/
+    /*padding: 15px 15px;*/
+    /*font-size: 18px;*/
+    /*line-height: 20px;*/
+    /*position: absolute;*/
+    /*top: 0px;*/
+    /*color: darkblue;*/
+/*}*/
 
 .navbar-default .navbar-header .wd-navbar-brand {
     left: 12px;
@@ -24,7 +48,7 @@ select.form-control {
     line-height: 20px;
     position: absolute;
     top: 0px;
-    color: lavenderblush;
+    color: darkblue;
 }
 
 
@@ -32,7 +56,7 @@ ul {
     margin-top: 10px;
 }
 .navbar-default .navbar-text {
-    color: lavenderblush;
+    color: darkblue;
 }
 
 .navbar-text {
@@ -45,12 +69,13 @@ ul {
     padding-left: 15px;
     margin-right: 15px;
     padding-right: 20px;
-    color: lavenderblush;
+    color: darkblue;
 }
 
 
 .wd-li {
     border: none;
+    color: #2b669a;
 }
 .wd-navbar-header .navbar-brand {
     position: absolute;
@@ -62,7 +87,7 @@ ul {
     position: absolute;
     top: 17px;
     right: 30px;
-    color: lavenderblush;
+    color: darkblue;
 }
 .wd-scroll-split {
     position: absolute;
@@ -85,6 +110,11 @@ body {
 
 a:link {
     text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 .wd-btn-style {
@@ -130,12 +160,13 @@ a:link {
 }
 
 .wd-x {
-    color: lavenderblush;
+    color: darkblue;
 }
 
 .wd-header {
-    position: absolute;
-    top: 200px;
-    left: 110px;
-    color: greenyellow;
+    color: maroon;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: darkblue;
 }
