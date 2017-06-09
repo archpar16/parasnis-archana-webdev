@@ -1,14 +1,14 @@
 
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="wd-home-navbar-brand" href="">
+<nav class = "navbar navbar-default navbar-fixed-top">
+    <div class = "container-fluid">
+        <div class = "navbar-header">
+            <a class = "wd-home-navbar-brand" href = "">
                 Profile
             </a>
-            <p class="navbar-text pull-right">
-                <a href="" class="navbar-link">
-          <span class="wd-navbar-right glyphicon glyphicon-ok pull-right">
+            <p class = "navbar-text pull-right">
+                <a href = "" class = "navbar-link">
+          <span class = "wd-navbar-right glyphicon glyphicon-ok pull-right">
           </span>
                 </a>
             </p>
@@ -17,59 +17,62 @@
 </nav>
 
 
-<div class="container-fluid">
+<div class = "container-fluid">
     <form>
 
-        <label for="username">Username</label>
+        <label for = "username">Username</label>
         <input readonly
-               value="Jim"
-               type="text"
-               class="form-control"
-               id="username"
-               placeholder="Username">
+               ng-model = "vm_profile.user.username"
+               value = "Jim"
+               type = "text"
+               class = "form-control"
+               id = "username">
 
-        <label for="email">Email address</label>
-        <input type="email"
-               class="form-control"
-               id="email"
-               placeholder="jim@yourdomain.com">
+        <label for = "email">Email address</label>
+        <input type = "email"
+               ng-model = "vm_profile.user.email"
+               class = "form-control"
+               id = "email"
+               placeholder = "jim@yourdomain.com">
 
-        <label for="first-name">First Name</label>
-        <input type="text"
-               class="form-control"
-               id="first-name"
-               placeholder="Jim">
+        <label for = "first-name">First Name</label>
+        <input type = "text"
+               ng-model = "vm_profile.user.firstName"
+               class = "form-control"
+               id = "first-name"
+               placeholder = "Jim">
 
-        <label for="last-name">Last Name</label>
-        <input type="text"
-               class="form-control"
-               id="last-name"
-               placeholder="Scott">
+        <label for = "last-name">Last Name</label>
+        <input type = "text"
+               ng-model = "vm_profile.user.lastName"
+               class = "form-control"
+               id = "last-name"
+               placeholder = "Scott">
 
-        <label for="password"> Change Passowrd </label>
-        <input id="password" type="password"
-               class="form-control"
-               placeholder="Choose new password"/>
+        <label for = "password"> Change Passowrd </label>
+        <input id = "password" type = "password"
+               class = "form-control"
+               placeholder = "Choose new password"/>
 
-        <label for="verifypassword"> Verify Passowrd </label>
-        <input id="verifypassword"
-               type="password"
-               class="form-control"
-               placeholder="Verify password"/>
+        <label for = "verifypassword"> Verify Passowrd </label>
+        <input id = "verifypassword"
+               type = "password"
+               class = "form-control"
+               placeholder = "Verify password"/>
     </form>
 
-    <a class="btn btn-primary btn-block wd-btn-style"
-       href="#!/user/:uid/website">Websites</a>
-    <a class="btn btn-danger  btn-block wd-btn-style"
-       href="#!/login">Logout</a>
+    <a class = "btn btn-primary btn-block wd-btn-style"
+       href = "#!/user/:uid/website">Websites</a>
+    <a class = "btn btn-danger  btn-block wd-btn-style"
+       href = "#!/login">Logout</a>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text">
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+        <div class = "row navbar-text">
             <div>
-                <a href="">
-                    <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                <a href = "">
+                    <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
                 </a>
             </div>
 
