@@ -4,23 +4,24 @@
     <div class="row">
         <div class="container-fluid">
             <div class="navbar-header col-sm-4 hidden-xs">
-                <a href="website-list">
+                <a href="#!/user/{{vm_web_new.userID}}/website">
                     <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
                 </a>
                 <a class="navbar-brand wd-split-navbar" href="#">
                     Websites
                 </a>
 
-                <a href="#" class="navbar-link">
+                <a href="" class="navbar-link">
                     <span class="wd-navbar-right glyphicon glyphicon-plus pull-right"></span>
                 </a>
             </div>
             <div class="navbar-header col-sm-8 col-xs-12">
                 <div class="container-fluid">
-                    <a class="wd-navbar-brand" href="#">
+                    <a class="wd-navbar-brand" href="">
                         New Website
                     </a>
-                    <a href="website-list" class="navbar-link">
+                    <a ng-click="vm_web_new.createWebsite(vm_web_new.name, vm_web_new.desc)"
+                       class="navbar-link">
                         <span class="wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
                     </a>
                 </div>
@@ -35,57 +36,33 @@
     <div class="container-fluid">
         <div class="col col-sm-4 hidden-xs wd-scroll-split">
             <ul class="list-group">
-                <li class="list-group-item wd-li">
-                    <a href="../Page/page-list">
-                        Food Blogger
+                <li ng-repeat="website in vm_web_new.websitesForUser" class="list-group-item wd-li">
+                    <a href="">
+                        {{website.name}}
                     </a>
-                    <a href="website-edit">
+                    <a href="#!/user/{{vm_web_new.userID}}/website/{{website._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </li>
-                <li class="list-group-item wd-li">
-                    <a href="../Page/page-list">
-                        Beauty Products
-                    </a>
-                    <a href="website-edit">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </li>
-                <li class="list-group-item wd-li">
-                    <a href="../Page/page-list">
-                        Restaurants
-                    </a>
-                    <a href="website-edit">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </li>
-                <li class="list-group-item wd-li">
-                    <a href="../Page/page-list">
-                        Travel website
-                    </a>
-                    <a href="website-edit">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </li>
-                <li class="list-group-item wd-li">
-                    <a href="../Page/page-list">
-                        Ticket Booking
-                    </a>
-                    <a href="website-edit">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </li>
+
 
             </ul>
 
         </div>
         <div class="col col-sm-8 col-xs-12">
             <label for="websitename"> Website Name </label>
-            <input id="websitename" type="text"
+            <input id="websitename"
+                   ng-model="vm_web_new.name"
+                   type="text"
                    class="form-control"
                    placeholder="Name of new website"/>
+
             <label for="description"> Website Description </label>
-            <textarea id="description" class="form-control" rows="5" placeholder="Describe your website features here"></textarea>
+            <textarea id="description"
+                      ng-model="vm_web_new.desc"
+                      class="form-control"
+                      rows="5"
+                      placeholder="Describe your website features here"></textarea>
         </div>
     </div>
 </div>
@@ -94,7 +71,7 @@
     <div class="container">
         <div class="navbar-text">
             <div>
-                <a href="../User/profile">
+                <a href="#!/user/{{vm_web_new.userID}}">
                     <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
                 </a>
             </div>

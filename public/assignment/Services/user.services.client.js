@@ -40,10 +40,6 @@
         }
 
         function deleteUser(userId) {
-            // var user = users.find(function (user) {
-            //     return user._id === userId;
-            // });
-
             var user = findUserByID(userId);
             var index = users.indexOf(user);
             users.splice(index, 1);
