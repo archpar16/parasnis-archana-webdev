@@ -1,24 +1,38 @@
 
-<div class="container-fluid">
+<div class = "container-fluid">
     <h1>Register</h1>
-    <label for="username"> Username </label>
-    <input id="username" type="text"
-           class="form-control"
-           placeholder="Choose username"/>
 
-    <label for="password"> Passowrd </label>
-    <input id="password" type="password"
-           class="form-control"
-           placeholder="Choose password"/>
+    <div ng-show="vm_register.error" class="alert alert-danger">
+        {{vm_register.error}}
+    </div>
+    <label for = "username"> Username </label>
+    <input ng-model = "user"
+           id = "username" 
+           type = "text"
+           class = "form-control"
+           placeholder = "Choose username"/>
 
-    <label for="verifypassword"> Verify Passowrd </label>
-    <input id="verifypassword" type="password"
-           class="form-control"
-           placeholder="Verify password"/>
+    <label for = "password"> Passowrd </label>
+    <input ng-model = "pwd1"
+           id = "password" 
+           type = "password"
+           class = "form-control"
+           placeholder = "Choose password"/>
 
-    <a class="btn btn-primary btn-block"
-       href="#!/profile">Register</a>
+    <label for = "verifypassword"> Verify Passowrd </label>
+    <input ng-model = "pwd2"
+           id = "verifypassword" 
+           type = "password"
+           class = "form-control"
+           placeholder = "Verify password"/>
 
-    <a class="btn btn-danger  btn-block"
-       href="#!/login">Cancel</a>
+    <a ng-click = "vm_register.register(user, pwd1, pwd2)"
+       class = "btn btn-primary btn-block">
+        Register
+    </a>
+
+    <a class = "btn btn-danger  btn-block"
+       href = "#!/login">
+        Cancel
+    </a>
 </div>

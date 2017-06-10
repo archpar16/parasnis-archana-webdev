@@ -7,7 +7,9 @@
                 Profile
             </a>
             <p class = "navbar-text pull-right">
-                <a href = "" class = "navbar-link">
+                <a ng-click="vm_profile.update(vm_profile.user.username, vm_profile.user.pwd1,
+                vm_profile.user.pwd2, vm_profile.user.firstName, vm_profile.user.lastName, vm_profile.user.email)"
+                   class = "navbar-link">
           <span class = "wd-navbar-right glyphicon glyphicon-ok pull-right">
           </span>
                 </a>
@@ -33,38 +35,48 @@
                ng-model = "vm_profile.user.email"
                class = "form-control"
                id = "email"
-               placeholder = "jim@yourdomain.com">
+               placeholder = "user@yourdomain.com">
 
         <label for = "first-name">First Name</label>
         <input type = "text"
                ng-model = "vm_profile.user.firstName"
                class = "form-control"
                id = "first-name"
-               placeholder = "Jim">
+               placeholder = "Your First name">
 
         <label for = "last-name">Last Name</label>
         <input type = "text"
                ng-model = "vm_profile.user.lastName"
                class = "form-control"
                id = "last-name"
-               placeholder = "Scott">
+               placeholder = "Your Last name">
 
         <label for = "password"> Change Passowrd </label>
-        <input id = "password" type = "password"
+        <input id = "password"
+               ng-model = "vm_profile.user.pwd1"
+               type = "password"
                class = "form-control"
                placeholder = "Choose new password"/>
 
         <label for = "verifypassword"> Verify Passowrd </label>
         <input id = "verifypassword"
+               ng-model = "vm_profile.user.pwd2"
                type = "password"
                class = "form-control"
                placeholder = "Verify password"/>
     </form>
 
     <a class = "btn btn-primary btn-block wd-btn-style"
-       href = "#!/user/:uid/website">Websites</a>
+       href = "#!/user/:uid/website">
+        Websites
+    </a>
+    <!--<a class = "btn btn-danger  btn-block wd-btn-style"-->
+       <!--href = "#!/login">Logout</a>-->
+
     <a class = "btn btn-danger  btn-block wd-btn-style"
-       href = "#!/login">Logout</a>
+       href = "#!/login">
+        Logout
+    </a>
 </div>
 
 <nav class = "navbar navbar-default navbar-fixed-bottom">

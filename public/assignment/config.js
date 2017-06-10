@@ -15,9 +15,11 @@
 
             })
             .when('/register', {
-                templateUrl: 'Views/User/Template/register.view.client.html'
+                templateUrl: 'Views/User/Template/register.view.client.html',
+                controller: 'registerController',
+                controllerAs: 'vm_register'
             })
-            .when('/profile/:uid', {
+            .when('/user/:uid', {
                 templateUrl: 'Views/User/Template/profile.view.client.html',
                 controller: 'profileController',
                 controllerAs: 'vm_profile'
