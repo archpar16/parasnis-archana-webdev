@@ -29,7 +29,7 @@
         }
 
 
-        function deleteWebsite(websiteId) {
+        function deleteWebsite() {
             websiteService.deleteWebsite(websiteId);
             $location.url('/user/' + ctlr.userId + '/website');
         }
