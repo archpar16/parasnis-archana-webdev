@@ -17,6 +17,7 @@
         ctlr.pageId = pageId;
         ctlr.widgetId = widgetId;
 
+        init();
         // event handlers
         ctlr.getWidgetEditUrl = getWidgetEditUrl;
         ctlr.updateWidget = updateWidget;
@@ -26,10 +27,25 @@
 
         console.log('user ' + userId + 'page' + pageId + ' ' + websiteId + '  '+ widgetId);
 
+        function init() {
+            ctlr.widget = widgetService.findWidgetById(widgetId);
+            ctlr.name = ctlr.widget.name;
+            ctlr.text = ctlr.widget.text;
+            if (ctlr.widget.widgetType === 'HEADING')
+                ctlr.size = ctlr.widget.size;
+
+            if (ctlr.widget.widgetType === 'IMAGE' || ctlr.widget.widgetType === 'YOUTUBE') {
+                ctlr.url = ctlr.widget.url;
+                ctlr.width = ctlr.widget.width;
+            }
+        }
         // Implementation of event handlers
         function getWidgetEditUrl() {
             var widget = widgetService.findWidgetById(widgetId);
-            return 'Views/Widget/Editors/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
+            if (typeof widget !== 'undefined')
+                return 'Views/Widget/Editors/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
+
+            return null;
         }
 
         function updateWidget(name, text, size, width, url) {

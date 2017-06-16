@@ -10,16 +10,19 @@
         ctlr.userId = $routeParams['uid'];
         ctlr.websiteId = $routeParams['wid'];
         ctlr.pageId = $routeParams['pid'];
-        ctlr.widgetId = $routeParams['wgid'];
+        var type = $routeParams['heading'];
+
+        console.log(type);
+        //ctlr.widgetId = $routeParams['wgid'];
 
         // event handlers
         ctlr.createWidget = createWidget;
-        ctlr.getNewWidgetUrlForType = getNewWidgetUrlForType;
+       // ctlr.getNewWidgetUrlForType = getNewWidgetUrlForType;
 
 
-        function getNewWidgetUrlForType(type) {
-            return 'Views/Widget/Editors/widget-'+type.toLowerCase()+'-new.view.client.html';
-        }
+        // function getNewWidgetUrlForType(type) {
+        //     return 'Views/Widget/Editors/widget-'+type.toLowerCase()+'-new.view.client.html';
+        // }
 
         ctlr.size = ["1", "2", "3", "4", "5", "6"];
 
@@ -28,8 +31,9 @@
             var widget = {
                 _id: ctlr.widgetId,
                 widgetType: type,
-                pageId: oldWidget.pageId,
-                name: name
+                pageId: ctlr.pageId,
+                name: name,
+                text: text
             };
 
             if (type === 'HEADING') {
@@ -43,7 +47,7 @@
             }
 
 
-            widgetService.createWidget(pageId, widget);
+            widgetService.createWidget(ctlr.pageId, widget);
             $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
         }
     }

@@ -15,7 +15,7 @@
             if (found !== null) {
                 $location.url('/user/' + found._id);
             } else {
-                ctlr.error = username + " not found or password isn't correct, please try again";
+                ctlr.message = username + " not found or password isn't correct, please try again";
             }
         }
 

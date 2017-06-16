@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('WebAppMaker', ['ngRoute'])
-        .config(configuration);
+        .config(pageConfiguration);
 
-    function configuration($routeProvider) {
+    function pageConfiguration($routeProvider) {
         $routeProvider
             .when('/user/:uid/website/:wid/page', {
                 templateUrl: 'Views/Page/Templates/page-list.view.client.html',

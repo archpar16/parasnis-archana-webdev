@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('WebAppMaker', ['ngRoute'])
-        .config(configuration);
+        .config(widgetConfiguration);
 
-    function configuration($routeProvider) {
+    function widgetConfiguration($routeProvider) {
         $routeProvider
             .when('/user/:uid/website/:wid/page/:pid/widget', {
                 templateUrl: 'Views/Widget/Templates/widget-list.view.client.html',
