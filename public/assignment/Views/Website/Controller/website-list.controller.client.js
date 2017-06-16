@@ -3,16 +3,28 @@
         .module('WebAppMaker')
         .controller('websiteListController', websiteListController);
     
-    function websiteListController($routeParams, websiteService) {
+    function websiteListController($location, $routeParams, websiteService) {
         console.log('in website list controller now');
         var ctlr = this;
-        var userID = $routeParams['uid'];
-        ctlr.userID = userID;
+        var userId = $routeParams['uid'];
+        var websiteId = $routeParams['wid'];
+
+        console.log(' website id ' + websiteId);
+        ctlr.userId = userId;
         init();
 
         function init() {
-            ctlr.websitesForUser = websiteService.findWebsitesByUser(userID);
+            ctlr.websitesForUser = websiteService.findWebsitesByUser(userId);
         }
+
+        // ctlr.listPages = listPages;
+        //
+        // function listPages() {
+        //     $location.url('/user/' + userId + '/website/' + websiteId + '/page');
+        // }
+
+
+
     }
 
 })();

@@ -2,13 +2,13 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#!/user/{{vm_web_list.userID}}">
+            <a href="#!/user/{{vm_web_list.userId}}">
                 <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
             </a>
             <a class="navbar-brand" href="#">
                 Websites
             </a>
-            <a href="#!/user/{{vm_web_list.userID}}/website/new">
+            <a href="#!/user/{{vm_web_list.userId}}/website/new">
             <span class="wd-navbar-right glyphicon glyphicon-plus pull-right"></span>
             </a>
         </div>
@@ -19,10 +19,10 @@
 
     <ul class="list-group">
         <li ng-repeat="website in vm_web_list.websitesForUser" class="list-group-item wd-li">
-            <a href="#!/user/{{vm_web_list.userID}}/website/:wid/page">
+            <a href="#!/user/{{vm_web_list.userId}}/website/{{website._id}}/page">
                 {{website.name}}
             </a>
-            <a href="#!/user/{{vm_web_list.userID}}/website/{{website._id}}">
+            <a href="#!/user/{{vm_web_list.userId}}/website/{{website._id}}">
                 <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
         </li>
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="row navbar-text">
             <div>
-                <a href="#!/user/{{vm_web_list.userID}}">
+                <a href="#!/user/{{vm_web_list.userId}}">
                     <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
                 </a>
             </div>

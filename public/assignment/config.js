@@ -39,6 +39,35 @@
                 controller: 'websiteEditController',
                 controllerAs: 'vm_web_edit'
             })
-
+            .when('/user/:uid/website/:wid/page', {
+                templateUrl: 'Views/Page/Template/page-list.view.client.html',
+                controller: 'pageListController',
+                controllerAs: 'vm_page_list'
+            })
+            .when('/user/:uid/website/:wid/page/new', {
+                templateUrl: 'Views/Page/Template/page-new.view.client.html',
+                controller: 'pageNewController',
+                controllerAs: 'vm_page_new'
+            })
+            .when('/user/:uid/website/:wid/page/:pid', {
+                templateUrl: 'Views/Page/Template/page-edit.view.client.html',
+                controller: 'pageEditController',
+                controllerAs: 'vm_page_edit'
+            })
+            .when('/user/:uid/website/:wid/page/:pid/widget', {
+                templateUrl: 'Views/Widget/Template/widget-list.view.client.html',
+                controller: 'widgetListController',
+                controllerAs: 'vm_widget_list'
+            })
+            .when('/user/:uid/website/:wid/page/:pid/widget/new', {
+                templateUrl: 'Views/Widget/Template/widget-chooser.view.client.html'
+                // , controller: 'widgetChooserController',
+                // controllerAs: 'vm_widget_choose'
+            })
+            .when('/user/:uid/website/:wid/page/:pid/widget/:wgid', {
+                templateUrl: 'Views/Widget/Template/widget-edit.view.client.html'
+                // ,controller: 'widgetChooserController',
+                // controllerAs: 'vm_widget_choose'
+            })
     }
 })();

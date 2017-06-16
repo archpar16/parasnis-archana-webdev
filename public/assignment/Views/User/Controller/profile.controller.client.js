@@ -7,11 +7,11 @@
         console.log('in profile controller now');
         var ctlr = this;
 
-        var userID = $routeParams['uid'];
+        var userId = $routeParams['uid'];
 
-        console.log('finding the user now' + userID);
+        console.log('finding the user now' + userId);
 
-        ctlr.user = userService.findUserByID(userID);
+        ctlr.user = userService.findUserById(userId);
 
         ctlr.update = update;
 
@@ -24,7 +24,7 @@ console.log("in update ");
                     return;
                 }
                 var user = {
-                    _id: userID,
+                    _id: userId,
                     username: username,
                     password: pwd1,
                     firstName: first,
@@ -32,16 +32,10 @@ console.log("in update ");
                     email: email
                 };
 
-                userService.updateUser(userID, user);
-            // }
+                userService.updateUser(userId, user);
         }
 
-        // ctlr.delete = dele;
-        // function dele() {
-        //     console.log('deleteing the user' + userID);
-        //     userService.deleteUser(userID);
-        //     $location.url('/login');
-        // }
+
     }
 
 })();

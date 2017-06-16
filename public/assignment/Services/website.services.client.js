@@ -17,35 +17,37 @@
 
         return {
             createWebsite: createWebsite,
-            findWebsiteByID: findWebsiteByID,
+            findWebsiteById: findWebsiteById,
             findWebsitesByUser: findWebsitesByUser,
             updateWebsite: updateWebsite,
             deleteWebsite: deleteWebsite
         };
 
-        function createWebsite(website, userID) {
+        function createWebsite(website, userId) {
             website._id = (new Date()).getTime() + "";
-            website.developerId = userID;
+            website.developerId = userId;
             websites.push(website);
         }
 
 
         function updateWebsite(websiteId, website) {
+            var oldWebsite = findWebsiteById(websiteId);
+            var index = websites.indexOf(oldWebsite);
             deleteWebsite(websiteId);
-            websites.push(website);
+            websites.splice(index, 0, website);
         }
 
         function deleteWebsite(websiteId) {
-            var website = findWebsiteByID(websiteId);
+            var website = findWebsiteById(websiteId);
             var index = websites.indexOf(website);
             websites.splice(index, 1);
         }
         
-        function findWebsitesByUser(userID) {
+        function findWebsitesByUser(userId) {
             var result = [];
 
             for (var w in websites){
-                if(websites[w].developerId === userID) {
+                if(websites[w].developerId === userId) {
                     result.push(websites[w]);
                 }
             }
@@ -53,9 +55,9 @@
         }
 
 
-        function findWebsiteByID(websiteID) {
+        function findWebsiteById(websiteId) {
             return websites.find(function (website) {
-                return website._id === websiteID;
+                return website._id === websiteId;
             });
         }
     }

@@ -14,7 +14,7 @@
         return {
             createUser: createUser,
             findUserByCredentials: findUserByCredentials,
-            findUserByID: findUserByID,
+            findUserById: findUserById,
             findUserByUsername: findUserByUsername,
             updateUser: updateUser,
             deleteUser: deleteUser
@@ -40,7 +40,7 @@
         }
 
         function deleteUser(userId) {
-            var user = findUserByID(userId);
+            var user = findUserById(userId);
             var index = users.indexOf(user);
             users.splice(index, 1);
         }
@@ -55,7 +55,7 @@
             return null;
         }
 
-        function findUserByID(userId) {
+        function findUserById(userId) {
             return users.find(function (user) {
                 return user._id === userId;
             });
