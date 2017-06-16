@@ -17,8 +17,8 @@
             if (found !== null) {
                ctlr.error = " Username is not unique, please choose another";
             } else {
-                if (password !== password_verify) {
-                    ctlr.error = "Passwords must match";
+                if (typeof password === 'undefined' || password !== password_verify) {
+                    ctlr.error = "Password cannot be empty and they must match";
                     return;
                 }
                 var user = {
