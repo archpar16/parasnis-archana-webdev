@@ -1,0 +1,67 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#!/user/{{vm_widget_edit.userId}}/website/{{vm_widget_edit.websiteId}}/page/{{vm_widget_edit.pageId}}/widget"
+               class="navbar-link">
+                <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
+            <a class="navbar-brand">
+                Widget Edit
+            </a>
+            <a ng-click="vm_widget_edit.updateWidget(vm_widget_edit.name, vm_widget_edit.text, vm_widget_edit.size,
+               vm_widget_edit.width, vm_widget_edit.url)"
+               class="navbar-link">
+                <span class="wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+
+    <label for="widget-vd-name"> Name </label>
+    <input id="widget-vd-name"
+           ng-model="vm_widget_edit.name"
+           type="text"
+           class="form-control"
+           placeholder="Your widget name"/>
+    <label for="widget-vd-text"> Text </label>
+    <input id="widget-vd-text"
+           ng-model="vm_widget_edit.text"
+           type="text"
+           class="form-control"
+           placeholder="Description of video"/>
+    <label for="widget-image-url"> URL </label>
+    <input id="widget-image-url"
+           ng-model="vm_widget_edit.url"
+           type="text"
+           class="form-control"
+           value="https://www.youtube.com/embed/5SL1A2d2e7M?ecver=1"/>
+
+    <label for="widget-vd-width"> Width </label>
+    <input id="widget-vd-width"
+           ng-model="vm_widget_edit.width"
+           type="text"
+           class="form-control"
+           value="100%"/>
+
+    <a ng-click="vm_widget_edit.deleteWidget()"
+       class="btn btn-danger btn-block wd-btn-style">
+       Delete
+    </a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div>
+                <a href="#!/user/{{vm_widget_edit.userId}}">
+                    <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>

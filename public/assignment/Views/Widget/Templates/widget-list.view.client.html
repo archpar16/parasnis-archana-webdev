@@ -1,0 +1,47 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#!/user/{{vm_widget_list.userId}}/website/{{vm_widget_list.websiteId}}/page" class="navbar-link">
+                <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
+            <a class="navbar-brand" href="">
+                Widgets
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#!/user/{{vm_widget_list.userId}}/website/{{vm_widget_list.websiteId}}/page/{{vm_widget_list.pageId}}/widget/new"
+                   class="navbar-link">
+          <span class="wd-navbar-right glyphicon glyphicon-plus pull-right"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div ng-repeat="widget in vm_widget_list.widgets"
+         class="wd-widget">
+        <div class="wd-toolbar">
+            <a href="#!/user/{{vm_widget_list.userId}}/website/{{vm_widget_list.websiteId}}/page/{{vm_widget_list.pageId}}/widget/{{widget._id}}">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </div>
+
+        <div ng-include="vm_widget_list.getWidgetUrlForType(widget.widgetType)"></div>
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div>
+                <a href="#!/user/{{vm_widget_list.userId}}">
+                    <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>

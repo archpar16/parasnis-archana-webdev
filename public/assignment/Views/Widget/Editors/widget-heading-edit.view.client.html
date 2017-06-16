@@ -1,0 +1,60 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#!/user/{{vm_widget_edit.userId}}/website/{{vm_widget_edit.websiteId}}/page/{{vm_widget_edit.pageId}}/widget"
+               class="navbar-link">
+                <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
+            <a class="navbar-brand">
+                Widget Edit
+            </a>
+            <a ng-click="vm_widget_edit.updateWidget(vm_widget_edit.name, vm_widget_edit.text, vm_widget_edit.size,
+            vm_widget_edit.width, vm_widget_edit.url)"
+               class="navbar-link">
+                <span class="wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <label for="widget-name"> Name </label>
+    <input id="widget-name"
+           ng-model="vm_widget_edit.name"
+           type="text"
+           class="form-control"
+           placeholder="Your widget name"/>
+
+    <label for="widget-text"> Text </label>
+    <input id="widget-text"
+           ng-model="vm_widget_edit.text"
+           type="text"
+           class="form-control"
+           placeholder="Text of heading"/>
+
+    <label for="widget-text-size"> Size </label>
+    <select class="form-control"
+            ng-model="vm_widget_edit.size"
+            ng-options="s for s in vm_widget_edit.size"
+            id="widget-text-size">
+    </select>
+    <a ng-click="vm_widget_edit.deleteWidget()"
+       class="btn btn-danger btn-block wd-btn-style">
+        Delete
+    </a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div>
+                <a href="#!/user/{{vm_widget_edit.userId}}">
+                    <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>

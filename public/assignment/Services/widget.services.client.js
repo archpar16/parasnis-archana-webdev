@@ -33,7 +33,7 @@
 
 
         function updateWidget(widgetId, widget) {
-            var oldwidget = findwidgetById(widgetId);
+            var oldwidget = findWidgetById(widgetId);
             var index = widgets.indexOf(oldwidget);
             deleteWidget(widgetId);
             widgets.splice(index, 0, widget);
@@ -62,9 +62,5 @@
                 return widget._id === widgetId;
             });
         }
-
-
-        
-
     }
 })();

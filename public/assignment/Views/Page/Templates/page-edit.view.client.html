@@ -1,0 +1,81 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="navbar-header col-sm-4 hidden-xs">
+                <a href="#!/user/{{vm_page_edit.userId}}/website/{{vm_page_edit.websiteId}}/page">
+                    <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+                </a>
+                <a class="navbar-brand wd-split-navbar">
+                    Pages
+                </a>
+
+                <a href="#!/user/{{vm_page_edit.userId}}/website/{{vm_page_edit.websiteId}}/page/new"
+                   class="navbar-link">
+                    <span class="wd-navbar-right glyphicon glyphicon-plus pull-right"></span>
+                </a>
+            </div>
+            <div class="navbar-header col-sm-8 col-xs-12">
+                <div class="container-fluid">
+                    <a class="wd-navbar-brand">
+                        Edit Page
+                    </a>
+                    <a ng-click="vm_page_edit.updatePage(vm_page_edit.currentPage.name, vm_page_edit.currentPage.description)"
+                       class="navbar-link">
+                        <span class="wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="row">
+    <div class="container-fluid">
+        <div class="col col-sm-4 hidden-xs wd-scroll-split">
+            <ul class="list-group">
+                <li ng-repeat="page in vm_page_edit.pagesForWebsite"
+                    class="list-group-item wd-li">
+                    <a href="#!/user/{{vm_page_edit.userId}}/website/{{vm_page_edit.websiteId}}/page/{{page._id}}/widget">
+                       {{page.name}}
+                    </a>
+                    <a href="#!/user/{{vm_page_edit.userId}}/website/{{vm_page_edit.websiteId}}/page/{{page._id}}">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col col-sm-8 col-xs-12">
+            <label for="pagename"> Name </label>
+            <input id="pagename"
+                   ng-model="vm_page_edit.currentPage.name"
+                   type="text"
+                   class="form-control"
+                   value="Food Blogger"/>
+            <label for="page-title"> Title </label>
+            <textarea id="page-title"
+                      ng-model="vm_page_edit.currentPage.description"
+                      class="form-control"
+                      rows="5"></textarea>
+            <a ng-click="vm_page_edit.deletePage()"
+               class="btn btn-danger btn-block wd-btn-style">
+                Delete
+            </a>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-text">
+            <div>
+                <a href="!/user/{{vm_page_edit.userId}}">
+                    <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
