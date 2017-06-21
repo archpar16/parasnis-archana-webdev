@@ -12,17 +12,10 @@
         ctlr.pageId = $routeParams['pid'];
         var type = $routeParams['heading'];
 
-        console.log(type);
-        //ctlr.widgetId = $routeParams['wgid'];
+       // console.log(type);
 
         // event handlers
         ctlr.createWidget = createWidget;
-       // ctlr.getNewWidgetUrlForType = getNewWidgetUrlForType;
-
-
-        // function getNewWidgetUrlForType(type) {
-        //     return 'Views/Widget/Editors/widget-'+type.toLowerCase()+'-new.view.client.html';
-        // }
 
         ctlr.size = ["1", "2", "3", "4", "5", "6"];
 
