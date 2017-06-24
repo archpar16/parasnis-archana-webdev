@@ -8,9 +8,17 @@
         var ctlr = this;
 
         var userId = $routeParams['uid'];
-        ctlr.user = userService.findUserById(userId);
 
-        // event handlers
+        userService
+            .findUserById(userId)
+            .then(renderUser);
+
+        function renderUser (user) {
+            ctlr.user = user;
+        }
+    //     ctlr.user = userService.findUserById(userId);
+    // console.log('user ' + ctlr.user);
+    //     // event handlers
         ctlr.update = update;
 
         // Implementation of event handlers

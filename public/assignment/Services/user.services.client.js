@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .factory('userService', userService);
 
-    function userService() {
+    function userService($http) {
 
         var users = [{_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", email: "alice@wonder.com"  },
             {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley", email: "bob@gmail.com"  },
@@ -56,9 +56,15 @@
         }
 
         function findUserById(userId) {
-            return users.find(function (user) {
-                return user._id === userId;
-            });
+            var url = '/api/user/' + userId;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                }
+            );
+            // return users.find(function (user) {
+            //     return user._id === userId;
+            // });
         }
     }
 })();
