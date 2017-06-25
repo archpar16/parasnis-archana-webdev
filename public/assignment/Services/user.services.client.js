@@ -21,8 +21,14 @@
         };
 
         function createUser(user) {
-            user._id = (new Date()).getTime() + "";
-            users.push(user);
+            var url = '/api/user';
+            return $http.post(url)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+            // user._id = (new Date()).getTime() + "";
+            // users.push(user);
         }
 
         function findUserByUsername(username) {
@@ -46,13 +52,19 @@
         }
 
         function findUserByCredentials(username, password) {
-            for(var u in users) {
-                var user = users[u];
-                if(user.username === username && user.password === password) {
-                    return user;
-                }
-            }
-            return null;
+            var url = '/api/user?username=' + username + '&password=' + password;
+            return $http.get(url)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+            // for(var u in users) {
+            //     var user = users[u];
+            //     if(user.username === username && user.password === password) {
+            //         return user;
+            //     }
+            // }
+            // return null;
         }
 
         function findUserById(userId) {

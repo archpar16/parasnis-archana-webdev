@@ -11,10 +11,17 @@
 
         // Implementation of event handlers
         function login(username, password) {
-            var found = userService.findUserByCredentials(username, password);
-            if (found !== null) {
-                $location.url('/user/' + found._id);
-            } else {
+            userService
+                .findUserByCredentials(username, password)
+                .then(completeLogin, handleError);
+
+            function completeLogin(found) {
+                if (found !== null) {
+                    $location.url('/user/' + found._id);
+                }
+            }
+
+            function handleError() {
                 ctlr.message = username + " not found or password isn't correct, please try again";
             }
         }

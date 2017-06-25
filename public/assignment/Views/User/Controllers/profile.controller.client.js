@@ -16,9 +16,8 @@
         function renderUser (user) {
             ctlr.user = user;
         }
-    //     ctlr.user = userService.findUserById(userId);
-    // console.log('user ' + ctlr.user);
-    //     // event handlers
+
+        // event handlers
         ctlr.update = update;
 
         // Implementation of event handlers
@@ -38,8 +37,6 @@
 
             userService.updateUser(userId, user);
         }
-
-
     }
 
 })();

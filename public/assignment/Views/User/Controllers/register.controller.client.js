@@ -12,21 +12,24 @@
 
         // Implementation of event handlers
         function register(username, password, password_verify) {
+            if (typeof password === 'undefined' || password !== password_verify) {
+                ctlr.error = "Password cannot be empty and they must match";
+                return;
+            }
             var found = userService.findUserByUsername(username);
 
             if (found !== null) {
                ctlr.error = " Username is not unique, please choose another";
             } else {
-                if (typeof password === 'undefined' || password !== password_verify) {
-                    ctlr.error = "Password cannot be empty and they must match";
-                    return;
-                }
                 var user = {
                     username: username,
                     password: password
                 };
-                userService.createUser(user);
-                $location.url('/user/' + user._id);
+                userService
+                    .createUser(user)
+                    .then(function (user) {
+                        $location.url('/user/' + user._id);
+                    });
             }
         }
     }
