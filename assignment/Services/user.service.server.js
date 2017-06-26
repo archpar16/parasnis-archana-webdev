@@ -1,6 +1,7 @@
 var app = require('../../express');
 
 app.get('/api/user/:userId', findUserById);
+app.put('/api/user/:userId', updateUser);
 app.get('/api/user', findUserByCredentials);
 app.post('/api/user', createUser);
 
@@ -40,8 +41,27 @@ function findUserByCredentials(req, res) {
 
 
 function createUser(req, res) {
-    var user = req.body();
+    var user = req.body;
     user._id = (new Date()).getTime() + "";
+    //console.log(user);
     users.push(user);
+    res.send(user);
+}
+
+function deleteUser(userId) {
+    var user = users.find(function (user) {
+        return user._id === userId;
+    });
+    // var user = findUserById(userId);
+    var index = users.indexOf(user);
+    users.splice(index, 1);
+}
+
+function updateUser(req, res) {
+    var user = req.body;
+    console.log(user);
+    deleteUser(user._id);
+    users.push(user);
+
     res.send(user);
 }

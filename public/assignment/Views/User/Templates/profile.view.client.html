@@ -7,12 +7,10 @@
                 Profile
             </a>
             <p class = "navbar-text pull-right">
-                <a ng-click="vm_profile.update(vm_profile.user.username, vm_profile.user.pwd1,
-                   vm_profile.user.pwd2, vm_profile.user.firstName, vm_profile.user.lastName, vm_profile.user.email)"
+                <a ng-click="vm_profile.update(vm_profile.user)"
                    class = "navbar-link">
                     <span class = "wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
                 </a>
-
             </p>
         </div>
     </div>
@@ -20,8 +18,10 @@
 
 
 <div class = "container-fluid">
+    <div ng-show="vm_profile.message" class="alert alert-danger">
+        {{vm_profile.message}}
+    </div>
     <form>
-
         <label for = "username">Username</label>
         <input readonly
                ng-model = "vm_profile.user.username"

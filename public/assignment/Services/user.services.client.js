@@ -22,7 +22,7 @@
 
         function createUser(user) {
             var url = '/api/user';
-            return $http.post(url)
+            return $http.post(url, user)
                 .then(function (response) {
                         return response.data;
                     }
@@ -41,8 +41,14 @@
         }
 
         function updateUser(userId, user) {
-            deleteUser(userId);
-            users.push(user);
+            var url = '/api/user/' + userId;
+            return $http.put(url, user)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+            // deleteUser(userId);
+            // users.push(user);
         }
 
         function deleteUser(userId) {
