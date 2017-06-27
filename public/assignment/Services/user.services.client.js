@@ -27,17 +27,16 @@
                         return response.data;
                     }
                 );
-            // user._id = (new Date()).getTime() + "";
-            // users.push(user);
         }
 
         function findUserByUsername(username) {
-            var user = users.find(function (user) {
-                return user.username === username;
-            });
-            if(typeof user === 'undefined')
-                return null;
-            return user;
+            var url = '/api/user?username=' + username;
+            return $http.get(url)
+                .then(function (response) {
+                    console.log(" resp " + response.data);
+                        return response.data;
+                    }
+                );
         }
 
         function updateUser(userId, user) {
@@ -47,14 +46,15 @@
                         return response.data;
                     }
                 );
-            // deleteUser(userId);
-            // users.push(user);
         }
 
         function deleteUser(userId) {
-            var user = findUserById(userId);
-            var index = users.indexOf(user);
-            users.splice(index, 1);
+            var url = '/api/user/' + userId;
+            return $http.delete(url)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
         }
 
         function findUserByCredentials(username, password) {
@@ -64,13 +64,6 @@
                         return response.data;
                     }
                 );
-            // for(var u in users) {
-            //     var user = users[u];
-            //     if(user.username === username && user.password === password) {
-            //         return user;
-            //     }
-            // }
-            // return null;
         }
 
         function findUserById(userId) {
@@ -80,9 +73,6 @@
                     return response.data;
                 }
             );
-            // return users.find(function (user) {
-            //     return user._id === userId;
-            // });
         }
     }
 })();

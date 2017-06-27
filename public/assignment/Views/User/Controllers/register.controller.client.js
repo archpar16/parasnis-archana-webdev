@@ -16,11 +16,16 @@
                 ctlr.error = "Password cannot be empty and they must match";
                 return;
             }
-            var found = userService.findUserByUsername(username);
+            userService
+                .findUserByUsername(username)
+                .then(usernameAvailable, handleError);
 
-            if (found !== null) {
-               ctlr.error = " Username is not unique, please choose another";
-            } else {
+            function handleError() {
+                    ctlr.error = " Username is not unique, please choose another";
+
+            }
+
+            function usernameAvailable() {
                 var user = {
                     username: username,
                     password: password

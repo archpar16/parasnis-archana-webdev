@@ -1,8 +1,8 @@
 var app = require('../../express');
 
 app.get('/api/user/:userId', findUserById);
-app.put('/api/user/:userId', updateUser);
 app.get('/api/user', findUserByCredentials);
+app.put('/api/user/:userId', updateUser);
 app.post('/api/user', createUser);
 
 
@@ -65,3 +65,15 @@ function updateUser(req, res) {
 
     res.send(user);
 }
+
+function findUserByUsername(req, res) {
+    var username = req.query['username'];
+    var user = users.find(function (user) {
+        return user.username === username;
+    });
+    if(typeof user === 'undefined')
+        res.sendStatus(200);
+    res.sendStatus(404);
+}
+
+

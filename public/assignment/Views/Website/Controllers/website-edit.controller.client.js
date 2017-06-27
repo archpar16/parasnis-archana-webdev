@@ -24,19 +24,36 @@
                 description: desc
             };
 
-            websiteService.updateWebsite(websiteId, website);
-            $location.url('/user/' + ctlr.userId + '/website');
+            websiteService
+                .updateWebsite(websiteId, website)
+                .then(function () {
+                    $location.url('/user/' + ctlr.userId + '/website');
+                });
+
         }
 
 
         function deleteWebsite() {
-            websiteService.deleteWebsite(websiteId);
-            $location.url('/user/' + ctlr.userId + '/website');
+            websiteService
+                .deleteWebsite(websiteId)
+                .then(function () {
+                    $location.url('/user/' + ctlr.userId + '/website');
+                });
+
         }
 
         function init() {
-            ctlr.websitesForUser = websiteService.findWebsitesByUser(userId);
-            ctlr.currentWebsite = websiteService.findWebsiteById(websiteId);
+            websiteService
+                .findWebsitesByUser(userId)
+                .then(function (websites) {
+                    ctlr.websitesForUser = websites;
+                });
+
+            websiteService
+                .findWebsiteById(websiteId)
+                .then(function (website) {
+                    ctlr.currentWebsite = website;
+                });
         }
 
 

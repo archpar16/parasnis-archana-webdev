@@ -11,7 +11,14 @@
         init();
 
         function init() {
-            ctlr.websitesForUser = websiteService.findWebsitesByUser(userId);
+            websiteService
+                .findWebsitesByUser(userId)
+                .then(allWebsites);
+
+
+            function allWebsites(websites) {
+                ctlr.websitesForUser = websites;
+            }
         }
     }
 
