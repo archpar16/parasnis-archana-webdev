@@ -19,7 +19,7 @@
 
         init();
         // event handlers
-        ctlr.getWidgetEditUrl = getWidgetEditUrl;
+        // ctlr.getWidgetEditUrl = getWidgetEditUrl;
         ctlr.updateWidget = updateWidget;
         ctlr.deleteWidget = deleteWidget;
 
@@ -41,25 +41,11 @@
                         ctlr.url = ctlr.widget.url;
                         ctlr.width = ctlr.widget.width;
                     }
+                    ctlr.UrlEdit = 'Views/Widget/Editors/widget-' + ctlr.widget.widgetType.toLowerCase()+ '-edit.view.client.html';
                 });
 
         }
         // Implementation of event handlers
-        //todo: infinite loop  here
-        function getWidgetEditUrl() {
-            widgetService
-                .findWidgetById(widgetId)
-                .then(success, handleError);
-
-            function success(widget) {
-                console.log(widget);
-                return 'Views/Widget/Editors/widget-'+widget.widgetType.toLowerCase()+'-edit.view.client.html';
-            }
-
-            function handleError() {
-                return null;
-            }
-        }
 
         function updateWidget(name, text, size, width, url) {
 
@@ -96,7 +82,7 @@
 
         }
 
-        function deleteWidget(widgetId) {
+        function deleteWidget() {
             widgetService
                 .deleteWidget(widgetId)
                 .then(function () {

@@ -35,6 +35,7 @@
            }
 
         function deleteWidget(widgetId) {
+            console.log('dele' + widgetId);
             var url = '/api/widget/' + widgetId;
             return $http.delete(url)
                 .then(function (response) {

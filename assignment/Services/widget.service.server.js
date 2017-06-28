@@ -64,12 +64,14 @@ function updateWidget(req, res) {
 
 function deleteWidget(req, res) {
     var widgetId = req.params.widgetId;
+    console.log('deleting ' + widgetId);
     deleteWidgetInternal(widgetId);
     res.sendStatus(200);
 }
 
 function deleteWidgetInternal(widgetId) {
     var widget = findWidgetByIdInternal(widgetId);
+    console.log('deleting ' + widgetId);
     var index = widgets.indexOf(widget);
     widgets.splice(index, 1);
 }
@@ -99,6 +101,7 @@ function findWidgetById(req, res) {
     var widget = findWidgetByIdInternal(widgetId);
     console.log(widget);
     if (typeof widget !== 'undefined') {
+        console.log("send 200");
         res.send(widget);
         return;
     }
