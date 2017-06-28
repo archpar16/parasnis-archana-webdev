@@ -23,7 +23,11 @@
         ctlr.getWidgetUrlForType = getWidgetUrlForType;
 
         function init() {
-            ctlr.widgets = widgetService.findWidgetsByPageId(pageId);
+            widgetService
+                .findWidgetsByPageId(pageId)
+                .then(function (widgets) {
+                    ctlr.widgets = widgets;
+                });
         }
 
         // implement event handlers
@@ -36,7 +40,7 @@
             var youTubeLinkParts = youTubeLink.split('/');
             var id = youTubeLinkParts[youTubeLinkParts.length - 1];
             embedUrl += id;
-            console.log(embedUrl);
+            //console.log(embedUrl);
             return $sce.trustAsResourceUrl(embedUrl);
         }
 

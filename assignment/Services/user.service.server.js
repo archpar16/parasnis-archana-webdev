@@ -1,7 +1,7 @@
 var app = require('../../express');
 
 app.get('/api/user/:userId', findUserById);
-app.get('/api/user', findUserByCredentials);
+app.get('/api/user', findUserByCredentialsOrUsername);
 app.put('/api/user/:userId', updateUser);
 app.post('/api/user', createUser);
 
@@ -25,16 +25,13 @@ function findUserById(req, res) {
 }
 
 
-function findUserByCredentials(req, res) {
-    var username = req.query['username'];
-    var password = req.query['password'];
-    //console.log(username + password);
+function findUserByCredentials(username, password) {
+    console.log(username + password);
     for(var u in users) {
         var user = users[u];
         if(user.username === username &&
             user.password === password) {
-            res.json(user);
-            return;
+            return user;
         }
     }
 }
@@ -66,14 +63,35 @@ function updateUser(req, res) {
     res.send(user);
 }
 
-function findUserByUsername(req, res) {
-    var username = req.query['username'];
-    var user = users.find(function (user) {
+function findUserByUsername(username) {
+    return users.find(function (user) {
         return user.username === username;
     });
-    if(typeof user === 'undefined')
-        res.sendStatus(200);
-    res.sendStatus(404);
 }
 
-
+function findUserByCredentialsOrUsername(req, res) {
+    var username = req.query['username'];
+    var password = req.query.password;
+    if(username && password) {
+        var user = findUserByCredentials(username, password);
+        if(typeof user === 'undefined') {
+            res.sendStatus(404);
+            return;
+        } else {
+            res.send(user);
+            return;
+        }
+    }
+    else if(username) {
+        var user = findUserByUsername(username, password);
+        if(typeof user === 'undefined') {
+            res.sendStatus(200);
+            return;
+        } else {
+            res.sendStatus(404);
+            return;
+        }
+    } else {
+        res.json(users);
+    }
+}

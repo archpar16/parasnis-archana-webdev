@@ -16,12 +16,13 @@
                 ctlr.error = "Password cannot be empty and they must match";
                 return;
             }
+            //  check for username existing then only create new user
             userService
                 .findUserByUsername(username)
                 .then(usernameAvailable, handleError);
 
             function handleError() {
-                    ctlr.error = " Username is not unique, please choose another";
+                   ctlr.error = " Username is not unique, please choose another";
 
             }
 
@@ -35,7 +36,7 @@
                     .then(function (user) {
                         $location.url('/user/' + user._id);
                     });
-            }
+             }
         }
     }
 

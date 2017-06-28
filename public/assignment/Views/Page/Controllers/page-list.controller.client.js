@@ -14,7 +14,11 @@
         init();
 
         function init() {
-            ctlr.pagesForWebsite = pageService.findPageByWebsiteId(websiteId);
+            pageService
+                .findPageByWebsiteId(websiteId)
+                .then(function (pages) {
+                    ctlr.pagesForWebsite = pages;
+                });
         }
     }
 

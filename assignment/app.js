@@ -1,14 +1,7 @@
 var app= require('../express');
 
 require('./Services/user.service.server');
-
-
-// module.exports = function(app) {
-//     require("./services/user.service.server.js")(app);
-//     require("./services/website.service.server.js")(app);
-//     require("./services/page.service.server.js")(app);
-//     require("./services/widget.service.server.js")(app);
-// };
-
-
-
+require('./Services/website.service.server');
+require('./Services/page.service.server');
+require('./Services/widget.service.server');
+// require('./Directives/wbdv-sortable');

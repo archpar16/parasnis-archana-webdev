@@ -23,12 +23,20 @@
                 description: desc
             };
 
-            pageService.createPage(websiteId, page);
-            $location.url('/user/' + userId + '/website/' + websiteId + '/page');
+            pageService
+                .createPage(websiteId, page)
+                .then(function () {
+                    $location.url('/user/' + userId + '/website/' + websiteId + '/page');
+                });
+
         }
 
         function init() {
-            ctlr.pagesForWebsite = pageService.findPageByWebsiteId(websiteId);
+            pageService
+                .findPageByWebsiteId(websiteId)
+                .then(function (pages) {
+                    ctlr.pagesForWebsite = pages;
+                });
         }
 
 

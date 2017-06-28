@@ -48,16 +48,27 @@
            class="form-control"
            value="100%"/>
 
-    <label for="widget-upload"> Upload </label>
-    <input id="widget-upload"
-           type="file"
-           multiple
-           class="form-control"/>
+    <!--<label for="widget-upload"> Upload </label>-->
+    <!--<input id="widget-upload"-->
+           <!--type="file"-->
+           <!--multiple-->
+           <!--class="form-control"/>-->
 
-    <a ng-click=""
-       class="btn btn-primary btn-block wd-btn-style">
-        Upload Image
-    </a>
+    <form action="/api/upload"   method="post" enctype="multipart/form-data">
+        <input  name="myFile"    type="file" class="form-control"/>
+        <input  name="width"     value="{{vm_widget_new.width}}" style="display: none"/>
+        <input  name="userId"    value="{{vm_widget_new.userId}}"   style="display: none"/>
+        <input  name="websiteId" value="{{vm_widget_new.websiteId}}"   style="display: none"/>
+        <input  name="pageId"    value="{{vm_widget_new.pageId}}"   style="display: none"/>
+        <input  name="widgetId"  value="{{vm_widget_new.widget._id}}"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary wd-btn-style">Upload Image</button>
+    </form>
+
+
+    <!--<a ng-click=""-->
+       <!--class="btn btn-primary btn-block wd-btn-style">-->
+        <!--Upload Image-->
+    <!--</a>-->
 </div>
 
 

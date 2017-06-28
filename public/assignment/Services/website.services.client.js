@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .factory('websiteService', websiteService);
 
-    function websiteService() {
+    function websiteService($http) {
 
         var websites = [
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -30,9 +30,6 @@
                         return response.data;
                     }
                 );
-            // website._id = (new Date()).getTime() + "";
-            // website.developerId = userId;
-            // websites.push(website);
         }
 
 
@@ -43,23 +40,16 @@
                         return response.data;
                     }
                 );
-            // var oldWebsite = findWebsiteById(websiteId);
-            // var index = websites.indexOf(oldWebsite);
-            // deleteWebsite(websiteId);
-            // websites.splice(index, 0, website);
         }
 
         function deleteWebsite(websiteId) {
             var url = '/api/website/' + websiteId;
-            return $http.delete(url, website)
+            return $http.delete(url)
                 .then(function (response) {
                         return response.data;
                     }
                 );
-            // var website = findWebsiteById(websiteId);
-            // var index = websites.indexOf(website);
-            // websites.splice(index, 1);
-        }
+             }
         
         function findWebsitesByUser(userId) {
             var url = '/api/user/' + userId + '/website';
@@ -68,15 +58,7 @@
                         return response.data;
                     }
                 );
-            // var result = [];
-            //
-            // for (var w in websites){
-            //     if(websites[w].developerId === userId) {
-            //         result.push(websites[w]);
-            //     }
-            // }
-            // return result;
-        }
+            }
 
 
         function findWebsiteById(websiteId) {
@@ -86,10 +68,7 @@
                         return response.data;
                     }
                 );
-            // return websites.find(function (website) {
-            //     return website._id === websiteId;
-            // });
-        }
+            }
 
 
 

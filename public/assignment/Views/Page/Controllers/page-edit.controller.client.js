@@ -28,19 +28,35 @@
                 description: desc
             };
 
-            pageService.updatePage(pageId, page);
-            $location.url('/user/' + ctlr.userId + '/website/' + websiteId + '/page');
+            pageService
+                .updatePage(pageId, page)
+                .then(function () {
+                    $location.url('/user/' + ctlr.userId + '/website/' + websiteId + '/page');
+                });
+
         }
 
 
         function deletePage() {
-            pageService.deletePage(pageId);
-            $location.url('/user/' + ctlr.userId + '/website/' + websiteId + '/page');
+            pageService
+                .deletePage(pageId)
+                .then(function () {
+                    $location.url('/user/' + ctlr.userId + '/website/' + websiteId + '/page');
+                });
+
         }
 
         function init() {
-            ctlr.pagesForWebsite = pageService.findPageByWebsiteId(websiteId);
-            ctlr.currentPage = pageService.findPageById(pageId);
+             pageService
+                .findPageByWebsiteId(websiteId)
+                .then(function (pages) {
+                    ctlr.pagesForWebsite = pages;
+                });
+            pageService
+                .findPageById(pageId)
+                .then(function (page) {
+                    ctlr.currentPage = page;
+                });
         }
 
 

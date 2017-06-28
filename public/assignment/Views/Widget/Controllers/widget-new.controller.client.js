@@ -12,7 +12,7 @@
         ctlr.pageId = $routeParams['pid'];
         var type = $routeParams['heading'];
 
-       // console.log(type);
+        console.log(ctlr.userId + "  " +ctlr.websiteId +"  "+ ctlr.pageId);
 
         // event handlers
         ctlr.createWidget = createWidget;
@@ -40,8 +40,13 @@
             }
 
 
-            widgetService.createWidget(ctlr.pageId, widget);
-            $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
+            widgetService
+                .createWidget(ctlr.pageId, widget)
+                .then(function () {
+                    $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId
+                        + '/page/' +  ctlr.pageId + '/widget');
+                });
+
         }
     }
 })();

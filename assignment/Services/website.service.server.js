@@ -31,19 +31,29 @@ function createWebsite(req, res) {
 function updateWebsite(req, res) {
     var websiteId = req.params.websiteId;
     var website = req.body;
-    for (var w in websites) {
-        if (w._id === websiteId)
-            websites[w] = website;
-    }
+    console.log(website);
+    var oldWebsite = findWebsiteByIdInternal(websiteId);
+    var index = websites.indexOf(oldWebsite);
+    // var oldWebsite = findWebsiteByIdInternal(websiteId);
+    // var index = websites.indexOf(oldWebsite);
+    websites.splice(index, 1);
+    //deleteWebsiteInternal(websiteId);
+    // Add the new website
+    websites.splice(index, 0, website);
+
     res.send(website);
 }
 
 function deleteWebsite(req, res) {
     var websiteId = req.params.websiteId;
+    deleteWebsiteInternal(websiteId);
+    res.sendStatus(200);
+}
+
+function deleteWebsiteInternal(websiteId) {
     var website = findWebsiteByIdInternal(websiteId);
     var index = websites.indexOf(website);
     websites.splice(index, 1);
-    res.sendStatus(200);
 }
 
 function findWebsitesByUser(req, res) {

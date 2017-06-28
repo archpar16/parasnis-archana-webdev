@@ -13,7 +13,11 @@
         ctlr.createWebsite = createWebsite;
 
         function init() {
-            ctlr.websitesForUser = websiteService.findWebsitesByUser(userId);
+            websiteService
+                .findWebsitesByUser(userId)
+                .then(function (res) {
+                    ctlr.websitesForUser = res;
+                });
         }
 
         // Implmenting event handlers
@@ -23,8 +27,11 @@
                 description: desc
             };
 
-            websiteService.createWebsite(website, userId);
-            $location.url('/user/' + ctlr.userId + '/website')
+            websiteService
+                .createWebsite(website, userId)
+                .then(function () {
+                    $location.url('/user/' + ctlr.userId + '/website')
+                });
         }
     }
 

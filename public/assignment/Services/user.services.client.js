@@ -33,7 +33,7 @@
             var url = '/api/user?username=' + username;
             return $http.get(url)
                 .then(function (response) {
-                    console.log(" resp " + response.data);
+                    // console.log(" resp " + response.data);
                         return response.data;
                     }
                 );
