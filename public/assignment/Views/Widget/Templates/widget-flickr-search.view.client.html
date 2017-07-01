@@ -1,0 +1,53 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#!/user/{{vm_flickr_search.userId}}/website/{{vm_flickr_search.websiteId}}/page/{{vm_flickr_search.pageId}}/widget/{{vm_flickr_search.widgetId}}"
+               class="navbar-link">
+                <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
+            <a class="navbar-brand">
+                Search Flickr
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="input-group">
+        <input ng-model="searchText"
+               type="text"
+               class="form-control">
+        <span class="input-group-btn">
+
+        <a ng-click="vm_flickr_search.searchPhotos(searchText)"
+           class="btn btn-default"
+           type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-3" ng-repeat="photo in vm_flickr_search.photos.photo">
+            <img ng-click="vm_flickr_search.selectPhoto(photo)"
+                 ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text">
+            <div>
+                <a href="#!/user/{{vm_flickr_search.userId}}">
+                    <span class="wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>

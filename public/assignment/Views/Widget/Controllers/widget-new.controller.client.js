@@ -17,7 +17,31 @@
         // event handlers
         ctlr.createWidget = createWidget;
 
-        ctlr.size = ["1", "2", "3", "4", "5", "6"];
+       ctlr.size = null;
+
+        // ctlr.sizeAll = [
+        //     {'name': 'h1', 'value': '1'},
+        //     {'name': 'h2', 'value': '2'},
+        //     {'name': 'h3', 'value': '3'},
+        //     {'name': 'h4', 'value': '4'},
+        //     {'name': 'h5', 'value': '5'},
+        //     {'name': 'h6', 'value': '6'}
+        //     ];
+
+        // availableOptions: [
+        //     {id: '1', name: 'Option A'},
+        //     {id: '2', name: 'Option B'},
+        //     {id: '3', name: 'Option C'}
+        // ]
+            ctlr.sizeAll = [
+                {name: "1", value: "1" },
+                {name: "2", value: "2" },
+                {name: "3", value: "3" },
+                {name: "4", value: "4" },
+                {name: "5", value: "5" },
+                {name: "6", value: "6" }
+                ];
+
 
         // implement event handlers
         function createWidget(name, text, size, width, url, type) {
@@ -30,6 +54,7 @@
             };
 
             if (type === 'HEADING') {
+                console.log("creating size to " + size + " " + ctlr.size.value);
                 widget.text = text;
                 widget.size = size;
             }

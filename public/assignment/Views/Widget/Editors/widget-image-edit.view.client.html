@@ -38,26 +38,30 @@
     <input id="widget-image-url"
            ng-model="vm_widget_edit.url"
            type="text"
-           class="form-control"
-           value="https://www.nasa.gov/sites/default/files/cygx1_ill.jpg"/>
+           class="form-control"/>
 
     <label for="widget-width"> Width </label>
     <input id="widget-width"
            ng-model="vm_widget_edit.width"
            type="text"
-           class="form-control"
-           value="100%"/>
-
-    <label for="widget-upload"> Upload </label>
-    <input id="widget-upload"
-           type="file"
-           multiple
            class="form-control"/>
 
-    <a ng-click=""
+    <label> File </label>
+    <form action="/api/upload"   method="post" enctype="multipart/form-data">
+        <input  name="myFile"    type="file" class="form-control"/>
+        <input  name="width"     value="{{vm_widget_edit.width}}" style="display: none"/>
+        <input  name="userId"    value="{{vm_widget_edit.userId}}"   style="display: none"/>
+        <input  name="websiteId" value="{{vm_widget_edit.websiteId}}"   style="display: none"/>
+        <input  name="pageId"    value="{{vm_widget_edit.pageId}}"   style="display: none"/>
+        <input  name="widgetId"  value="{{vm_widget_edit.widget._id}}"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary wd-btn-style">Upload Image</button>
+    </form>
+
+    <a href="#!/user/{{vm_widget_edit.userId}}/website/{{vm_widget_edit.websiteId}}/page/{{vm_widget_edit.pageId}}/widget/{{vm_widget_edit.widget._id}}/search"
        class="btn btn-primary btn-block wd-btn-style">
-        Upload Image
+        Search Flickr for Image
     </a>
+    
     <a ng-click="vm_widget_edit.deleteWidget()"
        class="btn btn-danger btn-block wd-btn-style">
         Delete

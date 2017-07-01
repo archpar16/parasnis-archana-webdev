@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .controller('widgetEditController', widgetEditController);
 
-    function widgetEditController($sce, widgetService, $routeParams, $location) {
+    function widgetEditController(widgetService, $routeParams, $location) {
 
         var ctlr = this;
 
@@ -18,16 +18,25 @@
         ctlr.widgetId = widgetId;
 
         init();
+
         // event handlers
-        // ctlr.getWidgetEditUrl = getWidgetEditUrl;
         ctlr.updateWidget = updateWidget;
         ctlr.deleteWidget = deleteWidget;
 
-        ctlr.size = ["1", "2", "3", "4", "5", "6"];
+
 
         console.log('user ' + userId + 'page' + pageId + ' ' + websiteId + '  '+ widgetId);
 
         function init() {
+            ctlr.sizeAll = [
+                {name: "1", value: "1" },
+                {name: "2", value: "2" },
+                {name: "3", value: "3" },
+                {name: "4", value: "4" },
+                {name: "5", value: "5" },
+                {name: "6", value: "6" }
+            ];
+
             widgetService
                 .findWidgetById(widgetId)
                 .then(function (widget) {
@@ -37,6 +46,7 @@
                     if (ctlr.widget.widgetType === 'HEADING')
                         ctlr.size = ctlr.widget.size;
 
+                    console.log(ctlr.size );
                     if (ctlr.widget.widgetType === 'IMAGE' || ctlr.widget.widgetType === 'YOUTUBE') {
                         ctlr.url = ctlr.widget.url;
                         ctlr.width = ctlr.widget.width;
@@ -64,6 +74,7 @@
                 };
 
                 if (oldWidget.widgetType === 'HEADING') {
+                    console.log("updating size to" + size);
                     newWidget.text = text;
                     newWidget.size = size;
                 }

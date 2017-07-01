@@ -84,6 +84,11 @@
                 controller: 'widgetNewController',
                 controllerAs: 'vm_widget_new'
             })
+            .when('/user/:uid/website/:wid/page/:pid/widget/:wgid/search', {
+                templateUrl: 'Views/Widget/Templates/widget-flickr-search.view.client.html',
+                controller: 'flickrImageSearchController',
+                controllerAs: 'vm_flickr_search'
+            })
 
     }
 

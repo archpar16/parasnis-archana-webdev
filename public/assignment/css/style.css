@@ -27,17 +27,6 @@ select.form-control {
     color: darkblue;
 }
 
-/*.navbar-default .navbar-header .wd-profile-navbar-brand {*/
-    /*left: 20px;*/
-    /*float: left;*/
-    /*height: 50px;*/
-    /*padding: 15px 15px;*/
-    /*font-size: 18px;*/
-    /*line-height: 20px;*/
-    /*position: absolute;*/
-    /*top: 0px;*/
-    /*color: darkblue;*/
-/*}*/
 
 .navbar-default .navbar-header .wd-navbar-brand {
     left: 12px;
@@ -169,4 +158,10 @@ a:hover {
 
 .navbar-default .navbar-nav>li>a {
     color: darkblue;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
 }

@@ -136,10 +136,18 @@ function uploadImage(req, res) {
 
     console.log(myFile);
     console.log(userId + websiteId + pageId);
+    if (typeof width === 'undefined') {
+        console.log('setting width to 100%');
+        width = '100%';
+    }
 
     var widget = findWidgetByIdInternal(widgetId);
+    // create a new widget if one already doesn't exist
     if (typeof widget === 'undefined') {
-        var newWidget = { widgetType: "IMAGE"};
+        var newWidget = {
+            widgetType: "IMAGE",
+            width: width
+        };
         createWidgetInternal(newWidget, pageId);
         newWidget.url = '/uploads/'+filename;
     } else
@@ -161,7 +169,7 @@ function sortWidget(req, res) {
     console.log(widget);
     widgets.splice(start, 1);
     widgets.splice(stop, 0, widget);
-    console.log("index=" + widgets.indexOf(widget));
+    console.log("start: " + start + "stop: " + stop + "index=" + widgets.indexOf(widget));
     res.sendStatus(200);
 
 }

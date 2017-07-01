@@ -48,12 +48,8 @@
            class="form-control"
            value="100%"/>
 
-    <!--<label for="widget-upload"> Upload </label>-->
-    <!--<input id="widget-upload"-->
-           <!--type="file"-->
-           <!--multiple-->
-           <!--class="form-control"/>-->
 
+    <label> File </label>
     <form action="/api/upload"   method="post" enctype="multipart/form-data">
         <input  name="myFile"    type="file" class="form-control"/>
         <input  name="width"     value="{{vm_widget_new.width}}" style="display: none"/>
@@ -64,11 +60,6 @@
         <button type="submit"    class="btn btn-block btn-primary wd-btn-style">Upload Image</button>
     </form>
 
-
-    <!--<a ng-click=""-->
-       <!--class="btn btn-primary btn-block wd-btn-style">-->
-        <!--Upload Image-->
-    <!--</a>-->
 </div>
 
 
