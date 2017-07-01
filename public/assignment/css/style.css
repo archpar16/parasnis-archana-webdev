@@ -165,3 +165,19 @@ a:hover {
 [x-ng-click] {
     cursor: pointer;
 }
+
+.wd-flickr-thumbnails {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.wd-search-box {
+    padding: 30px;
+    text-align: center;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.btn-block+.btn-block {
+    margin-top: 15px;
+}

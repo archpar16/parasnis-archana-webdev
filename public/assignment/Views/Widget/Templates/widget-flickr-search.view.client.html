@@ -16,10 +16,11 @@
 
 <div class="container-fluid">
 
-    <div class="input-group">
+    <div class="input-group wd-search-box">
         <input ng-model="searchText"
                type="text"
-               class="form-control">
+               class="form-control"
+               placeholder="Search Images">
         <span class="input-group-btn">
 
         <a ng-click="vm_flickr_search.searchPhotos(searchText)"
@@ -30,8 +31,9 @@
     </span>
     </div>
 
-    <div class="row">
-        <div class="col-xs-3" ng-repeat="photo in vm_flickr_search.photos.photo">
+    <div class="row wd-search-box">
+        <div class="col-xs-4 wd-flickr-thumbnails"
+             ng-repeat="photo in vm_flickr_search.photos.photo">
             <img ng-click="vm_flickr_search.selectPhoto(photo)"
                  ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
         </div>

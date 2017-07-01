@@ -8,8 +8,14 @@
         var ctlr = this;
         console.log("in flick ctlr");
 
+        ctlr.userId = $routeParams['uid'];
+        ctlr.websiteId = $routeParams['wid'];
+        ctlr.pageId = $routeParams['pid'];
+        ctlr.widgetId = $routeParams['wgid'];
+
         ctlr.searchPhotos = searchPhotos;
         ctlr.selectPhoto = selectPhoto;
+
 
         function searchPhotos(searchTerm) {
             console.log("ser" + searchTerm);
