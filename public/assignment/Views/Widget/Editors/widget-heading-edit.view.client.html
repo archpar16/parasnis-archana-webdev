@@ -37,8 +37,6 @@
             ng-model="vm_widget_edit.size"
             ng-options="option.name for option in vm_widget_edit.sizeAll track by option.value"
             id="widget-text-size">
-        <option value="" ng-selected="vm_widget_edit.size">{{vm_widget_edit.size}}</option>
-        <!--<option value="" selected>{{vm_widget_edit.size}}</option>-->
     </select>
 
     <a ng-click="vm_widget_edit.deleteWidget()"

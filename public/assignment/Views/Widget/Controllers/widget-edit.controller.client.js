@@ -46,7 +46,7 @@
                     if (ctlr.widget.widgetType === 'HEADING')
                         ctlr.size = ctlr.widget.size;
 
-                    console.log(ctlr.size );
+                    console.log('edit contl size - heading' +ctlr.size );
                     if (ctlr.widget.widgetType === 'IMAGE' || ctlr.widget.widgetType === 'YOUTUBE') {
                         ctlr.url = ctlr.widget.url;
                         ctlr.width = ctlr.widget.width;
