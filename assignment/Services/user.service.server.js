@@ -1,7 +1,8 @@
 var app = require('../../express');
 
 app.get('/api/user/:userId', findUserById);
-app.get('/api/user', findUserByCredentialsOrUsername);
+app.get('/api/user', findUserByCredentials);
+app.get('/api/username', findUserByUsername);
 app.put('/api/user/:userId', updateUser);
 app.post('/api/user', createUser);
 
@@ -25,15 +26,22 @@ function findUserById(req, res) {
 }
 
 
-function findUserByCredentials(username, password) {
+function findUserByCredentials(req, res) {
+    var username = req.query['username'];
+    var password = req.query.password;
+
     console.log(username + password);
-    for(var u in users) {
-        var user = users[u];
-        if(user.username === username &&
-            user.password === password) {
-            return user;
+    if(username && password) {
+        for (var u in users) {
+            var user = users[u];
+            if (user.username === username &&
+                user.password === password) {
+                res.send(user);
+                return;
+            }
         }
     }
+    res.sendStatus(404);
 }
 
 
@@ -63,27 +71,16 @@ function updateUser(req, res) {
     res.send(user);
 }
 
-function findUserByUsername(username) {
+function findUserByUsernameInternal(username) {
     return users.find(function (user) {
         return user.username === username;
     });
 }
 
-function findUserByCredentialsOrUsername(req, res) {
+function findUserByUsername(req, res) {
     var username = req.query['username'];
-    var password = req.query.password;
-    if(username && password) {
-        var user = findUserByCredentials(username, password);
-        if(typeof user === 'undefined') {
-            res.sendStatus(404);
-            return;
-        } else {
-            res.send(user);
-            return;
-        }
-    }
-    else if(username) {
-        var user = findUserByUsername(username, password);
+    if(username) {
+        var user = findUserByUsernameInternal(username);
         if(typeof user === 'undefined') {
             res.sendStatus(200);
             return;
@@ -91,7 +88,6 @@ function findUserByCredentialsOrUsername(req, res) {
             res.sendStatus(404);
             return;
         }
-    } else {
-        res.json(users);
     }
+    res.sendStatus(404);
 }

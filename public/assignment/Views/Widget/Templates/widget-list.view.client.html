@@ -19,9 +19,9 @@
 </nav>
 
 
-<div class="container-fluid">
+<div class="container-fluid wd-widget-margin" wbdv-sortable>
     <div ng-repeat="widget in vm_widget_list.widgets"
-         class="wd-widget" wbdv-sortable>
+         class="wd-widget" >
         <div class="wd-toolbar">
             <a href="#!/user/{{vm_widget_list.userId}}/website/{{vm_widget_list.websiteId}}/page/{{vm_widget_list.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
