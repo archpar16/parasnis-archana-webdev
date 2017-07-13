@@ -1,67 +1,61 @@
 
 var mongoose = require('mongoose');
-var userSchema = require('./user.schema.server');
-var userModel = mongoose.model('UserModel', userSchema);
+var websiteSchema = require('./website.schema.server');
+var websiteModel = mongoose.model('WebsiteModel', websiteSchema);
 
-userModel.createUser = createUser;
-userModel.findUserById = findUserById;
-userModel.findUserByCredentials = findUserByCredentials;
-userModel.deleteUser = deleteUser;
-userModel.updateUser = updateUser;
-userModel.addWebsite = addWebsite;
-userModel.removeWebsite = removeWebsite;
-userModel.findUserByUsername = findUserByUsername;
+websiteModel.createWebsite = createWebsite;
+websiteModel.findWebsiteById = findWebsiteById;
+// websiteModel.findWebsiteByCredentials = findWebsiteByCredentials;
+websiteModel.deleteWebsite = deleteWebsite;
+websiteModel.updateWebsite = updateWebsite;
+websiteModel.findWebsitesByUser = findWebsitesByUser;
+// websiteModel.removeWebsite = removeWebsite;
+// websiteModel.findWebsiteByWebsitename = findWebsiteByWebsitename;
 
-module.exports = userModel;
+module.exports = websiteModel;
 
-function removeWebsite(userId, websiteId) {
-    return userModel
-        .findById(userId)
-        .then(function (user) {
-            var index = user._websites.indexOf(websiteId);
-            user._websites.splice(index, 1);
-            return user.save();
+function removeWebsite(websiteId, websiteId) {
+    return websiteModel
+        .findById(websiteId)
+        .then(function (website) {
+            var index = website._websites.indexOf(websiteId);
+            website._websites.splice(index, 1);
+            return website.save();
         });
 }
 
-function addWebsite(userId, websiteId) {
-    return userModel
-        .findById(userId)
-        .then(function (user) {
-            user._websites.push(websiteId);
-            return user.save();
+function addWebsite(websiteId, websiteId) {
+    return websiteModel
+        .findById(websiteId)
+        .then(function (website) {
+            website._websites.push(websiteId);
+            return website.save();
         })
 }
 
-function updateUser(userId, newUser) {
-    delete newUser.username;
-    return userModel.update({_id: userId}, {
+function updateWebsite(websiteId, newWebsite) {
+
+    return websiteModel.update({_id: websiteId}, {
         $set : {
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            email: newUser.email,
-            phone: newUser.phone
+            name: newWebsite.name,
+            description: newWebsite.description
         }
     });
 }
 
-function deleteUser(userId) {
-    return userModel.remove({_id: userId});
+function deleteWebsite(websiteId) {
+    return websiteModel.remove({_id: websiteId});
 }
 
-function findUserByCredentials(username, password) {
-    return userModel.findOne({username: username, password: password});
+function findWebsiteById(websiteId) {
+    return websiteModel.findById(websiteId);
 }
 
-function findUserById(userId) {
-    return userModel.findById(userId);
+function createWebsite(userId, website) {
+    website._user = userId;
+    return websiteModel.create(website);
 }
 
-function createUser(user) {
-    return userModel.create(user);
-}
-
-function findUserByUsername(username) {
-    // console.log(' username' + username);
-    return userModel.findOne({username: username});
+function findWebsitesByUser(userId) {
+    return websiteModel.find({_user: userId});
 }

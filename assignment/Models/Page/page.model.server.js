@@ -1,60 +1,62 @@
 
 var mongoose = require('mongoose');
-var websiteSchema = require('./website.schema.server');
-var websiteModel = mongoose.model('WebsiteModel', websiteSchema);
+var pageSchema = require('./page.schema.server');
+var pageModel = mongoose.model('PageModel', pageSchema);
 
-websiteModel.createWebsite = createWebsite;
-websiteModel.findWebsiteById = findWebsiteById;
-// websiteModel.findWebsiteByCredentials = findWebsiteByCredentials;
-websiteModel.deleteWebsite = deleteWebsite;
-websiteModel.updateWebsite = updateWebsite;
-websiteModel.findWebsitesByUser = findWebsitesByUser;
-// websiteModel.removeWebsite = removeWebsite;
-// websiteModel.findWebsiteByWebsitename = findWebsiteByWebsitename;
+pageModel.createPage = createPage;
+pageModel.findPageById = findPageById;
+// pageModel.findPageByCredentials = findPageByCredentials;
+pageModel.deletePage = deletePage;
+pageModel.updatePage = updatePage;
+pageModel.findPagesByWebsiteId = findPagesByWebsiteId;
+// pageModel.removePage = removePage;
+// pageModel.findPageByPagename = findPageByPagename;
 
-module.exports = websiteModel;
+module.exports = pageModel;
 
-function removeWebsite(websiteId, websiteId) {
-    return websiteModel
-        .findById(websiteId)
-        .then(function (website) {
-            var index = website._websites.indexOf(websiteId);
-            website._websites.splice(index, 1);
-            return website.save();
+function removePage(pageId, pageId) {
+    return pageModel
+        .findById(pageId)
+        .then(function (page) {
+            var index = page._pages.indexOf(pageId);
+            page._pages.splice(index, 1);
+            return page.save();
         });
 }
 
-function addWebsite(websiteId, websiteId) {
-    return websiteModel
-        .findById(websiteId)
-        .then(function (website) {
-            website._websites.push(websiteId);
-            return website.save();
+function addPage(pageId, pageId) {
+    return pageModel
+        .findById(pageId)
+        .then(function (page) {
+            page._pages.push(pageId);
+            return page.save();
         })
 }
 
-function updateWebsite(websiteId, newWebsite) {
-    // delete newWebsite.websitename;
-    return websiteModel.update({_id: websiteId}, {
+function updatePage(pageId, newPage) {
+    return pageModel.update({_id: pageId}, {
         $set : {
-            name: newWebsite.name,
-            description: newWebsite.description
+            name: newPage.name,
+            description: newPage.description,
+            title: newPage.title
         }
     });
 }
 
-function deleteWebsite(websiteId) {
-    return websiteModel.remove({_id: websiteId});
+function deletePage(pageId) {
+    return pageModel.remove({_id: pageId});
 }
 
-function findWebsiteById(websiteId) {
-    return websiteModel.findById(websiteId);
+function findPageById(pageId) {
+    return pageModel.findById(pageId);
 }
 
-function createWebsite(website) {
-    return websiteModel.create(website);
+function createPage(websiteId, page) {
+    page._website = websiteId;
+    return pageModel.create(page);
 }
 
-function findWebsitesByUser(userId) {
-    return websiteModel.find({_user: userId});
+function findPagesByWebsiteId(websiteId) {
+    return pageModel.find({_website: websiteId});
 }
+

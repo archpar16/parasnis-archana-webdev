@@ -20,8 +20,11 @@
         init();
 
         // event handlers
-        ctlr.updateWidget = updateWidget;
+        ctlr.updateImageYoutubeWidget = updateImageYoutubeWidget;
+        ctlr.updateTextInputWidget = updateTextInputWidget;
+        ctlr.updateHeadingWidget = updateHeadingWidget;
         ctlr.deleteWidget = deleteWidget;
+        ctlr.updateHtmlWidget = updateHtmlWidget;
 
 
 
@@ -55,34 +58,95 @@
                 });
 
         }
+
         // Implementation of event handlers
-
-        function updateWidget(name, text, size, width, url) {
-
+        function updateImageYoutubeWidget(name, text, width, url) {
+            var widgetId = $routeParams['wgid'];
             widgetService
                 .findWidgetById(widgetId)
                 .then(foundWidget);
 
             function foundWidget(widget) {
-                var oldWidget = widget;
-
                 var newWidget = {
                     _id: widgetId,
-                    widgetType: oldWidget.widgetType,
-                    pageId: oldWidget.pageId,
+                    widgetType: widget.widgetType,
+                    text: text,
+                    url: url,
+                    width: width,
                     name: name
                 };
 
-                if (oldWidget.widgetType === 'HEADING') {
-                    console.log("updating size to" + size);
-                    newWidget.text = text;
-                    newWidget.size = size;
-                }
+                widgetService
+                    .updateWidget(widgetId, newWidget)
+                    .then(function () {
+                        $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
+                    });
+            }
+        }
 
-                if (oldWidget.widgetType === 'IMAGE' || oldWidget.widgetType === 'YOUTUBE') {
-                    newWidget.url = url;
-                    newWidget.width = width;
-                }
+        function updateHtmlWidget(text) {
+            var widgetId = $routeParams['wgid'];
+            console.log('text =' + text);
+            widgetService
+                .findWidgetById(widgetId)
+                .then(foundWidget);
+
+            function foundWidget(widget) {
+                var newWidget = {
+                    _id: widgetId,
+                    widgetType: widget.widgetType,
+                    text: text
+                };
+
+                widgetService
+                    .updateWidget(widgetId, newWidget)
+                    .then(function () {
+                        $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
+                    });
+            }
+        }
+
+        function updateHeadingWidget(name, text, size) {
+            var widgetId = $routeParams['wgid'];
+            widgetService
+                .findWidgetById(widgetId)
+                .then(foundWidget);
+
+            function foundWidget(widget) {
+                var newWidget = {
+                    _id: widgetId,
+                    widgetType: widget.widgetType,
+                    text: text,
+                    size: size,
+                    name: name
+                };
+
+                console.log("updating size to" + size);
+
+                widgetService
+                    .updateWidget(widgetId, newWidget)
+                    .then(function () {
+                        $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' + ctlr.pageId + '/widget');
+                    });
+            }
+        }
+
+        function updateTextInputWidget(text, rows, placeholder, formatted) {
+            var widgetId = $routeParams['wgid'];
+            widgetService
+                .findWidgetById(widgetId)
+                .then(foundWidget);
+
+            function foundWidget(widget) {
+                var newWidget = {
+                    _id: widgetId,
+                    widgetType: widget.widgetType,
+                    text: text,
+                    rows: rows,
+                    placeholder: placeholder,
+                    formatted: formatted
+                };
+
                 widgetService
                     .updateWidget(widgetId, newWidget)
                     .then(function () {
@@ -90,7 +154,6 @@
                     });
 
             }
-
         }
 
         function deleteWidget() {
@@ -99,8 +162,6 @@
                 .then(function () {
                     $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
                 });
-
         }
-
     }
 })();

@@ -17,59 +17,30 @@
         // event handlers
         ctlr.createWidget = createWidget;
 
-       ctlr.size = null;
+        ctlr.size = null;
 
-        // ctlr.sizeAll = [
-        //     {'name': 'h1', 'value': '1'},
-        //     {'name': 'h2', 'value': '2'},
-        //     {'name': 'h3', 'value': '3'},
-        //     {'name': 'h4', 'value': '4'},
-        //     {'name': 'h5', 'value': '5'},
-        //     {'name': 'h6', 'value': '6'}
-        //     ];
-
-        // availableOptions: [
-        //     {id: '1', name: 'Option A'},
-        //     {id: '2', name: 'Option B'},
-        //     {id: '3', name: 'Option C'}
-        // ]
-            ctlr.sizeAll = [
-                {name: "1", value: "1" },
-                {name: "2", value: "2" },
-                {name: "3", value: "3" },
-                {name: "4", value: "4" },
-                {name: "5", value: "5" },
-                {name: "6", value: "6" }
-                ];
+        ctlr.sizeAll = [
+            {name: "1", value: "1" },
+            {name: "2", value: "2" },
+            {name: "3", value: "3" },
+            {name: "4", value: "4" },
+            {name: "5", value: "5" },
+            {name: "6", value: "6" }
+        ];
 
 
         // implement event handlers
         function createWidget(name, text, size, width, url, type) {
             var widget = {
-                _id: ctlr.widgetId,
-                widgetType: type,
-                pageId: ctlr.pageId,
-                name: name,
-                text: text
+                widgetType: type
             };
-
-            if (type === 'HEADING') {
-                console.log("creating size to " + size + " " + ctlr.size.value);
-                widget.text = text;
-                widget.size = size;
-            }
-
-            if (type === 'IMAGE' || type === 'YOUTUBE') {
-                widget.url = url;
-                widget.width = width;
-            }
-
 
             widgetService
                 .createWidget(ctlr.pageId, widget)
-                .then(function () {
+                .then(function (widget) {
+                    console.log('widget is - ' + widget._id);
                     $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId
-                        + '/page/' +  ctlr.pageId + '/widget');
+                        + '/page/' +  ctlr.pageId + '/widget/'+ widget._id);
                 });
 
         }

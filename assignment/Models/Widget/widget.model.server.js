@@ -1,62 +1,56 @@
 
 var mongoose = require('mongoose');
-var pageSchema = require('./page.schema.server');
-var pageModel = mongoose.model('PageModel', pageSchema);
+var widgetSchema = require('./widget.schema.server');
+var widgetModel = mongoose.model('WidgetModel', widgetSchema);
 
-pageModel.createPage = createPage;
-pageModel.findPageById = findPageById;
-// pageModel.findPageByCredentials = findPageByCredentials;
-pageModel.deletePage = deletePage;
-pageModel.updatePage = updatePage;
-pageModel.findPagesByWebsite = findPagesByWebsite;
-// pageModel.removePage = removePage;
-// pageModel.findPageByPagename = findPageByPagename;
+widgetModel.createWidget = createWidget;
+widgetModel.findWidgetById = findWidgetById;
+widgetModel.deleteWidget = deleteWidget;
+widgetModel.updateWidget = updateWidget;
+widgetModel.findWidgetsByPageId = findWidgetsByPageId;
+// widgetModel.removeWidget = removeWidget;
+// widgetModel.findWidgetByWidgetname = findWidgetByWidgetname;
 
-module.exports = pageModel;
+module.exports = widgetModel;
 
-function removePage(pageId, pageId) {
-    return pageModel
-        .findById(pageId)
-        .then(function (page) {
-            var index = page._pages.indexOf(pageId);
-            page._pages.splice(index, 1);
-            return page.save();
+function removeWidget(widgetId, widgetId) {
+    return widgetModel
+        .findById(widgetId)
+        .then(function (widget) {
+            var index = widget._widgets.indexOf(widgetId);
+            widget._widgets.splice(index, 1);
+            return widget.save();
         });
 }
 
-function addPage(pageId, pageId) {
-    return pageModel
-        .findById(pageId)
-        .then(function (page) {
-            page._pages.push(pageId);
-            return page.save();
+function addWidget(widgetId, widgetId) {
+    return widgetModel
+        .findById(widgetId)
+        .then(function (widget) {
+            widget._widgets.push(widgetId);
+            return widget.save();
         })
 }
 
-function updatePage(pageId, newPage) {
-    return pageModel.update({_id: pageId}, {
-        $set : {
-            name: newPage.name,
-            description: newPage.description,
-            title: newPage.title
-        }
+function updateWidget(widgetId, newWidget) {
+    return widgetModel.update({_id: widgetId}, {
+        $set : newWidget
     });
 }
 
-function deletePage(pageId) {
-    return pageModel.remove({_id: pageId});
+function deleteWidget(widgetId) {
+    return widgetModel.remove({_id: widgetId});
 }
 
-function findPageById(pageId) {
-    return pageModel.findById(pageId);
+function findWidgetById(widgetId) {
+    return widgetModel.findById(widgetId);
 }
 
-function createPage(websiteId, page) {
-    page._website = websiteId;
-    return pageModel.create(page);
+function createWidget(pageId, widget) {
+    widget._page = pageId;
+    return widgetModel.create(widget);
 }
 
-function findPagesByWebsite(websiteId) {
-    return pageModel.find({_website: websiteId});
+function findWidgetsByPageId(pageId) {
+    return widgetModel.find({_page: pageId});
 }
-

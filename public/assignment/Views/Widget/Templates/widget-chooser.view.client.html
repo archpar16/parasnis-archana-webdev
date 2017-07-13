@@ -18,10 +18,13 @@
 
     <ul class="list-group">
         <li class="list-group-item wd-li">
-            <a href="#!/user/{{vm_widget_new.userId}}/website/{{vm_widget_new.websiteId}}/page/{{vm_widget_new.pageId}}/widget/new/heading">
+            <!--<a href="#!/user/{{vm_widget_new.userId}}/website/{{vm_widget_new.websiteId}}/page/{{vm_widget_new.pageId}}/widget/new/heading">-->
+                <!--Heading-->
+            <!--</a>-->
+            <a ng-click="vm_widget_new.createWidget(vm_widget_new.name, vm_widget_new.text, vm_widget_new.size.value,
+            vm_widget_new.width, vm_widget_new.url, 'HEADING')">
                 Heading
             </a>
-
         </li>
         <li class="list-group-item wd-li">
             <a>
@@ -30,13 +33,15 @@
 
         </li>
         <li class="list-group-item wd-li">
-            <a>
+            <a ng-click="vm_widget_new.createWidget(vm_widget_new.name, vm_widget_new.text, vm_widget_new.size.value,
+            vm_widget_new.width, vm_widget_new.url, 'HTML')">
                 HTML
             </a>
 
         </li>
         <li class="list-group-item wd-li">
-            <a>
+            <a ng-click="vm_widget_new.createWidget(vm_widget_new.name, vm_widget_new.text, vm_widget_new.size.value,
+            vm_widget_new.width, vm_widget_new.url, 'TEXTINPUT')">
                 Text Input
             </a>
 
@@ -54,7 +59,11 @@
 
         </li>
         <li class="list-group-item wd-li">
-            <a href="#!/user/{{vm_widget_new.userId}}/website/{{vm_widget_new.websiteId}}/page/{{vm_widget_new.pageId}}/widget/new/image">
+            <!--<a href="#!/user/{{vm_widget_new.userId}}/website/{{vm_widget_new.websiteId}}/page/{{vm_widget_new.pageId}}/widget/new/image">-->
+                <!--Image-->
+            <!--</a>-->
+            <a ng-click="vm_widget_new.createWidget(vm_widget_new.name, vm_widget_new.text, vm_widget_new.size.value,
+            vm_widget_new.width, vm_widget_new.url, 'IMAGE')">
                 Image
             </a>
 
@@ -66,10 +75,13 @@
 
         </li>
         <li class="list-group-item wd-li">
-            <a href="#!/user/{{vm_widget_new.userId}}/website/{{vm_widget_new.websiteId}}/page/{{vm_widget_new.pageId}}/widget/new/youtube">
+            <!--<a href="#!/user/{{vm_widget_new.userId}}/website/{{vm_widget_new.websiteId}}/page/{{vm_widget_new.pageId}}/widget/new/youtube">-->
+                <!--You Tube-->
+            <!--</a>-->
+            <a ng-click="vm_widget_new.createWidget(vm_widget_new.name, vm_widget_new.text, vm_widget_new.size.value,
+            vm_widget_new.width, vm_widget_new.url, 'YOUTUBE')">
                 You Tube
             </a>
-
         </li>
         <li class="list-group-item wd-li">
             <a>

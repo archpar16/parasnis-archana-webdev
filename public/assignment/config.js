@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module('WebAppMaker', ['ngRoute'])
+        .module('WebAppMaker', ['ngRoute', 'textAngular'])
         .config(configuration);
 
     function configuration($routeProvider) {
@@ -68,21 +68,6 @@
                 templateUrl: 'Views/Widget/Templates/widget-edit.view.client.html',
                 controller: 'widgetEditController',
                 controllerAs: 'vm_widget_edit'
-            })
-            .when('/user/:uid/website/:wid/page/:pid/widget/new/heading', {
-                templateUrl: 'Views/Widget/Templates/widget-heading-new.view.client.html',
-                controller: 'widgetNewController',
-                controllerAs: 'vm_widget_new'
-            })
-            .when('/user/:uid/website/:wid/page/:pid/widget/new/image', {
-                templateUrl: 'Views/Widget/Templates/widget-image-new.view.client.html',
-                controller: 'widgetNewController',
-                controllerAs: 'vm_widget_new'
-            })
-            .when('/user/:uid/website/:wid/page/:pid/widget/new/youtube', {
-                templateUrl: 'Views/Widget/Templates/widget-youtube-new.view.client.html',
-                controller: 'widgetNewController',
-                controllerAs: 'vm_widget_new'
             })
             .when('/user/:uid/website/:wid/page/:pid/widget/:wgid/search', {
                 templateUrl: 'Views/Widget/Templates/widget-flickr-search.view.client.html',
