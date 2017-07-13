@@ -43,6 +43,7 @@
             widgetService
                 .findWidgetById(widgetId)
                 .then(function (widget) {
+                    console.log('widget = in edit ctlr ' + widget._id + widget.widgetType);
                     ctlr.widget = widget;
                     ctlr.name = ctlr.widget.name;
                     ctlr.text = ctlr.widget.text;

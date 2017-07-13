@@ -1,5 +1,6 @@
 var app = require('../../express');
 var pageModel = require('../Models/Page/page.model.server');
+var websiteModel = require('../Models/Website/website.model.server');
 
 app.post('/api/website/:websiteId/page', createPage);
 app.get('/api/website/:websiteId/page', findPagesByWebsite);
@@ -11,11 +12,11 @@ app.delete('/api/page/:pageId', deletePage);
 function createPage(req, res) {
     var websiteId = req.params.websiteId;
     var page = req.body;
-    console.log('create new page ' + page);
+    // console.log('create new page ' + page);
     pageModel
         .createPage(websiteId, page)
         .then(function (page) {
-            res.send(page);
+                    res.send(page);
         });
 }
 
@@ -36,6 +37,8 @@ function deletePage(req, res) {
     pageModel
         .deletePage(pageId)
         .then(function (page) {
+            websiteModel
+                .removePage()
             res.sendStatus(200);
         }, function (err) {
             res.sendStatus(404);

@@ -1,5 +1,6 @@
 var app = require('../../express');
 var websiteModel = require('../Models/Website/website.model.server');
+var userModel = require('../Models/User/user.model.server');
 
 app.post('/api/user/:userId/website', createWebsite);
 app.get('/api/user/:userId/website', findWebsitesByUser);
@@ -11,7 +12,7 @@ app.delete('/api/website/:websiteId', deleteWebsite);
 function createWebsite(req, res) {
     var userId = req.params.userId;
     var website = req.body;
-    console.log('create new website ' + website);
+
     websiteModel
         .createWebsite(userId, website)
         .then(function (website) {

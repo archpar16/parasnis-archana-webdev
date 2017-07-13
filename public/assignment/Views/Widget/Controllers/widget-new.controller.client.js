@@ -10,7 +10,7 @@
         ctlr.userId = $routeParams['uid'];
         ctlr.websiteId = $routeParams['wid'];
         ctlr.pageId = $routeParams['pid'];
-        var type = $routeParams['heading'];
+        // var type = $routeParams['heading'];
 
         console.log(ctlr.userId + "  " +ctlr.websiteId +"  "+ ctlr.pageId);
 
@@ -30,11 +30,11 @@
 
 
         // implement event handlers
-        function createWidget(name, text, size, width, url, type) {
+        function createWidget(type) {
             var widget = {
                 widgetType: type
             };
-
+            console.log('parent page ' + ctlr.pageId + widget.widgetType);
             widgetService
                 .createWidget(ctlr.pageId, widget)
                 .then(function (widget) {

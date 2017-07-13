@@ -18,8 +18,8 @@ function removeWebsite(userId, websiteId) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            var index = user._websites.indexOf(websiteId);
-            user._websites.splice(index, 1);
+            var index = user.websites.indexOf(websiteId);
+            user.websites.splice(index, 1);
             return user.save();
         });
 }
@@ -28,7 +28,7 @@ function addWebsite(userId, websiteId) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            user._websites.push(websiteId);
+            user.websites.push(websiteId);
             return user.save();
         })
 }
