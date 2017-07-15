@@ -9,7 +9,7 @@
         var websiteId = $routeParams['wid'];
         var pageId = $routeParams['pid'];
         console.log('in wd sortable controller now' + pageId);
-        // todo : sorting not happening properly
+
         function linkFunction(scope, element) {
             var userId = $routeParams['uid'];
             var websiteId = $routeParams['wid'];
