@@ -10,6 +10,7 @@ widgetModel.findWidgetById = findWidgetById;
 widgetModel.deleteWidget = deleteWidget;
 widgetModel.updateWidget = updateWidget;
 widgetModel.findWidgetsByPageId = findWidgetsByPageId;
+widgetModel.reorderWidgets = reorderWidgets;
 
 module.exports = widgetModel;
 
@@ -51,5 +52,25 @@ function createWidget(pageId, widget) {
 }
 
 function findWidgetsByPageId(pageId) {
-    return widgetModel.find({_page: pageId});
+    return pageModel
+        .findPageById(pageId)
+        .populate('widgets')
+        .exec();
+}
+
+function reorderWidgets(start, stop, pageId) {
+    return pageModel
+        .findPageById(pageId)
+        .then(function (page) {
+            var widgets = page.widgets;
+            var widget = widgets[start];
+            console.log('moving widget from ' + start + ' to ' + stop);
+            widgets.splice(start, 1);
+            widgets.splice(stop, 0, widget);
+            pageModel
+                .update({_id: pageId},{$set: {widgets: page.widgets}})
+                .then(function (page) {
+                    // console.log('now widgets is ' + page.widgets);
+                });
+        })
 }
