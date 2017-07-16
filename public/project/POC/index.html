@@ -1,19 +1,96 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="projectPOC">
 <head>
-    <link href="../../../css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="../../../vendor/angular/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <script src="../../assignment/lib/dist/angular/angular.min.js"></script>
+    <script src="../../assignment/lib/dist/angular-route/angular-route.min.js"></script>
+
     <script src="app.js"></script>
     <meta charset="UTF-8">
     <title>ReserveYourSeat POC</title>
 </head>
 <body>
-<div class="con"
-<label for="theater"> Find theaters </label>
-<input ng-model="username"
-       id="theater"
-       type="text"
-       class="form-control"
-       placeholder="zip-code"/>
+<div class="container-fluid" ng-controller="pocController as vm_poc">
+    <h1> Reserve Your Seat POC</h1>
+
+    <h2> Search theatres near you </h2>
+
+
+    <label for="theatre"> Zip-code </label>
+    <input ng-model="vm_poc.zipcode"
+           id="theatre"
+           type="text"
+           class="form-control"
+           placeholder="zip-code"/>
+
+    <button class="btn btn-primary btn-block"
+            ng-click="vm_poc.searchTheatres(vm_poc.zipcode)">
+        Search</button>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <h3> Search Results </h3>
+            <!--{{vm_poc.theatres}}-->
+
+            <ul class="list-group">
+                <li ng-click="vm_poc.searchTheatreDetails(theatre.theatreId)"
+                    ng-repeat="theatre in vm_poc.theatres"
+                    class="list-group-item">
+                    {{theatre.name}}
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-6">
+            <h3> Details </h3>
+            <h4> {{vm_poc.theatreDetails.name}}</h4>
+
+            <h5> {{vm_poc.theatreDetails.location.address.street}}</h5>
+            <h5> {{vm_poc.theatreDetails.location.address.city}}</h5>
+            <h5> {{vm_poc.theatreDetails.location.address.state}}</h5>
+            <h5> {{vm_poc.theatreDetails.location.telephone}}</h5>
+
+            <button class="btn btn-primary btn-block"
+                    ng-click="vm_poc.searchMovies(vm_poc.theatreDetails.theatreId)">
+                Find Movies in this theatre</button>
+
+            <h3> Movie Showtimes</h3>
+            <ul class="list-group">
+                <li ng-repeat="movie in vm_poc.movies"
+                    class="list-group-item">
+                    <h5> Title </h5>
+                    {{movie.title}}
+
+                    <h5> Short Description </h5>
+                    {{movie.shortDescription}}
+                    <h5> Cast </h5>
+                    <ul>
+                        <li ng-repeat="actor in movie.topCast">
+                            {{actor}}
+                        </li>
+                    </ul>
+
+
+                    <h5> Showtimes </h5>
+                    <!--{{movie.showTimes}}-->
+                    <ul>
+                        <li ng-repeat="showTime in movie.showtimes">
+                            {{showTime.dateTime}}
+                        </li>
+                    </ul>
+
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
