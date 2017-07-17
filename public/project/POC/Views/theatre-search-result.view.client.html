@@ -1,0 +1,11 @@
+<div>
+    <h3> Search Results </h3>
+
+    <ul class="list-group">
+        <li ng-click="vm_poc.searchTheatreDetails(theatre.theatreId)"
+            ng-repeat="theatre in vm_poc.theatres"
+            class="list-group-item">
+            {{theatre.name}}
+        </li>
+    </ul>
+</div>
