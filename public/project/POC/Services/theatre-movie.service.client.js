@@ -3,7 +3,7 @@
         .module('projectPOC')
         .factory('theatreMovieService', theatreMovieService);
 
-    function theatreMovieService($https, $filter) {
+    function theatreMovieService($http, $filter) {
 
         return {
             searchTheatres: searchTheatres,
