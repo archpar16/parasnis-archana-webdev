@@ -3,7 +3,7 @@
         .module('projectPOC')
         .factory('theatreMovieService', theatreMovieService);
 
-    function theatreMovieService($http, $filter) {
+    function theatreMovieService($https, $filter) {
 
         return {
             searchTheatres: searchTheatres,
@@ -16,7 +16,7 @@
             var apiKey = "api_key=ffs4rxcjp3wcfveqmfuf8f62";
             var url = baseURL+"theatres?zip="+zipcode+"&"+apiKey;
             console.log('theatres find url = '+ url);
-            return $http.get(url);
+            return $https.get(url);
         }
 
         function searchTheatreDetails(theatreId) {
@@ -24,7 +24,7 @@
             var apiKey = "api_key=ffs4rxcjp3wcfveqmfuf8f62";
             var url = baseURL+"theatres/"+theatreId+"?"+apiKey;
             console.log('theatre details url = '+ url);
-            return $http.get(url);
+            return $https.get(url);
         }
 
         function searchMovies(theatreId) {
@@ -34,7 +34,7 @@
             console.log('now =' + today);
             console.log('theatreId =' + theatreId);
             var url = baseURL + "theatres/"+theatreId+"/showings?startDate="+today+"&"+apiKey;
-            return $http.get(url);
+            return $https.get(url);
         }
     }
 })();
