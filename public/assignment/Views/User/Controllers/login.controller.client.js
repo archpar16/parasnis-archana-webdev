@@ -12,12 +12,13 @@
         // Implementation of event handlers
         function login(username, password) {
             userService
-                .findUserByCredentials(username, password)
+                // .findUserByCredentials(username, password)
+                .login(username, password)
                 .then(completeLogin, handleError);
 
             function completeLogin(found) {
                 if (found !== null) {
-                    $location.url('/user/' + found._id);
+                    $location.url('/profile');
                 }
             }
 

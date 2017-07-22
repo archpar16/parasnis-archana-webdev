@@ -1,6 +1,13 @@
 var app = require('../../express');
 var userModel = require('../Models/User/user.model.server');
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
+
 app.get('/api/user/:userId', findUserById);
 app.get('/api/user', findUserByCredentials);
 app.get('/api/username', findUserByUsername);
@@ -8,6 +15,27 @@ app.put('/api/user/:userId', updateUser);
 app.delete('/api/user/:userId', deleteUser);
 app.post('/api/user', createUser);
 
+
+app.post  ('/api/login', passport.authenticate('local'), login);
+app.get   ('/api/checkLoggedIn', checkLoggedIn);
+app.post  ('/api/logout', logout);
+// app.post  ('/api/assignment/register', register);
+
+
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials(username, password)
+        .then(
+            function(user) {
+                if (!user) { return done(null, false); }
+                return done(null, user);
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        );
+}
 function findUserById(req, res) {
     var userId = req.params['userId'];
     console.log('server got userid = ' + userId);
@@ -83,4 +111,36 @@ function findUserByUsername(req, res) {
         }, function (err) {
             res.sendStatus(500);
         });
+}
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    userModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
+}
+
+
+function login(req, res) {
+    var user = req.user;
+    res.json(user);
+}
+
+function logout(req, res) {
+    req.logOut();
+    res.send(200);
+}
+
+function checkLoggedIn(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
 }

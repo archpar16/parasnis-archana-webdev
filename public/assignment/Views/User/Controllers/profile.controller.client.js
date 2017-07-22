@@ -3,19 +3,20 @@
         .module('WebAppMaker')
         .controller('profileController', profileController);
 
-    function profileController($location, $routeParams, userService) {
+    function profileController(currentUser, $location, $routeParams, userService) {
         console.log('in profile controller now');
         var ctlr = this;
 
-        var userId = $routeParams['uid'];
-
-        userService
-            .findUserById(userId)
-            .then(renderUser);
-
-        function renderUser (user) {
-            ctlr.user = user;
-        }
+        ctlr.user = currentUser;
+        // var userId = $routeParams['uid'];
+        //
+        // userService
+        //     .findUserById(userId)
+        //     .then(renderUser);
+        //
+        // function renderUser (user) {
+        //     ctlr.user = user;
+        // }
 
         // event handlers
         ctlr.update = update;
