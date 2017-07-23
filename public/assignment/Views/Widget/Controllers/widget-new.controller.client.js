@@ -7,12 +7,8 @@
 
         var ctlr = this;
 
-        ctlr.userId = $routeParams['uid'];
         ctlr.websiteId = $routeParams['wid'];
         ctlr.pageId = $routeParams['pid'];
-        // var type = $routeParams['heading'];
-
-        console.log(ctlr.userId + "  " +ctlr.websiteId +"  "+ ctlr.pageId);
 
         // event handlers
         ctlr.createWidget = createWidget;
@@ -39,7 +35,7 @@
                 .createWidget(ctlr.pageId, widget)
                 .then(function (widget) {
                     console.log('widget is - ' + widget._id);
-                    $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId
+                    $location.url('/user/website/' + ctlr.websiteId
                         + '/page/' +  ctlr.pageId + '/widget/'+ widget._id);
                 });
 

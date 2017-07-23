@@ -25,7 +25,7 @@
                         .sortWidgets(pageId, start, stop)
                         .then(function () {
                             console.log("done with sorting");
-                            $location.url('/user/' + userId + '/website/' + websiteId + '/page/' +  pageId + '/widget');
+                            $location.url('/user/website/' + websiteId + '/page/' +  pageId + '/widget');
                         });
                 }
             });

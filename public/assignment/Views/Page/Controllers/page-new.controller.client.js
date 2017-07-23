@@ -6,11 +6,7 @@
     function pageNewController($routeParams, pageService, $location) {
         console.log('in page new controller now');
         var ctlr = this;
-        var userId = $routeParams['uid'];
-        var websiteId = $routeParams['wid'];
-
-        ctlr.userId = userId;
-        ctlr.websiteId  = websiteId;
+        ctlr.websiteId  = $routeParams['wid'];
 
         init();
 
@@ -24,16 +20,16 @@
             };
 
             pageService
-                .createPage(websiteId, page)
+                .createPage(ctlr.websiteId, page)
                 .then(function () {
-                    $location.url('/user/' + userId + '/website/' + websiteId + '/page');
+                    $location.url('/user/website/' + ctlr.websiteId + '/page');
                 });
 
         }
 
         function init() {
             pageService
-                .findPageByWebsiteId(websiteId)
+                .findPageByWebsiteId(ctlr.websiteId)
                 .then(function (pages) {
                     ctlr.pagesForWebsite = pages;
                 });

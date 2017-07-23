@@ -13,8 +13,8 @@
             deleteWebsite: deleteWebsite
         };
 
-        function createWebsite(website, userId) {
-            var url = '/api/user/' + userId + '/website';
+        function createWebsite(website) {
+            var url = '/api/createWebsite';
             return $http.post(url, website)
                 .then(function (response) {
                         return response.data;
@@ -41,15 +41,23 @@
                 );
              }
         
-        function findWebsitesByUser(userId) {
-            var url = '/api/user/' + userId + '/website';
+        // function findWebsitesByUser(userId) {
+        //     var url = '/api/user/' + userId + '/website';
+        //     return $http.get(url)
+        //         .then(function (response) {
+        //                 return response.data;
+        //             }
+        //         );
+        //     }
+
+        function findWebsitesByUser() {
+            var url = '/api/website';
             return $http.get(url)
                 .then(function (response) {
                         return response.data;
                     }
                 );
-            }
-
+        }
 
         function findWebsiteById(websiteId) {
             var url = '/api/website/' + websiteId;

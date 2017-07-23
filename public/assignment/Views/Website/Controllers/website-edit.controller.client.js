@@ -4,11 +4,11 @@
         .controller('websiteEditController', websiteEditController);
 
     function websiteEditController($routeParams, websiteService, $location) {
-        console.log('in website new controller now');
+        console.log('in website edit controller now');
         var ctlr = this;
-        var userId = $routeParams['uid'];
+        // var userId = $routeParams['uid'];
         var websiteId = $routeParams['wid'];
-        ctlr.userId = userId;
+        // ctlr.userId = userId;
 
         init();
         // event handlers
@@ -19,7 +19,7 @@
         function updateWebsite(name, desc) {
             var website = {
                 _id: websiteId,
-                developerId: userId,
+                // developerId: userId,
                 name: name,
                 description: desc
             };
@@ -27,7 +27,7 @@
             websiteService
                 .updateWebsite(websiteId, website)
                 .then(function () {
-                    $location.url('/user/' + ctlr.userId + '/website');
+                    $location.url('/user/website');
                 });
 
         }
@@ -37,14 +37,14 @@
             websiteService
                 .deleteWebsite(websiteId)
                 .then(function () {
-                    $location.url('/user/' + ctlr.userId + '/website');
+                    $location.url('/user/website');
                 });
 
         }
 
         function init() {
             websiteService
-                .findWebsitesByUser(userId)
+                .findWebsitesByUser()
                 .then(function (websites) {
                     ctlr.websitesForUser = websites;
                 });

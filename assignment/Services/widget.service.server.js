@@ -86,14 +86,13 @@ function uploadImage(req, res) {
     var width         = req.body.width;
     var myFile        = req.file;
 
-    var userId = req.body.userId;
+    var userId = req.user._id;
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
 
     console.log('myfile = '+ myFile);
     if(typeof myFile === 'undefined') {
-        //res.sendStatus(404);
-        var callback   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+'/page/'+pageId+'/widget';
+        var callback   = "/assignment/index.html#!/user/website/"+websiteId+'/page/'+pageId+'/widget';
 
         res.redirect(callback);
         return;
@@ -130,7 +129,6 @@ function uploadImage(req, res) {
         }, function (error) {
             // create a new widget if one already doesn't exist
 
-            // console.log('no widget found creating new');
             var newWidget = {
                 widgetType: "IMAGE",
                 width: width
@@ -144,12 +142,11 @@ function uploadImage(req, res) {
                 });
         });
 
-    var callbackUrl   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+'/page/'+pageId+'/widget';
+    var callbackUrl   = "/assignment/index.html#!/user/website/"+websiteId+'/page/'+pageId+'/widget';
 
     res.redirect(callbackUrl);
 }
 
-//todo: reorder implement
 function reorderWidget(req, res) {
     var start = req.query['initial'];
     var stop = req.query['final'];

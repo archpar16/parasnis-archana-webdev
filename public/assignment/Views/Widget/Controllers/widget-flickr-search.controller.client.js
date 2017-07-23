@@ -8,7 +8,6 @@
         var ctlr = this;
         console.log("in flick ctlr");
 
-        ctlr.userId = $routeParams['uid'];
         ctlr.websiteId = $routeParams['wid'];
         ctlr.pageId = $routeParams['pid'];
         ctlr.widgetId = $routeParams['wgid'];
@@ -30,7 +29,6 @@
         }
 
         function selectPhoto(photo) {
-            ctlr.userId = $routeParams['uid'];
             ctlr.websiteId = $routeParams['wid'];
             ctlr.pageId = $routeParams['pid'];
             ctlr.widgetId = $routeParams['wgid'];
@@ -50,7 +48,7 @@
             widgetService
                 .updateWidget(ctlr.widgetId, newWidget)
                 .then(function () {
-                    $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
+                    $location.url('/user/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
                 });
 
 

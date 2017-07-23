@@ -11,7 +11,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use(cookieParser());
-app.use(session({ secret: "this is my secret" }));
+app.use(session({ secret: "lets have one secret",
+    resave: true,
+    saveUninitialized: true
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());

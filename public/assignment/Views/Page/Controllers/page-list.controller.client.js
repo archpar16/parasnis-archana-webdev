@@ -6,9 +6,9 @@
     function pageListController($routeParams, pageService) {
         console.log('in page list controller now');
         var ctlr = this;
-        var userId = $routeParams['uid'];
+        // var userId = $routeParams['uid'];
         var websiteId = $routeParams['wid'];
-        ctlr.userId = userId;
+        // ctlr.userId = userId;
         ctlr.websiteId = websiteId;
 
         init();

@@ -6,10 +6,10 @@
     function pageEditController($routeParams, pageService, $location) {
         console.log('in page edit controller now');
         var ctlr = this;
-        var userId = $routeParams['uid'];
+        // var userId = $routeParams['uid'];
         var websiteId = $routeParams['wid'];
         var pageId = $routeParams['pid'];
-        ctlr.userId = userId;
+        // ctlr.userId = userId;
         ctlr.websiteId = websiteId;
         ctlr.pageId = pageId;
 
@@ -31,7 +31,7 @@
             pageService
                 .updatePage(pageId, page)
                 .then(function () {
-                    $location.url('/user/' + ctlr.userId + '/website/' + websiteId + '/page');
+                    $location.url('/user/website/' + websiteId + '/page');
                 });
 
         }
@@ -41,7 +41,7 @@
             pageService
                 .deletePage(pageId)
                 .then(function () {
-                    $location.url('/user/' + ctlr.userId + '/website/' + websiteId + '/page');
+                    $location.url('/user/website/' + websiteId + '/page');
                 });
 
         }

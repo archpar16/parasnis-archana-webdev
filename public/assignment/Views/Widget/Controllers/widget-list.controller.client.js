@@ -7,11 +7,9 @@
 
         var ctlr = this;
 
-        var userId = $routeParams['uid'];
         var websiteId = $routeParams['wid'];
         var pageId = $routeParams['pid'];
 
-        ctlr.userId = userId;
         ctlr.websiteId = websiteId;
         ctlr.pageId = pageId;
 

@@ -8,7 +8,7 @@
             .when('/', {
                 templateUrl: 'home.html'
             })
-            .when('/user/:uid/website/:wid/page', {
+            .when('/user/website/:wid/page', {
                 templateUrl: 'Views/Page/Templates/page-list.view.client.html',
                 controller: 'pageListController',
                 controllerAs: 'vm_page_list',
@@ -16,7 +16,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website/:wid/page/new', {
+            .when('/user/website/:wid/page/new', {
                 templateUrl: 'Views/Page/Templates/page-new.view.client.html',
                 controller: 'pageNewController',
                 controllerAs: 'vm_page_new',
@@ -24,7 +24,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website/:wid/page/:pid', {
+            .when('/user/website/:wid/page/:pid', {
                 templateUrl: 'Views/Page/Templates/page-edit.view.client.html',
                 controller: 'pageEditController',
                 controllerAs: 'vm_page_edit',
@@ -51,7 +51,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website', {
+            .when('/user/website', {
                 templateUrl: 'Views/Website/Templates/website-list.view.client.html',
                 controller: 'websiteListController',
                 controllerAs: 'vm_web_list',
@@ -59,7 +59,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website/new', {
+            .when('/user/website/new', {
                 templateUrl: 'Views/Website/Templates/website-new.view.client.html',
                 controller: 'websiteNewController',
                 controllerAs: 'vm_web_new',
@@ -67,7 +67,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website/:wid', {
+            .when('/user/website/:wid', {
                 templateUrl: 'Views/Website/Templates/website-edit.view.client.html',
                 controller: 'websiteEditController',
                 controllerAs: 'vm_web_edit',
@@ -75,7 +75,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website/:wid/page/:pid/widget', {
+            .when('/user/website/:wid/page/:pid/widget', {
                 templateUrl: 'Views/Widget/Templates/widget-list.view.client.html',
                 controller: 'widgetListController',
                 controllerAs: 'vm_widget_list',
@@ -83,7 +83,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website/:wid/page/:pid/widget/new', {
+            .when('/user/website/:wid/page/:pid/widget/new', {
                 templateUrl: 'Views/Widget/Templates/widget-chooser.view.client.html',
                 controller: 'widgetNewController',
                 controllerAs: 'vm_widget_new',
@@ -91,7 +91,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website/:wid/page/:pid/widget/:wgid', {
+            .when('/user/website/:wid/page/:pid/widget/:wgid', {
                 templateUrl: 'Views/Widget/Templates/widget-edit.view.client.html',
                 controller: 'widgetEditController',
                 controllerAs: 'vm_widget_edit',
@@ -99,7 +99,7 @@
                     currentUser: checkLoggedIn
                 }
             })
-            .when('/user/:uid/website/:wid/page/:pid/widget/:wgid/search', {
+            .when('/user/website/:wid/page/:pid/widget/:wgid/search', {
                 templateUrl: 'Views/Widget/Templates/widget-flickr-search.view.client.html',
                 controller: 'flickrImageSearchController',
                 controllerAs: 'vm_flickr_search',

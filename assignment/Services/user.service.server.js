@@ -2,16 +2,74 @@ var app = require('../../express');
 var userModel = require('../Models/User/user.model.server');
 
 var passport = require('passport');
+// For local Strategy
 var LocalStrategy = require('passport-local').Strategy;
-
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
+// For google strategy
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+var googleConfig = {
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+};
+
+app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/assignment/index.html#!/profile',
+        failureRedirect: '/assignment/index.html#!/login'
+    }));
+
+passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+function googleStrategy(token, refreshToken, profile, done) {
+    // userModel
+    //     .findUserByGoogleId(profile.id)
+    //     .then(
+    //         function(user) {
+    //             if(user) {
+    //                 return done(null, user);
+    //             } else {
+    //                 var email = profile.emails[0].value;
+    //                 var emailParts = email.split("@");
+    //                 var newGoogleUser = {
+    //                     username:  emailParts[0],
+    //                     firstName: profile.name.givenName,
+    //                     lastName:  profile.name.familyName,
+    //                     email:     email,
+    //                     google: {
+    //                         id:    profile.id,
+    //                         token: token
+    //                     }
+    //                 };
+    //                 return userModel.createUser(newGoogleUser);
+    //             }
+    //         },
+    //         function(err) {
+    //             if (err) { return done(err); }
+    //         }
+    //     )
+    //     .then(
+    //         function(user){
+    //             return done(null, user);
+    //         },
+    //         function(err){
+    //             if (err) { return done(err); }
+    //         }
+    //     );
+    console.log(' from google' + profile);
+}
 app.get('/api/user/:userId', findUserById);
 app.get('/api/user', findUserByCredentials);
 app.get('/api/username', findUserByUsername);
-app.put('/api/user/:userId', updateUser);
+app.put('/api/updateUser', updateUser);
+
 app.delete('/api/user/:userId', deleteUser);
 app.post('/api/user', createUser);
 
@@ -19,7 +77,7 @@ app.post('/api/user', createUser);
 app.post  ('/api/login', passport.authenticate('local'), login);
 app.get   ('/api/checkLoggedIn', checkLoggedIn);
 app.post  ('/api/logout', logout);
-// app.post  ('/api/assignment/register', register);
+app.post  ('/api/register', register);
 
 
 
@@ -69,6 +127,7 @@ function findUserByCredentials(req, res) {
 
 function createUser(req, res) {
     var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
     userModel
         .createUser(user)
         .then(function (user) {
@@ -89,8 +148,9 @@ function deleteUser(req, res) {
 
 function updateUser(req, res) {
     var user = req.body;
-    var userId = req.params['userId'];
-    console.log(user);
+    // var userId = req.params['userId'];
+    var userId = req.user._id;
+    console.log(user + ' ' + userId);
     userModel
         .updateUser(userId, user)
         .then(function (user) {
@@ -143,4 +203,16 @@ function logout(req, res) {
 
 function checkLoggedIn(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
+}
+
+function register(req, res) {
+    var user = req.body;
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            req.login(user, function (status) {
+                res.send(user);
+            });
+
+        });
 }

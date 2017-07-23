@@ -7,12 +7,10 @@
 
         var ctlr = this;
 
-        var userId = $routeParams['uid'];
         var websiteId = $routeParams['wid'];
         var pageId = $routeParams['pid'];
         var widgetId = $routeParams['wgid'];
 
-        ctlr.userId = userId;
         ctlr.websiteId = websiteId;
         ctlr.pageId = pageId;
         ctlr.widgetId = widgetId;
@@ -25,10 +23,6 @@
         ctlr.updateHeadingWidget = updateHeadingWidget;
         ctlr.deleteWidget = deleteWidget;
         ctlr.updateHtmlWidget = updateHtmlWidget;
-
-
-
-        console.log('user ' + userId + 'page' + pageId + ' ' + websiteId + '  '+ widgetId);
 
         function init() {
             ctlr.sizeAll = [
@@ -80,7 +74,7 @@
                 widgetService
                     .updateWidget(widgetId, newWidget)
                     .then(function () {
-                        $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
+                        $location.url('/user/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
                     });
             }
         }
@@ -102,7 +96,7 @@
                 widgetService
                     .updateWidget(widgetId, newWidget)
                     .then(function () {
-                        $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
+                        $location.url('/user/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
                     });
             }
         }
@@ -127,7 +121,7 @@
                 widgetService
                     .updateWidget(widgetId, newWidget)
                     .then(function () {
-                        $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' + ctlr.pageId + '/widget');
+                        $location.url('/user/website/' + ctlr.websiteId + '/page/' + ctlr.pageId + '/widget');
                     });
             }
         }
@@ -151,7 +145,7 @@
                 widgetService
                     .updateWidget(widgetId, newWidget)
                     .then(function () {
-                        $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
+                        $location.url('/user/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
                     });
 
             }
@@ -161,7 +155,7 @@
             widgetService
                 .deleteWidget(widgetId)
                 .then(function () {
-                    $location.url('/user/' + ctlr.userId + '/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
+                    $location.url('/user/website/' + ctlr.websiteId + '/page/' +  ctlr.pageId + '/widget');
                 });
         }
     }

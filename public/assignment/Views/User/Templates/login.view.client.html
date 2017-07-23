@@ -9,13 +9,20 @@
     <label for="username"> Username </label>
     <input ng-model="username"
            id="username"
+           required
            type="text"
            class="form-control"
            placeholder="Your username"/>
-
+    <!--<span style="color:red" ng-show="username.username.$dirty && username.username.$invalid">-->
+  <!--<span ng-show="username.username.$error.required">Username is required.</span>-->
+  <!--</span>-->
+    <span ng-show="username.username.$error.required">The name is required.</span>
+    <!--span ng-show="myForm.name.$error.required && buttonClicked">required</span>-->
+    <!--<button ng-click="buttonClicked = true">Submit</button>-->
     <label for="password"> Passowrd </label>
     <input ng-model="passwd"
            id="password"
+           required
            type="password"
            class="form-control"
            placeholder="Your password"/>
@@ -23,6 +30,10 @@
     <a ng-click="vm_log.login(username, passwd)"
        class="btn btn-primary btn-block wd-btn-style">
         Login
+    </a>
+    <a href="/auth/google" class="btn btn-danger btn-block">
+        <span class="fa fa-google-plus"></span>
+        Google
     </a>
     <a class="btn btn-success btn-block wd-btn-style"
        href="#!/register">

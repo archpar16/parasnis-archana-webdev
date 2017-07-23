@@ -3,10 +3,10 @@
         .module('WebAppMaker')
         .controller('websiteNewController', websiteNewController);
     
-    function websiteNewController($routeParams, websiteService, $location) {
+    function websiteNewController(websiteService, $location) {
         var ctlr = this;
-        var userId = $routeParams['uid'];
-        ctlr.userId = userId;
+        // var userId = $routeParams['uid'];
+        // ctlr.userId = userId;
         init();
 
         // event handlers
@@ -14,7 +14,7 @@
 
         function init() {
             websiteService
-                .findWebsitesByUser(userId)
+                .findWebsitesByUser()
                 .then(function (res) {
                     ctlr.websitesForUser = res;
                 });
@@ -28,9 +28,9 @@
             };
 
             websiteService
-                .createWebsite(website, userId)
+                .createWebsite(website)
                 .then(function () {
-                    $location.url('/user/' + ctlr.userId + '/website')
+                    $location.url('/user/website');
                 });
         }
     }

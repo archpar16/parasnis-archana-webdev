@@ -20,6 +20,7 @@
 
         // event handlers
         ctlr.update = update;
+        ctlr.logout = logout;
 
         // Implementation of event handlers
 
@@ -29,10 +30,24 @@
                 return;
             }
 
+            // userService
+            //     .updateUser(user._id, user)
+            //     .then(function () {
+            //         ctlr.message = " User updated successfully";
+            //     });
+
             userService
-                .updateUser(user._id, user)
+                .updateUser(user)
                 .then(function () {
                     ctlr.message = " User updated successfully";
+                });
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/login');
                 });
         }
     }
