@@ -11,8 +11,11 @@
 
         // Implementation of event handlers
         function login(username, password) {
+            if (typeof username === 'undefined' || typeof password === 'undefined') {
+                ctlr.message = "username & password are required fields, please try again";
+                return;
+            }
             userService
-                // .findUserByCredentials(username, password)
                 .login(username, password)
                 .then(completeLogin, handleError);
 

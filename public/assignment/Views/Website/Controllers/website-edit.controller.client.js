@@ -6,9 +6,8 @@
     function websiteEditController($routeParams, websiteService, $location) {
         console.log('in website edit controller now');
         var ctlr = this;
-        // var userId = $routeParams['uid'];
         var websiteId = $routeParams['wid'];
-        // ctlr.userId = userId;
+
 
         init();
         // event handlers
@@ -17,9 +16,13 @@
 
         // Implementation of event handlers
         function updateWebsite(name, desc) {
+            if (typeof name === 'undefined' || name === '') {
+                ctlr.error = "Name is a required field";
+                return;
+            }
+
             var website = {
                 _id: websiteId,
-                // developerId: userId,
                 name: name,
                 description: desc
             };

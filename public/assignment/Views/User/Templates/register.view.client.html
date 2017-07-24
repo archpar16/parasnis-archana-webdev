@@ -5,31 +5,53 @@
     <div ng-show="vm_register.error" class="alert alert-danger">
         {{vm_register.error}}
     </div>
-    <label for = "username"> Username </label>
-    <input ng-model = "user"
-           id = "username" 
-           type = "text"
-           class = "form-control"
-           placeholder = "Choose username"/>
 
-    <label for = "password"> Passowrd </label>
-    <input ng-model = "pwd1"
-           id = "password" 
-           type = "password"
-           class = "form-control"
-           placeholder = "Choose password"/>
 
-    <label for = "verifypassword"> Verify Passowrd </label>
-    <input ng-model = "pwd2"
-           id = "verifypassword" 
-           type = "password"
-           class = "form-control"
-           placeholder = "Verify password"/>
+    <form name="register"
+          novalidate
+          ng-submit="vm_register.register(user, pwd1, pwd2)">
 
-    <a ng-click = "vm_register.register(user, pwd1, pwd2)"
-       class = "btn btn-primary btn-block wd-btn-style">
-        Register
-    </a>
+        <label for = "username"> Username </label>
+        <input ng-model = "user"
+               id = "username"
+               type = "text"
+               class = "form-control"
+               name="username"
+               required
+               placeholder = "Choose username"/>
+
+        <div ng-show="register.username.$invalid && register.$submitted"
+             class="error"> * Username is required </div>
+
+        <label for = "password"> Passowrd </label>
+        <input ng-model = "pwd1"
+               id = "password"
+               type = "password"
+               class = "form-control"
+               name="password"
+               required
+               placeholder = "Choose password"/>
+
+        <div ng-show="register.password.$invalid && register.$submitted"
+             class="error"> * Password is required </div>
+
+        <label for = "verifypassword"> Verify Passowrd </label>
+        <input ng-model = "pwd2"
+               id = "verifypassword"
+               type = "password"
+               class = "form-control"
+               required
+               name="verifyPass"
+               placeholder = "Verify password"/>
+
+        <div ng-show="register.verifyPass.$invalid && register.$submitted"
+             class="error"> * Verify Password is required</div>
+
+        <input type="submit"
+               class="btn btn-primary btn-block wd-btn-style"
+               value="Register">
+    </form>
+
 
     <a class = "btn btn-danger  btn-block wd-btn-style"
        href = "#!/login">

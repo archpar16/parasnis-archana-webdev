@@ -47,6 +47,11 @@
             </ul>
         </div>
         <div class="col col-sm-8 col-xs-12">
+
+            <div ng-show="vm_web_edit.error" class="alert alert-danger">
+                {{vm_web_edit.error}}
+            </div>
+
             <label for="websitename"> Website Name </label>
             <input id="websitename"
                    ng-model="vm_web_edit.currentWebsite.name"

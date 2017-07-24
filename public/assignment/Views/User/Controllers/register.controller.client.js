@@ -12,8 +12,10 @@
 
         // Implementation of event handlers
         function register(username, password, password_verify) {
-            if (typeof password === 'undefined' || password !== password_verify) {
-                ctlr.error = "Password cannot be empty and they must match";
+            if (typeof username === 'undefined' ||
+                typeof password === 'undefined' ||
+                password !== password_verify) {
+                ctlr.error = "Username & Password cannot be empty and passwords must match";
                 return;
             }
             //  check for username existing then only create new user

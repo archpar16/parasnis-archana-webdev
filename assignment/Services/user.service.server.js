@@ -65,6 +65,7 @@ function googleStrategy(token, refreshToken, profile, done) {
     //     );
     console.log(' from google' + profile);
 }
+
 app.get('/api/user/:userId', findUserById);
 app.get('/api/user', findUserByCredentials);
 app.get('/api/username', findUserByUsername);
@@ -198,7 +199,7 @@ function login(req, res) {
 
 function logout(req, res) {
     req.logOut();
-    res.send(200);
+    res.sendStatus(200);
 }
 
 function checkLoggedIn(req, res) {

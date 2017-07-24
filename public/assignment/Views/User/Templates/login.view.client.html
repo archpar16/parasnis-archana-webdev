@@ -6,32 +6,38 @@
         {{vm_log.message}}
     </div>
 
-    <label for="username"> Username </label>
-    <input ng-model="username"
-           id="username"
-           required
-           type="text"
-           class="form-control"
-           placeholder="Your username"/>
-    <!--<span style="color:red" ng-show="username.username.$dirty && username.username.$invalid">-->
-  <!--<span ng-show="username.username.$error.required">Username is required.</span>-->
-  <!--</span>-->
-    <span ng-show="username.username.$error.required">The name is required.</span>
-    <!--span ng-show="myForm.name.$error.required && buttonClicked">required</span>-->
-    <!--<button ng-click="buttonClicked = true">Submit</button>-->
-    <label for="password"> Passowrd </label>
-    <input ng-model="passwd"
-           id="password"
-           required
-           type="password"
-           class="form-control"
-           placeholder="Your password"/>
+    <form name="login"
+          novalidate
+          ng-submit="vm_log.login(vm_log.user.username,vm_log.user.password)">
 
-    <a ng-click="vm_log.login(username, passwd)"
-       class="btn btn-primary btn-block wd-btn-style">
-        Login
-    </a>
-    <a href="/auth/google" class="btn btn-danger btn-block">
+        <label for = "username"> Username </label>
+        <input type="text"
+               id="username"
+               ng-model="vm_log.user.username"
+               class="form-control"
+               placeholder="Username"
+               name="username"
+               required/>
+        <div ng-show="login.username.$invalid && login.$submitted"
+             class="error"> * Username is required</div>
+
+        <label for = "password"> Passowrd </label>
+        <input type="password"
+               id="password"
+               ng-model="vm_log.user.password"
+               class="form-control"
+               placeholder="Password"
+               name="password"
+               required/>
+        <div ng-show="login.password.$invalid && login.$submitted"
+             class="error"> * Password is required</div>
+
+        <input type="submit"
+               class="btn btn-primary btn-block wd-btn-style"
+               value="Login">
+    </form>
+
+    <a href="/auth/google" class="btn btn-danger btn-block wd-btn-style">
         <span class="fa fa-google-plus"></span>
         Google
     </a>

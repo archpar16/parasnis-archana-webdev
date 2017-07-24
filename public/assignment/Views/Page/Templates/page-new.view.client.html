@@ -48,6 +48,11 @@
 
         </div>
         <div class="col col-sm-8 col-xs-12">
+
+            <div ng-show="vm_page_new.error" class="alert alert-danger">
+                {{vm_page_new.error}}
+            </div>
+
             <label for="page-name"> Name </label>
             <input id="page-name"
                    ng-model="vm_page_new.name"

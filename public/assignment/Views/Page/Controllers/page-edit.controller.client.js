@@ -6,10 +6,10 @@
     function pageEditController($routeParams, pageService, $location) {
         console.log('in page edit controller now');
         var ctlr = this;
-        // var userId = $routeParams['uid'];
+
         var websiteId = $routeParams['wid'];
         var pageId = $routeParams['pid'];
-        // ctlr.userId = userId;
+
         ctlr.websiteId = websiteId;
         ctlr.pageId = pageId;
 
@@ -21,6 +21,11 @@
 
         // Implementation of event handlers
         function updatePage(name, desc) {
+            if (typeof name === 'undefined' || name === '') {
+                ctlr.error = "Name is a required field";
+                return;
+            }
+
             var page = {
                 _id: pageId,
                 websiteId: websiteId,

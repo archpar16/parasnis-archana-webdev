@@ -14,6 +14,11 @@
         ctlr.createPage = createPage;
         // Implementation of event handlers
         function createPage(name, desc) {
+            if (typeof name === 'undefined') {
+                ctlr.error = "Name is a required field";
+                return;
+            }
+
             var page = {
                 name: name,
                 description: desc

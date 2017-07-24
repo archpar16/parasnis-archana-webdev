@@ -8,15 +8,6 @@
         var ctlr = this;
 
         ctlr.user = currentUser;
-        // var userId = $routeParams['uid'];
-        //
-        // userService
-        //     .findUserById(userId)
-        //     .then(renderUser);
-        //
-        // function renderUser (user) {
-        //     ctlr.user = user;
-        // }
 
         // event handlers
         ctlr.update = update;
@@ -29,12 +20,6 @@
                 ctlr.message = "Passowrds must match";
                 return;
             }
-
-            // userService
-            //     .updateUser(user._id, user)
-            //     .then(function () {
-            //         ctlr.message = " User updated successfully";
-            //     });
 
             userService
                 .updateUser(user)

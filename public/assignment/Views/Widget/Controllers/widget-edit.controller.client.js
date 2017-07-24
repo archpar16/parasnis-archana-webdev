@@ -49,7 +49,7 @@
                         ctlr.url = ctlr.widget.url;
                         ctlr.width = ctlr.widget.width;
                     }
-                    ctlr.UrlEdit = 'Views/Widget/Editors/widget-' + ctlr.widget.widgetType.toLowerCase()+ '-edit.view.client.html';
+                    ctlr.UrlEdit = 'Templates/Widget/Editors/widget-' + ctlr.widget.widgetType.toLowerCase()+ '-edit.view.client.html';
                 });
 
         }

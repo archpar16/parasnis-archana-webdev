@@ -5,8 +5,6 @@
     
     function websiteNewController(websiteService, $location) {
         var ctlr = this;
-        // var userId = $routeParams['uid'];
-        // ctlr.userId = userId;
         init();
 
         // event handlers
@@ -22,6 +20,10 @@
 
         // Implmenting event handlers
         function createWebsite(name, desc) {
+            if (typeof name === 'undefined') {
+                ctlr.error = "Name is a required field";
+                return;
+            }
             var website = {
                 name: name,
                 description: desc
