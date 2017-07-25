@@ -30,7 +30,7 @@
 
         // implement event handlers
         function getWidgetUrlForType(type) {
-                return 'Templates/Widget/Templates/widget-'+type.toLowerCase()+'.view.client.html';
+                return 'Views/Widget/Templates/widget-'+type.toLowerCase()+'.view.client.html';
         }
 
         function getYouTubeEmbedUrl(youTubeLink) {

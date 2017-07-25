@@ -21,6 +21,10 @@
 
 <div class="container-fluid">
 
+    <div ng-show="vm_widget_edit.error" class="alert alert-danger">
+        {{vm_widget_edit.error}}
+    </div>
+
     <label for="widget-vd-name"> Name </label>
     <input id="widget-vd-name"
            ng-model="vm_widget_edit.name"

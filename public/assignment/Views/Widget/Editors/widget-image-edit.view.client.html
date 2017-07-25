@@ -20,6 +20,10 @@
 
 <div class="container-fluid">
 
+    <div ng-show="vm_widget_edit.error" class="alert alert-danger">
+        {{vm_widget_edit.error}}
+    </div>
+
     <label for="widget-image-name"> Name </label>
     <input id="widget-image-name"
            ng-model="vm_widget_edit.name"
@@ -50,7 +54,6 @@
     <form action="/api/upload"   method="post" enctype="multipart/form-data">
         <input  name="myFile"    type="file" class="form-control"/>
         <input  name="width"     value="{{vm_widget_edit.width}}" style="display: none"/>
-        <!--<input  name="userId"    value="{{vm_widget_edit.userId}}"   style="display: none"/>-->
         <input  name="websiteId" value="{{vm_widget_edit.websiteId}}"   style="display: none"/>
         <input  name="pageId"    value="{{vm_widget_edit.pageId}}"   style="display: none"/>
         <input  name="widgetId"  value="{{vm_widget_edit.widget._id}}"   style="display: none"/>

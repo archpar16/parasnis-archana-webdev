@@ -49,13 +49,18 @@
                         ctlr.url = ctlr.widget.url;
                         ctlr.width = ctlr.widget.width;
                     }
-                    ctlr.UrlEdit = 'Templates/Widget/Editors/widget-' + ctlr.widget.widgetType.toLowerCase()+ '-edit.view.client.html';
+                    ctlr.UrlEdit = 'Views/Widget/Editors/widget-' + ctlr.widget.widgetType.toLowerCase()+ '-edit.view.client.html';
                 });
 
         }
 
         // Implementation of event handlers
         function updateImageYoutubeWidget(name, text, width, url) {
+            if (typeof name === 'undefined' || name === '') {
+                ctlr.error = "Name is a required field";
+                return;
+            }
+
             var widgetId = $routeParams['wgid'];
             widgetService
                 .findWidgetById(widgetId)
@@ -102,6 +107,11 @@
         }
 
         function updateHeadingWidget(name, text, size) {
+            if (typeof name === 'undefined' || name === '') {
+                ctlr.error = "Name is a required field";
+                return;
+            }
+
             var widgetId = $routeParams['wgid'];
             widgetService
                 .findWidgetById(widgetId)
