@@ -14,8 +14,14 @@ userModel.updateUser = updateUser;
 userModel.addWebsite = addWebsite;
 userModel.removeWebsite = removeWebsite;
 userModel.findUserByUsername = findUserByUsername;
+userModel.findUserByFacebookId = findUserByFacebookId;
 
 module.exports = userModel;
+
+
+function findUserByFacebookId(facebookId) {
+    return userModel.findOne({'facebook.id': facebookId});
+}
 
 function removeWebsite(userId, websiteId) {
     return userModel
@@ -68,8 +74,10 @@ function findUserById(userId) {
 }
 
 function createUser(user) {
-    user.password = bcrypt.hashSync(user.password);
-    console.log(user.password);
+    if (typeof user.password !== 'undefined') {
+        user.password = bcrypt.hashSync(user.password);
+        console.log(user.password);
+    }
     return userModel.create(user);
 }
 
