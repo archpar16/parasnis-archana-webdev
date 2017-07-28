@@ -13,6 +13,10 @@ var userSchema = mongoose.Schema({
         id:    String,
         token: String
     },
+    google: {
+        id:    String,
+        token: String
+    },
     dateCreated: {type: Date, default: Date.now}
 }, {collection: "User"});
 // export the schema

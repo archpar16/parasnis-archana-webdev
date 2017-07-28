@@ -1,0 +1,91 @@
+
+
+<nav class = "navbar navbar-default navbar-fixed-top">
+    <div class = "container-fluid">
+        <div class = "navbar-header">
+            <a class = "wd-home-navbar-brand">
+                Profile
+            </a>
+            <p class = "navbar-text pull-right">
+                <a ng-click="vm_profile.update(vm_profile.user)"
+                   class = "navbar-link">
+                    <span class = "wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+<div class = "container-fluid">
+    <div ng-show="vm_profile.message" class="alert alert-danger">
+        {{vm_profile.message}}
+    </div>
+    <form>
+        <label for = "username">Username</label>
+        <input readonly
+               ng-model = "vm_profile.user.username"
+               value = "Jim"
+               type = "text"
+               class = "form-control"
+               id = "username">
+
+        <label for = "email">Email address</label>
+        <input type = "email"
+               ng-model = "vm_profile.user.email"
+               class = "form-control"
+               id = "email"
+               placeholder = "user@yourdomain.com">
+
+        <label for = "first-name">First Name</label>
+        <input type = "text"
+               ng-model = "vm_profile.user.firstName"
+               class = "form-control"
+               id = "first-name"
+               placeholder = "Your First name">
+
+        <label for = "last-name">Last Name</label>
+        <input type = "text"
+               ng-model = "vm_profile.user.lastName"
+               class = "form-control"
+               id = "last-name"
+               placeholder = "Your Last name">
+
+        <label for = "password"> Change Passowrd </label>
+        <input id = "password"
+               ng-model = "vm_profile.user.pwd1"
+               type = "password"
+               class = "form-control"
+               placeholder = "Choose new password"/>
+
+        <label for = "verifypassword"> Verify Passowrd </label>
+        <input id = "verifypassword"
+               ng-model = "vm_profile.user.pwd2"
+               type = "password"
+               class = "form-control"
+               placeholder = "Verify password"/>
+    </form>
+
+    <a class = "btn btn-primary btn-block wd-btn-style"
+       href = "#!/user/website">
+        Websites
+    </a>
+
+    <a ng-click="vm_profile.logout()"
+       class = "btn btn-danger  btn-block wd-btn-style">
+        Logout
+    </a>
+</div>
+
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+        <div class = "row navbar-text">
+            <div>
+                <a href="#!/profile">
+                    <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>

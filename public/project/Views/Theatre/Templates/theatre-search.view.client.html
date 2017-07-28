@@ -1,0 +1,28 @@
+<div class="input-group wd-search-box">
+    <input ng-model="vm_theatre.zipcode"
+           type="text"
+           class="form-control"
+           placeholder="Enter zipcode to search theatres">
+    <span class="input-group-btn">
+
+        <a ng-click="vm_theatre.searchTheatresForZipcode(vm_theatre.zipcode)"
+           class="btn btn-default"
+           type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+</div>
+
+
+<div>
+    <h3> Search Results </h3>
+    <h5> Click on theatre name to see details </h5>
+
+    <ul class="list-group">
+        <li ng-click="vm_theatre.searchTheatreDetails(theatre.theatreId)"
+            ng-repeat="theatre in vm_theatre.theatres"
+            class="list-group-item">
+            {{theatre.name}}
+        </li>
+    </ul>
+</div>

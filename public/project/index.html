@@ -1,45 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ReserveYourSeat">
 <head>
+    <script src="lib/dist/angular/angular.min.js"></script>
+    <script src="lib/dist/angular-route/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="config.js"></script>
+
+    <script src="Views/Home/Controllers/home.controller.client.js"></script>
+
+    <!--User Controllers load-->
+    <script src="Views/User/Controllers/login.controller.client.js"></script>
+    <script src="Views/User/Controllers/profile.controller.client.js"></script>
+    <script src="Views/User/Controllers/register.controller.client.js"></script>
+
+    <!--Movie controllers load-->
+    <script src="Views/Movie/Controllers/movie.controller.client.js"></script>
+
+    <!--Theatre controllers load-->
+    <script src="Views/Theatre/Controllers/theatre.controller.client.js"></script>
+
+
+    <!--services -->
+    <script src="Services/user.services.client.js"></script>
+    <script src="Services/theatre-movie.service.client.js"></script>
+
+    <!--<link rel='stylesheet' href='./css/textAngular.css'>-->
+    <!--<script src='./js/textAngular-rangy.min.js'></script>-->
+    <!--<script src='./js/textAngular-sanitize.min.js'></script>-->
+    <!--<script src='./js/textAngular.min.js'></script>-->
+
     <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assignment Home Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
 </head>
-<body>
-    <h1>Reserve Your Seat</h1>
 
-<div>
+<body class="wd-body-style">
+    <div ng-view>
 
-      <h2>  Archana Parasnis: parasnis.a@husky.neu.edu </h2>
+    </div>
 
-        <!--Project Name: ReserveYourSeat-->
-    <p>
-        <b>         Problem Statement: </b> Provide a user-friendly website to allow users to book their seats for upcoming movie shows at theatres.
-    </p>
-    <p>
-        <b>Description: </b>The user (we will call him Buyer) should be able to anonymously find theatres near him, search for movies played at those theatres, see their details like date/time, cast etc. He should be able to book tickets for his preferred show. The admin user will be adding the theatre information, show details.
-    </p>
-    <p>
-        <b>Domain objects: </b>theatre, Movies, Show Details
-    </p>
-    <p>
-        A theatre plays many movies.
-    </p>
-    <p>
-        <b>Human users: Admin, Anonymous user, Buyers, Agents </b>
-    </p>
-    <p>
-        <b>Admin: </b>CRUD theatres, movies, show, users
-    </p>
-    <p>
-        <b>Anonymous user: </b>View/search theatre, movie and show details
-    </p>
-    <p>
-        <b>Buyer: </b>Same as anonymous user, apart from that he should be able to book his ticket for a show. Create reviews about the theatre/ movies. The user will need to login to create reviews/ follow other users. view the tickets he booked, cancel them
-    </p>
-    <p>
-        <b>Agent: </b>Same as anonymous user, apart from that he should be able to see deals on the tickets and book ticket for a show, view the tickets he booked, cancel them.
-    </p>
-
-</div>
 </body>
+
+
 </html>
+

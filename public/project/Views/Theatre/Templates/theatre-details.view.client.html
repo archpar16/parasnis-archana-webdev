@@ -1,0 +1,15 @@
+<div>
+    <h3> Details </h3>
+    <h4> {{vm_poc.theatreDetails.name}} </h4>
+
+    <h5> {{vm_poc.theatreDetails.location.address.street}} </h5>
+    <h5> {{vm_poc.theatreDetails.location.address.city}} </h5>
+    <h5> {{vm_poc.theatreDetails.location.address.state}} </h5>
+    <h5> {{vm_poc.theatreDetails.location.telephone}} </h5>
+
+    <button class="btn btn-primary btn-block"
+            ng-click="vm_poc.searchMovies(vm_poc.theatreDetails.theatreId)">
+        Find Movies in this theatre
+     </button>
+
+</div>

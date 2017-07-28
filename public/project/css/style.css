@@ -1,0 +1,203 @@
+input.form-control,
+textarea.form-control,
+select.form-control {
+    margin-bottom: 5px;
+}
+
+.navbar-default {
+    background-color: darkkhaki;
+}
+.navbar-default .navbar-header .navbar-brand {
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    color: darkblue;
+    margin-left: 15px;
+}
+
+.navbar-default .navbar-header .wd-home-navbar-brand {
+    left: 0px;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    position: absolute;
+    top: 0px;
+    color: darkblue;
+}
+
+
+.navbar-default .navbar-header .wd-navbar-brand {
+    left: 12px;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    position: absolute;
+    top: 0px;
+    color: darkblue;
+}
+
+
+ul {
+    margin-top: 10px;
+}
+.navbar-default .navbar-text {
+    color: darkblue;
+}
+
+.navbar-text {
+    margin-right: 15px;
+}
+.wd-back {
+    position: absolute;
+    top: 17px;
+    left: 15px;
+    padding-left: 15px;
+    margin-right: 15px;
+    padding-right: 20px;
+    color: darkblue;
+}
+
+
+.wd-li {
+    border: none;
+    color: #2b669a;
+}
+.wd-navbar-header .navbar-brand {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    left: 0px;
+}
+.wd-navbar-right {
+    position: absolute;
+    top: 17px;
+    right: 30px;
+    color: darkblue;
+}
+.wd-scroll-split {
+    position: absolute;
+    top: 50px;
+    bottom: 0px;
+    overflow: auto;
+    padding-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+    .col-sm-8 {
+        margin-left: 33%;
+    }
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.wd-btn-style {
+    margin-top: 15px;
+}
+
+.wd-widget {
+    position: relative;
+    padding-bottom: 15px;
+}
+.wd-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.wd-video-container iframe {
+    position: absolute;
+    padding-top: 0px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.wd-widget .wd-toolbar {
+    position: absolute;
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    opacity: 0.8;
+    z-index: 2;
+    top: 0px;
+    right: 0px;
+}
+
+.wd-body-style {
+    overflow-x: hidden;
+}
+
+.wd-text-align {
+    text-align: justify;
+}
+
+.wd-x {
+    color: darkblue;
+}
+
+.wd-header {
+    color: maroon;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: darkblue;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
+.wd-flickr-thumbnails {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.wd-search-box {
+    padding: 30px;
+    text-align: center;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.btn-block+.btn-block {
+    margin-top: 15px;
+}
+
+.wd-widget-margin {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    margin-bottom: 15px;
+}
+
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
