@@ -1,60 +1,69 @@
 
 <div class = "container-fluid">
-    <h1>Register</h1>
+    <div class="row">
+        <div class="col col-xs-6">
+            <h2>Reserve Your Seat</h2>
+            <h3>Sign-up</h3>
 
-    <div ng-show="vm_register.error" class="alert alert-danger">
-        {{vm_register.error}}
+            <div ng-show="vm_register.error" class="alert alert-danger">
+                {{vm_register.error}}
+            </div>
+
+
+            <form name="register"
+                  novalidate
+                  ng-submit="vm_register.register(user, pwd1, pwd2)">
+
+                <label for = "username"> Username </label>
+                <input ng-model = "user"
+                       id = "username"
+                       type = "text"
+                       class = "form-control"
+                       name="username"
+                       required
+                       placeholder = "Choose username"/>
+
+                <div ng-show="register.username.$invalid && register.$submitted"
+                     class="error"> * Username is required </div>
+
+                <label for = "password"> Passowrd </label>
+                <input ng-model = "pwd1"
+                       id = "password"
+                       type = "password"
+                       class = "form-control"
+                       name="password"
+                       required
+                       placeholder = "Choose password"/>
+
+                <div ng-show="register.password.$invalid && register.$submitted"
+                     class="error"> * Password is required </div>
+
+                <label for = "verifypassword"> Verify Passowrd </label>
+                <input ng-model = "pwd2"
+                       id = "verifypassword"
+                       type = "password"
+                       class = "form-control"
+                       required
+                       name="verifyPass"
+                       placeholder = "Verify password"/>
+
+                <div ng-show="register.verifyPass.$invalid && register.$submitted"
+                     class="error"> * Verify Password is required</div>
+
+                <input type="submit"
+                       class="btn btn-success btn-block wd-btn-style"
+                       value="Sign-up">
+            </form>
+
+
+            <a class = "btn btn-danger  btn-block wd-btn-style"
+               href = "#!/login">
+                Cancel
+            </a>
+        </div>
+
+        <div class="col col-sm-6 hidden-xs wd-signup-info">
+            <h4> Welcome to Reserve your seat.. sign-up to enjoy end-less movie coupons </h4
+        </div>
     </div>
-
-
-    <form name="register"
-          novalidate
-          ng-submit="vm_register.register(user, pwd1, pwd2)">
-
-        <label for = "username"> Username </label>
-        <input ng-model = "user"
-               id = "username"
-               type = "text"
-               class = "form-control"
-               name="username"
-               required
-               placeholder = "Choose username"/>
-
-        <div ng-show="register.username.$invalid && register.$submitted"
-             class="error"> * Username is required </div>
-
-        <label for = "password"> Passowrd </label>
-        <input ng-model = "pwd1"
-               id = "password"
-               type = "password"
-               class = "form-control"
-               name="password"
-               required
-               placeholder = "Choose password"/>
-
-        <div ng-show="register.password.$invalid && register.$submitted"
-             class="error"> * Password is required </div>
-
-        <label for = "verifypassword"> Verify Passowrd </label>
-        <input ng-model = "pwd2"
-               id = "verifypassword"
-               type = "password"
-               class = "form-control"
-               required
-               name="verifyPass"
-               placeholder = "Verify password"/>
-
-        <div ng-show="register.verifyPass.$invalid && register.$submitted"
-             class="error"> * Verify Password is required</div>
-
-        <input type="submit"
-               class="btn btn-primary btn-block wd-btn-style"
-               value="Register">
-    </form>
-
-
-    <a class = "btn btn-danger  btn-block wd-btn-style"
-       href = "#!/login">
-        Cancel
-    </a>
 </div>

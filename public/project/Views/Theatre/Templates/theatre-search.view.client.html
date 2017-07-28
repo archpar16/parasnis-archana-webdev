@@ -14,15 +14,31 @@
 </div>
 
 
-<div>
+<div ng-if="vm_theatre.theatres">
     <h3> Search Results </h3>
     <h5> Click on theatre name to see details </h5>
 
     <ul class="list-group">
-        <li ng-click="vm_theatre.searchTheatreDetails(theatre.theatreId)"
+        <li ng-click="vm_theatre.searchTheatreDetailsForTheatreId(theatre.theatreId)"
             ng-repeat="theatre in vm_theatre.theatres"
             class="list-group-item">
             {{theatre.name}}
         </li>
     </ul>
+</div>
+
+<div ng-if="vm_theatre.theatreDetails">
+    <h3> Details </h3>
+    <h4> {{vm_theatre.theatreDetails.name}} </h4>
+
+    <h5> {{vm_theatre.theatreDetails.location.address.street}} </h5>
+    <h5> {{vm_theatre.theatreDetails.location.address.city}} </h5>
+    <h5> {{vm_theatre.theatreDetails.location.address.state}} </h5>
+    <h5> {{vm_theatre.theatreDetails.location.telephone}} </h5>
+
+    <button class="btn btn-primary btn-block"
+            ng-click="vm_theatre.searchMovies(vm_theatre.theatreDetails.theatreId)">
+        Find Movies in this theatre
+    </button>
+
 </div>

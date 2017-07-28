@@ -39,14 +39,14 @@
                 controllerAs: 'vm_theatre'
             })
             .when('/theatre/:theatreId', {
-                templateUrl: 'Views/theatre-details.view.client.html',
+                templateUrl: 'Views/Theatre/Templates/theatre-details.view.client.html',
                 controller: 'theatreController',
-                controllerAs: 'vm_poc'
+                controllerAs: 'vm_theatre'
             })
             .when('/theatre/:theatreId/movies', {
-                templateUrl: 'Views/movie-showtimes.view.client.html',
+                templateUrl: 'Views/Movie/Templates/movie-showtimes.view.client.html',
                 controller: 'movieController',
-                controllerAs: 'vm_poc'
+                controllerAs: 'vm_movie'
             })
 
     }

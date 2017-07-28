@@ -8,22 +8,25 @@
         console.log('in theatre controller');
 
         ctlr.searchTheatres = searchTheatres;
-        ctlr.searchTheatreDetails = searchTheatreDetails;
+        // ctlr.searchTheatreDetails = searchTheatreDetails;
         ctlr.searchMovies = searchMovies;
 
-        init();
+        ctlr.searchTheatresForZipcode = searchTheatresForZipcode;
+        ctlr.searchTheatreDetailsForTheatreId = searchTheatreDetailsForTheatreId;
 
-        function init() {
-            var zipcode = $routeParams['zipcode'];
-            var theatreId = $routeParams['theatreId'];
-            if (typeof zipcode !== 'undefined') {
-                searchTheatresForZipcode(zipcode);
-            }
-            if (typeof theatreId !== 'undefined') {
-                searchTheatreDetailsForTheatreId(theatreId);
-            }
-
-        }
+        // init();
+        //
+        // function init() {
+        //     var zipcode = $routeParams['zipcode'];
+        //     var theatreId = $routeParams['theatreId'];
+        //     if (typeof zipcode !== 'undefined') {
+        //         searchTheatresForZipcode(zipcode);
+        //     }
+        //     if (typeof theatreId !== 'undefined') {
+        //         searchTheatreDetailsForTheatreId(theatreId);
+        //     }
+        //
+        // }
 
         function searchTheatresForZipcode(zipcode) {
             console.log('searching for ' + zipcode);
@@ -33,14 +36,15 @@
                     ctlr.theatres = response.data;
                 });
         }
+
         function searchTheatres(zipcode) {
             $location.url('/theatres/'+zipcode);
         }
 
-
-        function searchTheatreDetails(theatreId) {
-            $location.url('/theatre/'+theatreId);
-        }
+        //
+        // function searchTheatreDetails(theatreId) {
+        //     $location.url('/theatre/'+theatreId);
+        // }
 
         function searchTheatreDetailsForTheatreId(theatreId) {
             theatreMovieService

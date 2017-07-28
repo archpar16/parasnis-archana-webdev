@@ -9,7 +9,7 @@
             createUser: createUser,
             // findUserByCredentials: findUserByCredentials,
             // findUserById: findUserById,
-            // findUserByUsername: findUserByUsername,
+            findUserByUsername: findUserByUsername,
             updateUser: updateUser,
             deleteUser: deleteUser,
             checkLoggedIn: checkLoggedIn,
@@ -52,14 +52,14 @@
                 );
         }
 
-        // function findUserByUsername(username) {
-        //     var url = '/api/username?username=' + username;
-        //     return $http.get(url)
-        //         .then(function (response) {
-        //                 return response.data;
-        //             }
-        //         );
-        // }
+        function findUserByUsername(username) {
+            var url = '/api/username?username=' + username;
+            return $http.get(url)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+        }
 
         function updateUser(user) {
             var url = '/api/updateUser';
@@ -78,15 +78,6 @@
                 );
         }
 
-        // function findUserByCredentials(username, password) {
-        //     var url = '/api/user?username=' + username + '&password=' + password;
-        //     return $http.get(url)
-        //         .then(function (response) {
-        //                 return response.data;
-        //             }
-        //         );
-        // }
-
         function login(username, password) {
             var url = '/api/login';
             var user = {
@@ -99,13 +90,6 @@
                     }
                 );
         }
-        // function findUserById(userId) {
-        //     var url = '/api/user/' + userId;
-        //     return $http.get(url)
-        //         .then(function (response) {
-        //             return response.data;
-        //         }
-        //     );
-        // }
+
     }
 })();
