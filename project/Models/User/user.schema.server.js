@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var userSchema = mongoose.Schema({
+var projectUserSchema = mongoose.Schema({
     username: {type: String, require: true},
     password: {type: String, require: true},
 
@@ -8,7 +8,8 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
-    websites: [{type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}],
+    follows: [{type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"}],
+    following: [{type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"}],
     facebook: {
         id:    String,
         token: String
@@ -17,8 +18,11 @@ var userSchema = mongoose.Schema({
         id:    String,
         token: String
     },
+    bookmarks: [{type: String}],
+    favorite_theatre: [{type: String}],
     dateCreated: {type: Date, default: Date.now}
-}, {collection: "User"});
+}, {collection: "ProjectUser"});
+
 // export the schema
-module.exports = userSchema;
+module.exports = projectUserSchema;
 
