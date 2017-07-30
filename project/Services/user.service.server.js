@@ -1,4 +1,4 @@
-var app = require('../../express');
+var projectapp = require('../../express');
 var projectUserModel = require('../Models/User/user.model.server');
 
 var projectPassport = require('passport');
@@ -10,7 +10,7 @@ projectPassport.deserializeUser(deserializeUser);
 
 // For facebook strategy
 var FacebookStrategy = require('passport-facebook').Strategy;
-app.get ('/auth/project/facebook', projectPassport.authenticate('facebook', { scope : 'email' }));
+projectapp.get ('/auth/project/facebook', projectPassport.authenticate('projectFacebook', { scope : 'email' }));
 
 var facebookConfig = {
     clientID     : process.env.FACEBOOK_CLIENT_ID,
@@ -56,29 +56,29 @@ function facebookStrategy(token, refreshToken, profile, done) {
             }
         );
 }
-app.get('/auth/facebook/callback',
-    projectPassport.authenticate('facebook', {
+projectapp.get('/auth/project/facebook/callback',
+    projectPassport.authenticate('projectFacebook', {
         successRedirect: '/project/index.html#!/profile',
         failureRedirect: '/project/index.html#!/login'
     }));
 
 
 // For google strategy
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-app.get('/auth/google', projectPassport.authenticate('google', { scope : ['profile', 'email'] }));
+var projectGoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+projectapp.get('/auth/project/google', projectPassport.authenticate('google', { scope : ['profile', 'email'] }));
 
 var googleConfig = {
     clientID     : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    callbackURL  : process.env.GOOGLE_PROJECT_CALLBACK_URL
 };
 
-projectPassport.use(new GoogleStrategy(googleConfig, googleStrategy));
+projectPassport.use(new projectGoogleStrategy(googleConfig, googleStrategy));
 
-app.get('/oauth/google/callback-myapp',
+projectapp.get('/oauth/google/project/callback-myapp',
     projectPassport.authenticate('google', {
-        successRedirect: '/assignment/index.html#!/profile',
-        failureRedirect: '/assignment/index.html#!/login'
+        successRedirect: '/project/index.html#!/profile',
+        failureRedirect: '/project/index.html#!/login'
     }));
 
 function googleStrategy(token, refreshToken, profile, done) {
@@ -120,16 +120,16 @@ function googleStrategy(token, refreshToken, profile, done) {
 }
 
 
-app.get    ('/api/project/username', findUserByUsername);
-app.put    ('/api/project/updateUser', updateUser);
-app.delete ('/api/project/user/:userId', deleteUser);
-app.post   ('/api/project/user', createUser);
+projectapp.get    ('/api/project/username', findUserByUsername);
+projectapp.put    ('/api/project/updateUser', updateUser);
+projectapp.delete ('/api/project/user/:userId', deleteUser);
+projectapp.post   ('/api/project/user', createUser);
 
 
-app.post  ('/api/project/login', projectPassport.authenticate('local'), login);
-app.get   ('/api/project/checkLoggedIn', checkLoggedIn);
-app.post  ('/api/project/logout', logout);
-app.post  ('/api/project/register', register);
+projectapp.post  ('/api/project/login', projectPassport.authenticate('local'), login);
+projectapp.get   ('/api/project/checkLoggedIn', checkLoggedIn);
+projectapp.post  ('/api/project/logout', logout);
+projectapp.post  ('/api/project/register', register);
 
 
 function localStrategy(username, password, done) {
@@ -138,11 +138,15 @@ function localStrategy(username, password, done) {
         .findUserByCredentials(username, password)
         .then(
             function(user) {
-                if (!user) { return done(null, false); }
+                if (!user) {
+                    return done(null, false);
+                }
                 return done(null, user);
             },
             function(err) {
-                if (err) { return done(err); }
+                if (err) {
+                    return done(err);
+                }
             }
         );
 }
@@ -170,7 +174,6 @@ function deleteUser(req, res) {
 
 function updateUser(req, res) {
     var user = req.body;
-    // var userId = req.params['userId'];
     var userId = req.user._id;
     console.log(user + ' ' + userId);
     projectUserModel
@@ -200,13 +203,16 @@ function serializeUser(user, done) {
 }
 
 function deserializeUser(user, done) {
+    console.log(' printing the user in deseralize' + ruser);
     projectUserModel
         .findUserById(user._id)
         .then(
             function(user){
+                console.log(' i found the user ');
                 done(null, user);
             },
             function(err){
+                console.log(' couldnt find the user');
                 done(err, null);
             }
         );
@@ -215,6 +221,7 @@ function deserializeUser(user, done) {
 
 function login(req, res) {
     var user = req.user;
+    console.log(' adding user to cookie ' + user);
     res.json(user);
 }
 
@@ -224,6 +231,7 @@ function logout(req, res) {
 }
 
 function checkLoggedIn(req, res) {
+console.log(' printing the user ' + req.user);
     res.send(req.isAuthenticated() ? req.user : '0');
 }
 

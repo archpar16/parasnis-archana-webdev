@@ -81,12 +81,10 @@ function findUserById(userId) {
 function createUser(user) {
     if (typeof user.password !== 'undefined') {
         user.password = bcrypt.hashSync(user.password);
-        console.log(user.password);
     }
     return userModel.create(user);
 }
 
 function findUserByUsername(username) {
-    // console.log(' username' + username);
     return userModel.findOne({username: username});
 }

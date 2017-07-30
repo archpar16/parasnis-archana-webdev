@@ -3,7 +3,7 @@
         .module('ReserveYourSeat')
         .controller('profileController', profileController);
 
-    function profileController(currentUser, $location, $routeParams, userService) {
+    function profileController(currentUser, $location, userService) {
         console.log('in profile controller now');
         var ctlr = this;
 

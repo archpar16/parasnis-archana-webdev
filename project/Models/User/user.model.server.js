@@ -15,7 +15,7 @@ projectUserModel.addWebsite = addWebsite;
 projectUserModel.removeWebsite = removeWebsite;
 projectUserModel.findUserByUsername = findUserByUsername;
 projectUserModel.findUserByFacebookId = findUserByFacebookId;
-projectUserModel.findUserByGoogleId = findUserByGoogleId;
+// projectUserModel.findUserByGoogleId = findUserByGoogleId;
 
 module.exports = projectUserModel;
 
@@ -24,9 +24,9 @@ function findUserByFacebookId(facebookId) {
     return projectUserModel.findOne({'facebook.id': facebookId});
 }
 
-function findUserByGoogleId(googleId) {
-    return projectUserModel.findOne({'google.id': googleId});
-}
+// function findUserByGoogleId(googleId) {
+//     return projectUserModel.findOne({'google.id': googleId});
+// }
 
 function removeWebsite(userId, websiteId) {
     return projectUserModel

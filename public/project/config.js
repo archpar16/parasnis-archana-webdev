@@ -28,7 +28,8 @@
             .when('/profile', {
                 templateUrl: 'Views/User/Templates/profile.view.client.html',
                 controller: 'profileController',
-                controllerAs: 'vm_profile',
+                controllerAs: 'vm_profile'
+                ,
                 resolve: {
                     currentUser: checkLoggedIn
                 }
