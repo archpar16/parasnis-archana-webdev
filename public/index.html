@@ -2,29 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
-</head>
-<body>
-    <h1>Web Dev Course Home Page</h1>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 
-    <p>
-        Customize this home page to your linking.
+
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title>Archana Parasnis Webdev Home Page</title>
+</head>
+
+<body class="wd-body">
+<!--role="navigation-demo"-->
+<nav class="navbar navbar-ct-transparent"  id="demo-navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="http://www.northeastern.edu/">
+                <div class="logo-container">
+                    <div class="logo">
+                        <img src="http://www.northeastern.edu/images/nu-seal.jpg" alt="Creative Tim Logo">
+                    </div>
+                    <div class="brand">
+                        <a href="http://www.northeastern.edu/">Northeastern University</a>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!--Collect the nav links, forms, and other content for toggling-->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://www.linkedin.com/in/archpar"
+                       class="linked-in">
+                        LinkedIn
+                    </a>
+                </li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-->
+</nav>
+
+<div class="container-fluid demo-header wd-header-image img-responsive">
+
+    <!--<img src="./Images/IMG_0128.JPG" width="100%">-->
+    <div class="wd-motto">
+        <h1> Archana Parasnis </h1>
+        <h3> Graduate Student at Northeastern University </h3>
+    </div>
+
+</div>
+
+<div>
+    <p style="text-align: justify">Welcome to my Homepage. I am a graduate student at Northeastern University.
+        I am also working full-time at Dell EMC in Hopkinton, MA. I am taking web development course in summer
+        2017.
     </p>
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/POC/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/index.html">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href="https://github.com/archpar16/parasnis-archana-webdev">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+</div>
+
+
+<div class="row ">
+    <div class="col-md-4">
+        <a href="https://parasnis-archana-webdev.herokuapp.com/project/index.html#!/"
+           target="_blank">
+            <img src="./Images/Webdev-project-sh.png"
+                 alt="Rounded Image"
+                 class="img-rounded img-responsive">
+            <h5>Project - Reserve Your Seat</h5>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="https://parasnis-archana-webdev.herokuapp.com/assignment/index.html#!/"
+           target="_blank">
+            <img src="./Images/Webdev-assignment-sh.png"
+                 alt="Rounded Image"
+                 class="img-rounded img-responsive">
+            <h5>Assignment - Web App Maker</h5>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="https://github.com/archpar16/parasnis-archana-webdev" target="_blank">
+            <img src="./Images/github.png"
+                 alt="Rounded Image"
+                 class="img-rounded img-responsive">
+            <h5>Github Repository Link</h5>
+        </a>
+    </div>
+</div>
+
+<footer class="footer-demo section-dark">
+    <div class="container">
+        <nav class="pull-left">
+            <ul>
+            </ul>
+        </nav>
+        <div class="copyright pull-right">
+            &copy; 2017 by Archana Parasnis
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>

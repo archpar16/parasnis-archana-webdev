@@ -203,7 +203,7 @@ function serializeUser(user, done) {
 }
 
 function deserializeUser(user, done) {
-    console.log(' printing the user in deseralize' + ruser);
+    console.log(' printing the user in deseralize' + user);
     projectUserModel
         .findUserById(user._id)
         .then(

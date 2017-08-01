@@ -1,0 +1,60 @@
+
+.demo-header {
+    background-size: cover;
+    background-color: #FF8F5E;
+    background-position: center top;
+    margin-top: -100px;
+    min-height: 600px;
+}
+
+.wd-header-image {
+    background-image: url(../Images/IMG_0128.JPG);
+    width: 100%;
+}
+
+.wd-motto {
+    color: cyan;
+    padding-top: 15%;
+    text-align: center;
+    z-index: 3;
+}
+
+.wd-body {
+    overflow-x: hidden;
+}
+
+.logo-container .logo {
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid #333333;
+    width: 50px;
+    float: left;
+}
+
+.logo-container .logo img{
+    width: 100%;
+}
+
+.logo-container {
+    margin-top: 5px;
+}
+
+.logo-container .brand {
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 20px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+a {
+    color: indianred;
+    text-decoration: none;
+}
+
+.linked-in {
+    font-size: 18px;
+}
