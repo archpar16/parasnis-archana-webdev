@@ -8,8 +8,12 @@ var projectUserSchema = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
-    follows: [{type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"}],
-    following: [{type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"}],
+    follows: [{
+        type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"
+    }],
+    following: [{
+        type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"
+    }],
     facebook: {
         id:    String,
         token: String
@@ -18,8 +22,15 @@ var projectUserSchema = mongoose.Schema({
         id:    String,
         token: String
     },
-    bookmarks: [{type: String}],
-    favorite_theatre: [{type: String}],
+    bookmarks: [{
+        title: String,
+        zip: String,
+        id:    String
+    }],
+    favorite_theatre: [{
+        name: String,
+        id:   String
+    }],
     dateCreated: {type: Date, default: Date.now}
 }, {collection: "ProjectUser"});
 

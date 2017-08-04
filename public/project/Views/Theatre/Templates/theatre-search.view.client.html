@@ -1,44 +1,86 @@
-<div class="input-group wd-search-box">
-    <input ng-model="vm_theatre.zipcode"
-           type="text"
-           class="form-control"
-           placeholder="Enter zipcode to search theatres">
-    <span class="input-group-btn">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#wd-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="wd-home-navbar-brand" href="#">Reserve Your Seat
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="wd-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-if="!vm_theatre.currentUser._id"
+                class="wd-x">
+                <a href="#!/login">Login</a>
+                </li>
+                <li ng-if="!vm_theatre.currentUser._id">
+                <a href="#!/register">Register</a>
+                </li>
+                <li ng-if="vm_theatre.currentUser._id">
+                <a href="#!/profile">Profile</a>
+                </li>
+                <li ng-if="vm_theatre.currentUser._id">
+                <a ng-click="vm_theatre.logout()">Logout</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid header-theatre wd-theatre-image img-responsive">
+
+    <div>
+<h3> Search theatres in your area </h3>
+        <div class="input-group wd-search-box">
+            <input ng-model="vm_theatre.zipcode"
+                   type="text"
+                   class="form-control wd-input-bg"
+                   placeholder="Enter zipcode to search theatres">
+            <span class="input-group-btn">
 
         <a ng-click="vm_theatre.searchTheatresForZipcode(vm_theatre.zipcode)"
-           class="btn btn-default"
+           class="btn btn-default wd-input-bg"
            type="button">
             <span class="glyphicon glyphicon-search"></span>
         </a>
     </span>
-</div>
+        </div>
 
 
-<div ng-if="vm_theatre.theatres">
-    <h3> Search Results </h3>
-    <h5> Click on theatre name to see details </h5>
+        <div ng-if="vm_theatre.theatres">
+            <h3> Results </h3>
+            <h6> Click on theatre name to see details </h6>
 
-    <ul class="list-group">
-        <li ng-click="vm_theatre.searchTheatreDetailsForTheatreId(theatre.theatreId)"
-            ng-repeat="theatre in vm_theatre.theatres"
-            class="list-group-item">
-            {{theatre.name}}
-        </li>
-    </ul>
-</div>
-
-<div ng-if="vm_theatre.theatreDetails">
-    <h3> Details </h3>
-    <h4> {{vm_theatre.theatreDetails.name}} </h4>
-
-    <h5> {{vm_theatre.theatreDetails.location.address.street}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.address.city}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.address.state}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.telephone}} </h5>
-
-    <button class="btn btn-primary btn-block"
-            ng-click="vm_theatre.searchMovies(vm_theatre.theatreDetails.theatreId)">
-        Find Movies in this theatre
-    </button>
+            <ul class="list-group wd-ul">
+                <li ng-click="vm_theatre.searchTheatreDetailsForTheatreId(theatre.theatreId)"
+                    ng-repeat="theatre in vm_theatre.theatres"
+                    class="list-group-item wd-ul-li">
+                    {{theatre.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </div>
+
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container-fluid">
+        <div>
+            <a href="#!/profile">
+                <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+            </a>
+        </div>
+
+        <div>
+            <a href="#!/">
+                <span class = "glyphicon glyphicon-home wd-home-icon"></span>
+            </a>
+        </div>
+    </div>
+</nav>

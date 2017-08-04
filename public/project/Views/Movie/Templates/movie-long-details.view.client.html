@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,36 +14,59 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="wd-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-if="!vm_theatre.currentUser._id"
+                <li ng-if="!vm_movie.currentUser._id"
                 class="wd-x">
                 <a href="#!/login">Login</a>
                 </li>
-                <li ng-if="!vm_theatre.currentUser._id">
+                <li ng-if="!vm_movie.currentUser._id">
                 <a href="#!/register">Register</a>
                 </li>
-                <li ng-if="vm_theatre.currentUser._id">
+                <li ng-if="vm_movie.currentUser._id">
                 <a href="#!/profile">Profile</a>
                 </li>
-                <li ng-if="vm_theatre.currentUser._id">
-                <a ng-click="vm_theatre.logout()">Logout</a>
+                <li ng-if="vm_movie.currentUser._id">
+                <a ng-click="vm_movie.logout()">Logout</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container-fluid wd-theatre-det-align">
-    <h4> {{vm_theatre.theatreDetails.name}} </h4>
+<div>
+    <h3> Movie Details </h3>
 
-    <h5> {{vm_theatre.theatreDetails.location.address.street}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.address.city}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.address.state}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.telephone}} </h5>
+    <h5> Title </h5>
+    {{vm_movie.movieDetail.title}}
 
-    <button class="btn btn-success btn-block wd-btn-color"
-            ng-click="vm_theatre.searchMovies(vm_theatre.theatreDetails.theatreId)">
-        Find Movies in this theatre
-     </button>
+    <h5> Description </h5>
+    {{vm_movie.movieDetail.longDescription}}
+
+    <h5> Release Date</h5>
+    {{vm_movie.movieDetail.releaseDate}}
+
+    <h5> Cast </h5>
+    <ul>
+        <li ng-repeat="actor in vm_movie.movieDetail.topCast">
+            {{actor}}
+        </li>
+    </ul>
+
+    <h5> Directors </h5>
+    <ul>
+        <li ng-repeat="dir in vm_movie.movieDetail.directors">
+            {{dir}}
+        </li>
+    </ul>
+
+    <h5> Rating </h5>
+    {{vm_movie.movieDetail.qualityRating.value}}
+
+    <h5> Showtimes </h5>
+    <ul>
+        <li ng-repeat="showTime in vm_movie.movieDetail.showtimes">
+            {{showTime.theatre.name}} {{showTime.dateTime}}
+        </li>
+    </ul>
 
 </div>
 

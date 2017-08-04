@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,39 +14,46 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="wd-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-if="!vm_theatre.currentUser._id"
+                <li ng-if="!vm_movie.currentUser._id"
                 class="wd-x">
                 <a href="#!/login">Login</a>
                 </li>
-                <li ng-if="!vm_theatre.currentUser._id">
+                <li ng-if="!vm_movie.currentUser._id">
                 <a href="#!/register">Register</a>
                 </li>
-                <li ng-if="vm_theatre.currentUser._id">
+                <li ng-if="vm_movie.currentUser._id">
                 <a href="#!/profile">Profile</a>
                 </li>
-                <li ng-if="vm_theatre.currentUser._id">
-                <a ng-click="vm_theatre.logout()">Logout</a>
+                <li ng-if="vm_movie.currentUser._id">
+                <a ng-click="vm_movie.logout()">Logout</a>
                 </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container-fluid wd-theatre-det-align">
-    <h4> {{vm_theatre.theatreDetails.name}} </h4>
+<div>
+    <div ng-show="vm_movie.msg" class="alert alert-danger">
+        {{vm_movie.msg}}
+    </div>
 
-    <h5> {{vm_theatre.theatreDetails.location.address.street}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.address.city}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.address.state}} </h5>
-    <h5> {{vm_theatre.theatreDetails.location.telephone}} </h5>
+    <h3> Movies playing at {{vm_movie.movies[0].showtimes[0].theatre.name}}</h3>
 
-    <button class="btn btn-success btn-block wd-btn-color"
-            ng-click="vm_theatre.searchMovies(vm_theatre.theatreDetails.theatreId)">
-        Find Movies in this theatre
-     </button>
+    <ul class="list-group wd-ul">
+        <li ng-repeat="movie in vm_movie.movies"
+            class="list-group-item wd-ul-li">
+            <div class="wd-cont-initial" ng-click="vm_movie.movieLongDetails(movie)">
+                {{movie.title}}
+                <!--{{movie.showtimes[0].theatre.name}}-->
+            </div>
+            <a ng-click="vm_movie.bookmarkMovie(movie)">
+                <span class=" glyphicon glyphicon-heart-empty pull-right"></span>
+            </a>
+        </li>
+    </ul>
 
 </div>
-
 
 <nav class = "navbar navbar-default navbar-fixed-bottom">
     <div class = "container">

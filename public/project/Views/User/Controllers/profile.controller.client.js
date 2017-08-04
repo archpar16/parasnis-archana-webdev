@@ -3,7 +3,7 @@
         .module('ReserveYourSeat')
         .controller('profileController', profileController);
 
-    function profileController(currentUser, $location, userService) {
+    function profileController(currentUser, $location, userService, theatreMovieService) {
         console.log('in profile controller now');
         var ctlr = this;
 
@@ -12,6 +12,8 @@
         // event handlers
         ctlr.update = update;
         ctlr.logout = logout;
+        ctlr.searchMovies = searchMovies;
+        ctlr.movieLongDetails = movieLongDetails;
 
         // Implementation of event handlers
 
@@ -32,8 +34,16 @@
             userService
                 .logout()
                 .then(function () {
-                    $location.url('/login');
+                    $location.url('/');
                 });
+        }
+        
+        function searchMovies() {
+            $location.url('/theatres')
+        }
+
+        function movieLongDetails(zip, movieTmsId) {
+            $location.url('/zip/'+ zip + '/movie/' + movieTmsId);
         }
     }
 

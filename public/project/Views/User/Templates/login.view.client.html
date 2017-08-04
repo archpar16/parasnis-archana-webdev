@@ -1,6 +1,16 @@
 
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="wd-home-navbar-brand" href="#">Reserve Your Seat
+            </a>
+        </div>
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
 <div class="container-fluid">
-    <h2>Reserve Your Seat</h2>
 
     <h3>Sign-in</h3>
 
@@ -20,7 +30,7 @@
                 <input type="text"
                        id="username"
                        ng-model="vm_log.user.username"
-                       class="form-control"
+                       class="form-control wd-input-bg"
                        placeholder="Username"
                        name="username"
                        required/>
@@ -31,7 +41,7 @@
                 <input type="password"
                        id="password"
                        ng-model="vm_log.user.password"
-                       class="form-control"
+                       class="form-control wd-input-bg"
                        placeholder="Password"
                        name="password"
                        required/>
@@ -66,3 +76,13 @@
     </div>
 
 </div>
+
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+        <div>
+            <a href="#!/">
+                <span class = "glyphicon glyphicon-home wd-home-icon" style="right: 20px;"></span>
+            </a>
+        </div>
+    </div>
+</nav>

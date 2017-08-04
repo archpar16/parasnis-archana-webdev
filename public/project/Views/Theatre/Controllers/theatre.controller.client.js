@@ -3,33 +3,18 @@
         .module('ReserveYourSeat')
         .controller('theatreController', theatreController);
 
-    function theatreController(theatreMovieService, $location, $routeParams) {
+    function theatreController(theatreMovieService, $location, currentUser, userService) {
         var ctlr = this;
+        ctlr.currentUser = currentUser;
         console.log('in theatre controller');
-
-        ctlr.searchTheatres = searchTheatres;
-        // ctlr.searchTheatreDetails = searchTheatreDetails;
-        ctlr.searchMovies = searchMovies;
+        ctlr.logout = logout;
 
         ctlr.searchTheatresForZipcode = searchTheatresForZipcode;
         ctlr.searchTheatreDetailsForTheatreId = searchTheatreDetailsForTheatreId;
 
-        // init();
-        //
-        // function init() {
-        //     var zipcode = $routeParams['zipcode'];
-        //     var theatreId = $routeParams['theatreId'];
-        //     if (typeof zipcode !== 'undefined') {
-        //         searchTheatresForZipcode(zipcode);
-        //     }
-        //     if (typeof theatreId !== 'undefined') {
-        //         searchTheatreDetailsForTheatreId(theatreId);
-        //     }
-        //
-        // }
-
         function searchTheatresForZipcode(zipcode) {
             console.log('searching for ' + zipcode);
+            ctlr.zip = zipcode;
             theatreMovieService
                 .searchTheatres(zipcode)
                 .then(function (response) {
@@ -37,27 +22,16 @@
                 });
         }
 
-        function searchTheatres(zipcode) {
-            $location.url('/theatres/'+zipcode);
-        }
-
-        //
-        // function searchTheatreDetails(theatreId) {
-        //     $location.url('/theatre/'+theatreId);
-        // }
-
-        function searchTheatreDetailsForTheatreId(theatreId) {
-            theatreMovieService
-                .searchTheatreDetails(theatreId)
-                .then(function (response) {
-                    ctlr.theatreDetails = response.data;
-
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/');
                 });
         }
 
-        function searchMovies(theatreId) {
-            $location.url('/theatre/' + theatreId + '/movies');
+        function searchTheatreDetailsForTheatreId(theatreId) {
+            $location.url('/zip/' + ctlr.zip + '/theatre/'+ theatreId);
         }
-
     }
 })();

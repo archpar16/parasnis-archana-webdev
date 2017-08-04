@@ -28,8 +28,7 @@
             .when('/profile', {
                 templateUrl: 'Views/User/Templates/profile.view.client.html',
                 controller: 'profileController',
-                controllerAs: 'vm_profile'
-                ,
+                controllerAs: 'vm_profile',
                 resolve: {
                     currentUser: checkLoggedIn
                 }
@@ -37,19 +36,35 @@
             .when('/theatres', {
                 templateUrl: 'Views/Theatre/Templates/theatre-search.view.client.html',
                 controller: 'theatreController',
-                controllerAs: 'vm_theatre'
+                controllerAs: 'vm_theatre',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
-            .when('/theatre/:theatreId', {
+            .when('/zip/:zip/theatre/:theatreId', {
                 templateUrl: 'Views/Theatre/Templates/theatre-details.view.client.html',
-                controller: 'theatreController',
-                controllerAs: 'vm_theatre'
+                controller: 'theatreDetailsController',
+                controllerAs: 'vm_theatre',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
-            .when('/theatre/:theatreId/movies', {
-                templateUrl: 'Views/Movie/Templates/movie-showtimes.view.client.html',
-                controller: 'movieController',
-                controllerAs: 'vm_movie'
+            .when('/zip/:zip/theatre/:theatreId/movies', {
+                templateUrl: 'Views/Movie/Templates/movie-list.view.client.html',
+                controller: 'movieListController',
+                controllerAs: 'vm_movie',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
-
+            .when('/zip/:zip/movie/:movieId', {
+                templateUrl: 'Views/Movie/Templates/movie-long-details.view.client.html',
+                controller: 'movieLongDetailController',
+                controllerAs: 'vm_movie',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
     }
 
 

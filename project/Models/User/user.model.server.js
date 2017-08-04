@@ -11,11 +11,11 @@ projectUserModel.findUserById = findUserById;
 projectUserModel.findUserByCredentials = findUserByCredentials;
 projectUserModel.deleteUser = deleteUser;
 projectUserModel.updateUser = updateUser;
-projectUserModel.addWebsite = addWebsite;
-projectUserModel.removeWebsite = removeWebsite;
+// projectUserModel.addWebsite = addWebsite;
+// projectUserModel.removeWebsite = removeWebsite;
 projectUserModel.findUserByUsername = findUserByUsername;
 projectUserModel.findUserByFacebookId = findUserByFacebookId;
-// projectUserModel.findUserByGoogleId = findUserByGoogleId;
+projectUserModel.findUserByGoogleId = findUserByGoogleId;
 
 module.exports = projectUserModel;
 
@@ -24,39 +24,45 @@ function findUserByFacebookId(facebookId) {
     return projectUserModel.findOne({'facebook.id': facebookId});
 }
 
-// function findUserByGoogleId(googleId) {
-//     return projectUserModel.findOne({'google.id': googleId});
+function findUserByGoogleId(googleId) {
+    return projectUserModel.findOne({'google.id': googleId});
+}
+
+// function removeWebsite(userId, websiteId) {
+//     return projectUserModel
+//         .findById(userId)
+//         .then(function (user) {
+//             var index = user.websites.indexOf(websiteId);
+//             user.websites.splice(index, 1);
+//             return user.save();
+//         });
+// }
+//
+// function addWebsite(userId, websiteId) {
+//     return projectUserModel
+//         .findById(userId)
+//         .then(function (user) {
+//             user.websites.push(websiteId);
+//             return user.save();
+//         })
 // }
 
-function removeWebsite(userId, websiteId) {
-    return projectUserModel
-        .findById(userId)
-        .then(function (user) {
-            var index = user.websites.indexOf(websiteId);
-            user.websites.splice(index, 1);
-            return user.save();
-        });
-}
-
-function addWebsite(userId, websiteId) {
-    return projectUserModel
-        .findById(userId)
-        .then(function (user) {
-            user.websites.push(websiteId);
-            return user.save();
-        })
-}
+// function updateUser(userId, newUser) {
+//     delete newUser.username;
+//     return projectUserModel.update({_id: userId}, {
+//         $set : {
+//             firstName: newUser.firstName,
+//             lastName: newUser.lastName,
+//             email: newUser.email,
+//
+//             phone: newUser.phone
+//         }
+//     });
+// }
 
 function updateUser(userId, newUser) {
     delete newUser.username;
-    return projectUserModel.update({_id: userId}, {
-        $set : {
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            email: newUser.email,
-            phone: newUser.phone
-        }
-    });
+    return projectUserModel.update({_id: userId}, newUser);
 }
 
 function deleteUser(userId) {

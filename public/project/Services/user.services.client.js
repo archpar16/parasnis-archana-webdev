@@ -9,6 +9,7 @@
             createUser: createUser,
             findUserByUsername: findUserByUsername,
             updateUser: updateUser,
+            bookmarkMovie: bookmarkMovie,
             deleteUser: deleteUser,
             checkLoggedIn: checkLoggedIn,
             logout: logout,
@@ -67,6 +68,7 @@
                     }
                 );
         }
+
         function deleteUser(userId) {
             var url = '/api/project/user/' + userId;
             return $http.delete(url)
@@ -89,5 +91,14 @@
                 );
         }
 
+        function bookmarkMovie(movie) {
+                var url = '/api/project/bookmarkmovie';
+                return $http.put(url, movie)
+                    .then(function (response) {
+                            return response.data;
+                        }
+                    );
+
+        }
     }
 })();

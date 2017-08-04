@@ -10,7 +10,7 @@ projectPassport.deserializeUser(deserializeUser);
 
 // For facebook strategy
 var FacebookStrategy = require('passport-facebook').Strategy;
-projectapp.get ('/auth/project/facebook', projectPassport.authenticate('projectFacebook', { scope : 'email' }));
+projectapp.get ('/auth/project/facebook', projectPassport.authenticate('facebook', { scope : 'email' }));
 
 var facebookConfig = {
     clientID     : process.env.FACEBOOK_CLIENT_ID,
@@ -57,7 +57,7 @@ function facebookStrategy(token, refreshToken, profile, done) {
         );
 }
 projectapp.get('/auth/project/facebook/callback',
-    projectPassport.authenticate('projectFacebook', {
+    projectPassport.authenticate('facebook', {
         successRedirect: '/project/index.html#!/profile',
         failureRedirect: '/project/index.html#!/login'
     }));
@@ -122,6 +122,7 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 projectapp.get    ('/api/project/username', findUserByUsername);
 projectapp.put    ('/api/project/updateUser', updateUser);
+projectapp.put    ('/api/project/bookmarkmovie', bookmarkMovie);
 projectapp.delete ('/api/project/user/:userId', deleteUser);
 projectapp.post   ('/api/project/user', createUser);
 
@@ -133,7 +134,6 @@ projectapp.post  ('/api/project/register', register);
 
 
 function localStrategy(username, password, done) {
-    console.log('username =' + username + " " + password);
     projectUserModel
         .findUserByCredentials(username, password)
         .then(
@@ -203,16 +203,13 @@ function serializeUser(user, done) {
 }
 
 function deserializeUser(user, done) {
-    console.log(' printing the user in deseralize' + user);
     projectUserModel
         .findUserById(user._id)
         .then(
             function(user){
-                console.log(' i found the user ');
                 done(null, user);
             },
             function(err){
-                console.log(' couldnt find the user');
                 done(err, null);
             }
         );
@@ -221,7 +218,6 @@ function deserializeUser(user, done) {
 
 function login(req, res) {
     var user = req.user;
-    console.log(' adding user to cookie ' + user);
     res.json(user);
 }
 
@@ -231,7 +227,6 @@ function logout(req, res) {
 }
 
 function checkLoggedIn(req, res) {
-console.log(' printing the user ' + req.user);
     res.send(req.isAuthenticated() ? req.user : '0');
 }
 
@@ -244,5 +239,18 @@ function register(req, res) {
                 res.send(user);
             });
 
+        });
+}
+
+function bookmarkMovie(req, res) {
+    var user = req.user;
+    var bookmark = req.body;
+
+    console.log( bookmark);
+    user.bookmarks.push(bookmark);
+    projectUserModel
+        .updateUser(user._id, user)
+        .then(function (user) {
+            res.send(user);
         });
 }

@@ -1,8 +1,41 @@
 
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#wd-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="wd-home-navbar-brand" href="#">Reserve Your Seat
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!--<div class="collapse navbar-collapse" id="wd-navbar-collapse">-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li ng-if="!vm_register.currentUser._id"-->
+                <!--class="wd-x">-->
+                <!--<a href="#!/login">Login</a>-->
+                <!--</li>-->
+                <!--<li ng-if="!vm_register.currentUser._id">-->
+                <!--<a href="#!/register">Register</a>-->
+                <!--</li>-->
+                <!--<li ng-if="vm_home.currentUser._id">-->
+                <!--<a href="#!/profile">Profile</a>-->
+                <!--</li>-->
+                <!--<li ng-if="vm_home.currentUser._id">-->
+                <!--<a ng-click="vm_home.logout()">Logout</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+    </div><!-- /.container-fluid -->
+</nav>
+
 <div class = "container-fluid">
     <div class="row">
-        <div class="col col-xs-6">
-            <h2>Reserve Your Seat</h2>
+        <div class="col col-xs-12 col-sm-6">
             <h3>Sign-up</h3>
 
             <div ng-show="vm_register.error" class="alert alert-danger">
@@ -18,7 +51,7 @@
                 <input ng-model = "user"
                        id = "username"
                        type = "text"
-                       class = "form-control"
+                       class = "form-control wd-input-bg"
                        name="username"
                        required
                        placeholder = "Choose username"/>
@@ -30,7 +63,7 @@
                 <input ng-model = "pwd1"
                        id = "password"
                        type = "password"
-                       class = "form-control"
+                       class = "form-control wd-input-bg"
                        name="password"
                        required
                        placeholder = "Choose password"/>
@@ -42,7 +75,7 @@
                 <input ng-model = "pwd2"
                        id = "verifypassword"
                        type = "password"
-                       class = "form-control"
+                       class = "form-control wd-input-bg"
                        required
                        name="verifyPass"
                        placeholder = "Verify password"/>
@@ -68,3 +101,13 @@
         </div>
     </div>
 </div>
+
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+        <div>
+            <a href="#!/">
+                <span class = "glyphicon glyphicon-home wd-home-icon" style="right: 20px;"></span>
+            </a>
+        </div>
+    </div>
+</nav>

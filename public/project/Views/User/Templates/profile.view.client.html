@@ -27,27 +27,27 @@
                ng-model = "vm_profile.user.username"
                value = "Jim"
                type = "text"
-               class = "form-control"
+               class = "form-control wd-input-bg"
                id = "username">
 
         <label for = "email">Email address</label>
         <input type = "email"
                ng-model = "vm_profile.user.email"
-               class = "form-control"
+               class = "form-control wd-input-bg"
                id = "email"
                placeholder = "user@yourdomain.com">
 
         <label for = "first-name">First Name</label>
         <input type = "text"
                ng-model = "vm_profile.user.firstName"
-               class = "form-control"
+               class = "form-control wd-input-bg "
                id = "first-name"
                placeholder = "Your First name">
 
         <label for = "last-name">Last Name</label>
         <input type = "text"
                ng-model = "vm_profile.user.lastName"
-               class = "form-control"
+               class = "form-control wd-input-bg"
                id = "last-name"
                placeholder = "Your Last name">
 
@@ -55,16 +55,35 @@
         <input id = "password"
                ng-model = "vm_profile.user.pwd1"
                type = "password"
-               class = "form-control"
+               class = "form-control wd-input-bg"
                placeholder = "Choose new password"/>
 
         <label for = "verifypassword"> Verify Passowrd </label>
         <input id = "verifypassword"
                ng-model = "vm_profile.user.pwd2"
                type = "password"
-               class = "form-control"
+               class = "form-control wd-input-bg"
                placeholder = "Verify password"/>
     </form>
+
+    <label ng-if="vm_profile.user.bookmarks"> Your Bookmarks </label>
+    <ul class="list-group wd-ul">
+        <li ng-click="vm_profile.movieLongDetails(movie.zip, movie.id)"
+            ng-repeat="movie in vm_profile.user.bookmarks"
+            class="list-group-item wd-ul-li">
+            {{movie.title}}
+        </li>
+    </ul>
+
+    <a ng-click="vm_profile.searchMovies()"
+       class = "btn btn-primary  btn-block wd-btn-style wd-btn-color">
+        Search Movies in Local theatres
+    </a>
+
+    <a ng-click="vm_profile.searchOtherUsers()"
+       class = "btn btn-success  btn-block wd-btn-style wd-btn-color">
+        Search other users
+    </a>
 
     <a ng-click="vm_profile.logout()"
        class = "btn btn-danger  btn-block wd-btn-style">
@@ -74,13 +93,16 @@
 
 <nav class = "navbar navbar-default navbar-fixed-bottom">
     <div class = "container">
-        <div class = "row navbar-text">
             <div>
                 <a href="#!/profile">
                     <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
                 </a>
             </div>
 
+            <div>
+            <a href="#!/">
+                <span class = "glyphicon glyphicon-home wd-home-icon"></span>
+            </a>
+            </div>
         </div>
-    </div>
 </nav>
