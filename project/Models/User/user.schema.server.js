@@ -32,6 +32,7 @@ var projectUserSchema = mongoose.Schema({
     }],
     favorite_theatre: [{
         name: String,
+        zip: String,
         id:   String
     }],
     dateCreated: {type: Date, default: Date.now}

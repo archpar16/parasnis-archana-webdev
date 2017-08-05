@@ -48,7 +48,7 @@
             userService
                 .followUser(whom)
                 .then(function (user) {
-                    ctlr.msg = ctlr.user.firstName + " is now following " + whom.firstName;
+                    ctlr.msg = currentUser.username + " is now following " + whom.username;
                 });
         }
     }

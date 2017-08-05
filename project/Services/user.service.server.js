@@ -56,7 +56,7 @@ function facebookStrategy(token, refreshToken, profile, done) {
             }
         );
 }
-projectapp.get('/auth/project/facebook/callback',
+projectapp.get('/oauth/facebook/callback',
     projectPassport.authenticate('facebook', {
         successRedirect: '/project/index.html#!/profile',
         failureRedirect: '/project/index.html#!/login'
@@ -126,6 +126,9 @@ projectapp.put    ('/api/project/updateUser', updateUser);
 projectapp.put    ('/api/project/bookmarkmovie', bookmarkMovie);
 projectapp.put    ('/api/project/favoritetheatre', favoriteTheatre);
 projectapp.put    ('/api/project/follow', followUser);
+projectapp.put    ('/api/project/unfavoritetheatre', unfavoriteTheatre);
+projectapp.put    ('/api/project/removebookmarkmovie', removeBookmarkMovie);
+projectapp.put    ('/api/project/unfollow', unfollowUser);
 projectapp.delete ('/api/project/user/:userId', deleteUser);
 projectapp.post   ('/api/project/user', createUser);
 
@@ -296,5 +299,64 @@ function followUser(req, res) {
                 .then(function (newuser) {
                     res.send(user);
                 });
+        });
+}
+
+
+function unfollowUser(req, res) {
+    var whom = req.body;
+    var who = req.user;
+
+    var index = who.follows.indexOf(whom.username);
+    who.follows.splice(index, 1);
+
+    console.log(who.username + ' unfollows ' + who.follows);
+    projectUserModel
+        .updateUser(who._id, who)
+        .then(function () {
+            projectUserModel
+                .findUserByUsername(whom.username)
+                .then(function (user) {
+                    console.log(user);
+                    var index1 = user.following.indexOf(who.username);
+                    user.following.splice(index1, 1);
+                    projectUserModel
+                        .updateUser(user._id, user)
+                        .then(function (newuser) {
+                            res.send(newuser);
+                        });
+                });
+        });
+}
+
+
+function unfavoriteTheatre(req, res) {
+    var theatre = req.body;
+    var user = req.user;
+
+    var index = user.favorite_theatre.indexOf(theatre);
+    user.favorite_theatre.splice(index, 1);
+
+    console.log(user.favorite_theatre);
+    projectUserModel
+        .updateUser(user._id, user)
+        .then(function (user) {
+            res.send(user);
+        });
+}
+
+
+function removeBookmarkMovie(req, res) {
+    var movie = req.body;
+    var user = req.user;
+
+    var index = user.bookmarks.indexOf(movie);
+    user.bookmarks.splice(index, 1);
+
+    console.log(user.bookmarks);
+    projectUserModel
+        .updateUser(user._id, user)
+        .then(function (user) {
+            res.send(user);
         });
 }

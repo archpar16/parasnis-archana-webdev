@@ -13,6 +13,9 @@
             favoriteTheatre: favoriteTheatre,
             deleteUser: deleteUser,
             followUser: followUser,
+            unfollowUser: unfollowUser,
+            unfavoriteTheatre: unfavoriteTheatre,
+            removeBookmarkMovie: removeBookmarkMovie,
             findAllUsers: findAllUsers,
             checkLoggedIn: checkLoggedIn,
             logout: logout,
@@ -124,6 +127,37 @@
         function favoriteTheatre(theatre) {
             var url = '/api/project/favoritetheatre';
             return $http.put(url, theatre)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+        }
+
+        function unfollowUser(username) {
+            var whom = {
+                username: username
+            };
+            var url = '/api/project/unfollow';
+            return $http.put(url, whom)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+        }
+
+        function unfavoriteTheatre(theatre) {
+            var url = '/api/project/unfavoritetheatre';
+            return $http.put(url, theatre)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+        }
+
+
+        function removeBookmarkMovie(movie) {
+            var url = '/api/project/removebookmarkmovie';
+            return $http.put(url, movie)
                 .then(function (response) {
                         return response.data;
                     }

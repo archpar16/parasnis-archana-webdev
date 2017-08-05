@@ -3,10 +3,10 @@
         .module('ReserveYourSeat')
         .controller('homeController', homeController);
 
-    function homeController( userService, $location) {
+    function homeController(currentUser, userService, $location) {
         var ctlr = this;
         // console.log('in home ctlr ' + currentUser._id);
-        // ctlr.currentUser = currentUser;
+        ctlr.currentUser = currentUser;
 
         ctlr.logout = logout;
 

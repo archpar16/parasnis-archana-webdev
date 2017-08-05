@@ -10,7 +10,7 @@
                data-toggle="tooltip"
                data-placement="right"
                title="Follow {{vm_user.viewingUser.firstName}} !">
-                <span class = "wd-navbar-right glyphicon glyphicon-hand-up pull-right"></span>
+                <span class = "wd-navbar-right glyphicon glyphicon-star-empty pull-right"></span>
             </a>
         </div>
     </div>
@@ -18,7 +18,7 @@
 
 
 <div class = "container-fluid">
-    <div ng-show="vm_user.error" class="alert alert-danger">
+    <div ng-show="vm_user.msg" class="alert alert-danger">
         {{vm_user.msg}}
     </div>
 

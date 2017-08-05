@@ -43,13 +43,14 @@
 
             var theatre = {
                 name: theatre.name,
+                zip: ctlr.zip,
                 id: theatre.theatreId
             };
             console.log(theatre.name);
             userService
                 .favoriteTheatre(theatre)
                 .then(function () {
-                    ctlr.msg = "Added " + theatre.name + 'to favorites';
+                    ctlr.msg = "Added " + theatre.name + ' to favorites';
                 })
         }
     }
