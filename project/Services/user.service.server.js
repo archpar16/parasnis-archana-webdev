@@ -123,7 +123,8 @@ function googleStrategy(token, refreshToken, profile, done) {
 projectapp.get    ('/api/project/username', findUserByUsername);
 projectapp.get    ('/api/project/users', findAllUsers);
 projectapp.put    ('/api/project/updateUser', updateUser);
-projectapp.put    ('/api/project/updateUser', updateUser);
+projectapp.put    ('/api/project/bookmarkmovie', bookmarkMovie);
+projectapp.put    ('/api/project/favoritetheatre', favoriteTheatre);
 projectapp.put    ('/api/project/follow', followUser);
 projectapp.delete ('/api/project/user/:userId', deleteUser);
 projectapp.post   ('/api/project/user', createUser);
@@ -259,6 +260,19 @@ function bookmarkMovie(req, res) {
 
     console.log( bookmark);
     user.bookmarks.push(bookmark);
+    projectUserModel
+        .updateUser(user._id, user)
+        .then(function (user) {
+            res.send(user);
+        });
+}
+
+
+function favoriteTheatre(req, res) {
+    var user = req.user;
+    var theatre = req.body;
+
+    user.favorite_theatre.push(theatre);
     projectUserModel
         .updateUser(user._id, user)
         .then(function (user) {

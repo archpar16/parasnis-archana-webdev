@@ -10,6 +10,7 @@
             findUserByUsername: findUserByUsername,
             updateUser: updateUser,
             bookmarkMovie: bookmarkMovie,
+            favoriteTheatre: favoriteTheatre,
             deleteUser: deleteUser,
             followUser: followUser,
             findAllUsers: findAllUsers,
@@ -114,6 +115,15 @@
         function followUser(whom) {
             var url = '/api/project/follow';
             return $http.put(url, whom)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+        }
+
+        function favoriteTheatre(theatre) {
+            var url = '/api/project/favoritetheatre';
+            return $http.put(url, theatre)
                 .then(function (response) {
                         return response.data;
                     }

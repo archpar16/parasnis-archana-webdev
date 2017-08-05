@@ -57,11 +57,22 @@
             <h3> Results </h3>
             <h6> Click on theatre name to see details </h6>
 
+            <div ng-show="vm_theatre.msg" class="alert alert-danger">
+                {{vm_theatre.msg}}
+            </div>
+
+
             <ul class="list-group wd-ul">
-                <li ng-click="vm_theatre.searchTheatreDetailsForTheatreId(theatre.theatreId)"
-                    ng-repeat="theatre in vm_theatre.theatres"
+                <li ng-repeat="theatre in vm_theatre.theatres"
                     class="list-group-item wd-ul-li">
-                    {{theatre.name}}
+                    <div class="wd-cont-initial"
+                         ng-click="vm_theatre.searchTheatreDetailsForTheatreId(theatre.theatreId)">
+                        {{theatre.name}}
+                    </div>
+                    <a ng-click="vm_theatre.favoriteTheatre(theatre)">
+                        <span class=" glyphicon glyphicon-heart-empty pull-right"></span>
+                    </a>
+
                 </li>
             </ul>
         </div>

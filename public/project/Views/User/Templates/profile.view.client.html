@@ -77,6 +77,16 @@
         </li>
     </ul>
 
+    <label ng-if="vm_profile.user.favorite_theatre[0]"> Your Favorite Theatres </label>
+
+    <ul class="list-group wd-ul">
+
+        <li ng-click="vm_profile.showUserProfile(user)"
+            ng-repeat="theatre in vm_profile.user.favorite_theatre"
+            class="list-group-item wd-ul-li">
+            {{theatre.name}}
+        </li>
+    </ul>
 
     <label ng-if="vm_profile.user.follows[0]"> You are following </label>
 
