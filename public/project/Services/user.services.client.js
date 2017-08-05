@@ -11,6 +11,8 @@
             updateUser: updateUser,
             bookmarkMovie: bookmarkMovie,
             deleteUser: deleteUser,
+            followUser: followUser,
+            findAllUsers: findAllUsers,
             checkLoggedIn: checkLoggedIn,
             logout: logout,
             register: register,
@@ -92,13 +94,30 @@
         }
 
         function bookmarkMovie(movie) {
-                var url = '/api/project/bookmarkmovie';
-                return $http.put(url, movie)
-                    .then(function (response) {
-                            return response.data;
-                        }
-                    );
+            var url = '/api/project/bookmarkmovie';
+            return $http.put(url, movie)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+        }
 
+        function findAllUsers() {
+            var url = '/api/project/users';
+            return $http.get(url)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+        }
+
+        function followUser(whom) {
+            var url = '/api/project/follow';
+            return $http.put(url, whom)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
         }
     }
 })();

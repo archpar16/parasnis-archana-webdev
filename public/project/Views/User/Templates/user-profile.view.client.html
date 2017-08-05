@@ -1,0 +1,80 @@
+
+<nav class = "navbar navbar-default navbar-fixed-top">
+    <div class = "container-fluid">
+        <div class = "navbar-header">
+            <a class = "wd-home-navbar-brand">
+                User Profile
+            </a>
+
+            <a ng-click="vm_user.followUser()"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Follow {{vm_user.viewingUser.firstName}} !">
+                <span class = "wd-navbar-right glyphicon glyphicon-hand-up pull-right"></span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<div class = "container-fluid">
+    <div ng-show="vm_user.error" class="alert alert-danger">
+        {{vm_user.msg}}
+    </div>
+
+    <h5> Username </h5>
+    {{vm_user.viewingUser.username}}
+
+    <h5> First Name </h5>
+    {{vm_user.viewingUser.firstName}}
+
+    <h5> Last Name </h5>
+    {{vm_user.viewingUser.lastName}}
+
+    <h5> {{vm_user.viewingUser.username}}'s Bookmarks </h5>
+    <ul class="list-group wd-ul">
+        <li ng-repeat="bookmark in vm_user.viewingUser.bookmarks"
+            class="list-group-item wd-ul-li">
+            {{bookmark.title}}
+        </li>
+    </ul>
+
+    <h5> {{vm_user.viewingUser.username}} is following </h5>
+    <ul class="list-group wd-ul">
+        <li ng-repeat="user in vm_user.viewingUser.follows"
+            class="list-group-item wd-ul-li">
+            {{user}}
+        </li>
+    </ul>
+
+    <h5> Users following {{vm_user.viewingUser.username}} </h5>
+    <ul class="list-group wd-ul">
+        <li ng-repeat="user in vm_user.viewingUser.following"
+            class="list-group-item wd-ul-li">
+            {{user}}
+        </li>
+    </ul>
+
+</div>
+
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+            <div>
+                <a href="#!/profile"
+                   data-toggle="tooltip"
+                   data-placement="right"
+                   title="Profile">
+                    <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+
+            <div>
+            <a href="#!/"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Home">
+                <span class = "glyphicon glyphicon-home wd-home-icon"></span>
+            </a>
+            </div>
+        </div>
+</nav>

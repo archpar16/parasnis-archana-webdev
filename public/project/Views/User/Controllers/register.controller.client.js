@@ -21,24 +21,21 @@
             //  check for username existing then only create new user
             userService
                 .findUserByUsername(username)
-                .then(usernameAvailable, handleError);
-
-            function handleError() {
-                   ctlr.error = " Username is not unique, please choose another";
-
-            }
-
-            function usernameAvailable() {
-                var user = {
-                    username: username,
-                    password: password
-                };
-                userService
-                    .register(user)
-                    .then(function (user) {
-                        $location.url('/profile');
-                    });
-             }
+                .then(function (user) {
+                    if (typeof user.username === 'undefined') {
+                        var newuser = {
+                                    username: username,
+                                    password: password
+                                };
+                                userService
+                                    .register(newuser)
+                                    .then(function (u) {
+                                        $location.url('/profile');
+                                    });
+                    } else {
+                        ctlr.error = " Username is not unique, please choose another";
+                    }
+                });
         }
     }
 

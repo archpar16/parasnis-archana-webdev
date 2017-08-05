@@ -1,0 +1,56 @@
+
+<nav class = "navbar navbar-default navbar-fixed-top">
+    <div class = "container-fluid">
+        <div class = "navbar-header">
+            <a class = "wd-home-navbar-brand">
+                Users registered
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+
+<div class = "container-fluid">
+
+    <ul class="list-group wd-ul">
+        <li ng-repeat="user in vm_user.users"
+            class="list-group-item wd-ul-li">
+            <div class="wd-cont-initial"
+                 ng-click="vm_user.showUserProfile(user)">
+                <h5>Username</h5>
+                {{user.username}}
+                <h5>First Name</h5>
+                {{user.firstName}}
+                <h5>Last Name</h5>
+                {{user.lastName}}
+            </div>
+
+            <a ng-click="vm_movie.bookmarkMovie(movie)">
+                <span class=" glyphicon glyphicon-heart-empty pull-right"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+            <div>
+                <a href="#!/profile"
+                   data-toggle="tooltip"
+                   data-placement="right"
+                   title="Profile">
+                    <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+                </a>
+            </div>
+
+            <div>
+            <a href="#!/"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Home">
+                <span class = "glyphicon glyphicon-home wd-home-icon"></span>
+            </a>
+            </div>
+        </div>
+</nav>

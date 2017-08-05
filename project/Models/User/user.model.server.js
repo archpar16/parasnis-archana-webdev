@@ -11,11 +11,10 @@ projectUserModel.findUserById = findUserById;
 projectUserModel.findUserByCredentials = findUserByCredentials;
 projectUserModel.deleteUser = deleteUser;
 projectUserModel.updateUser = updateUser;
-// projectUserModel.addWebsite = addWebsite;
-// projectUserModel.removeWebsite = removeWebsite;
 projectUserModel.findUserByUsername = findUserByUsername;
 projectUserModel.findUserByFacebookId = findUserByFacebookId;
 projectUserModel.findUserByGoogleId = findUserByGoogleId;
+projectUserModel.findAllUsers = findAllUsers;
 
 module.exports = projectUserModel;
 
@@ -94,4 +93,9 @@ function createUser(user) {
 
 function findUserByUsername(username) {
     return projectUserModel.findOne({username: username});
+}
+
+
+function findAllUsers() {
+    return projectUserModel.find();
 }

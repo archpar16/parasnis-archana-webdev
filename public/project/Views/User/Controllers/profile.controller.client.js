@@ -14,6 +14,8 @@
         ctlr.logout = logout;
         ctlr.searchMovies = searchMovies;
         ctlr.movieLongDetails = movieLongDetails;
+        ctlr.searchOtherUsers = searchOtherUsers;
+        ctlr.showUserProfile = showUserProfile;
 
         // Implementation of event handlers
 
@@ -44,6 +46,14 @@
 
         function movieLongDetails(zip, movieTmsId) {
             $location.url('/zip/'+ zip + '/movie/' + movieTmsId);
+        }
+
+        function searchOtherUsers() {
+            $location.url('/users');
+        }
+
+        function showUserProfile(username) {
+            $location.url('/user/' + username);
         }
     }
 

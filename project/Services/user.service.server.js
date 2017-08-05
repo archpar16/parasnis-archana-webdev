@@ -121,8 +121,10 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 
 projectapp.get    ('/api/project/username', findUserByUsername);
+projectapp.get    ('/api/project/users', findAllUsers);
 projectapp.put    ('/api/project/updateUser', updateUser);
-projectapp.put    ('/api/project/bookmarkmovie', bookmarkMovie);
+projectapp.put    ('/api/project/updateUser', updateUser);
+projectapp.put    ('/api/project/follow', followUser);
 projectapp.delete ('/api/project/user/:userId', deleteUser);
 projectapp.post   ('/api/project/user', createUser);
 
@@ -188,16 +190,25 @@ function findUserByUsername(req, res) {
     projectUserModel
         .findUserByUsername(username)
         .then(function (user) {
-            if(user != null) {
-                res.sendStatus(404);
+             if(user != null) {
+                res.send(user);
             } else {
-                res.sendStatus(200);
+                res.send(user);
             }
         }, function (err) {
             res.sendStatus(500);
         });
 }
 
+function findAllUsers(req, res) {
+    projectUserModel
+        .findAllUsers()
+        .then(function (users) {
+            res.json(users);
+        }, function (err) {
+            res.sendStatus(500);
+        });
+}
 function serializeUser(user, done) {
     done(null, user);
 }
@@ -252,5 +263,24 @@ function bookmarkMovie(req, res) {
         .updateUser(user._id, user)
         .then(function (user) {
             res.send(user);
+        });
+}
+
+
+function followUser(req, res) {
+    var whom = req.body;
+    var who = req.user;
+
+    who.follows.push(whom.username);
+    console.log(who.username + ' follows' + who.follows)
+    projectUserModel
+        .updateUser(who._id, who)
+        .then(function (user) {
+            whom.following.push(who.username);
+            projectUserModel
+                .updateUser(whom._id, whom)
+                .then(function (newuser) {
+                    res.send(user);
+                });
         });
 }

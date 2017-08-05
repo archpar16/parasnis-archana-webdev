@@ -8,11 +8,14 @@ var projectUserSchema = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
+    // follows: [{
+    //     type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"
+    // }],
     follows: [{
-        type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"
+        type: String
     }],
     following: [{
-        type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"
+        type: String
     }],
     facebook: {
         id:    String,

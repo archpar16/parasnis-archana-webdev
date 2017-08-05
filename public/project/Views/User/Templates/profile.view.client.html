@@ -66,8 +66,10 @@
                placeholder = "Verify password"/>
     </form>
 
-    <label ng-if="vm_profile.user.bookmarks"> Your Bookmarks </label>
+    <label ng-if="vm_profile.user.bookmarks[0].title"> Your Bookmarks </label>
+
     <ul class="list-group wd-ul">
+
         <li ng-click="vm_profile.movieLongDetails(movie.zip, movie.id)"
             ng-repeat="movie in vm_profile.user.bookmarks"
             class="list-group-item wd-ul-li">
@@ -75,13 +77,36 @@
         </li>
     </ul>
 
+
+    <label ng-if="vm_profile.user.follows[0]"> You are following </label>
+
+    <ul class="list-group wd-ul">
+
+        <li ng-click="vm_profile.showUserProfile(user)"
+            ng-repeat="user in vm_profile.user.follows"
+            class="list-group-item wd-ul-li">
+            {{user}}
+        </li>
+    </ul>
+
+    <label ng-if="vm_profile.user.following[0]"> Users following you </label>
+
+    <ul class="list-group wd-ul">
+
+        <li ng-click="vm_profile.showUserProfile(user)"
+            ng-repeat="user in vm_profile.user.following"
+            class="list-group-item wd-ul-li">
+            {{user}}
+        </li>
+    </ul>
+
     <a ng-click="vm_profile.searchMovies()"
-       class = "btn btn-primary  btn-block wd-btn-style wd-btn-color">
+       class = "btn btn-primary  btn-block wd-btn-style">
         Search Movies in Local theatres
     </a>
 
     <a ng-click="vm_profile.searchOtherUsers()"
-       class = "btn btn-success  btn-block wd-btn-style wd-btn-color">
+       class = "btn btn-success  btn-block wd-btn-style">
         Search other users
     </a>
 
@@ -94,13 +119,19 @@
 <nav class = "navbar navbar-default navbar-fixed-bottom">
     <div class = "container">
             <div>
-                <a href="#!/profile">
+                <a href="#!/profile"
+                   data-toggle="tooltip"
+                   data-placement="right"
+                   title="Profile">
                     <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
                 </a>
             </div>
 
             <div>
-            <a href="#!/">
+            <a href="#!/"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Home">
                 <span class = "glyphicon glyphicon-home wd-home-icon"></span>
             </a>
             </div>

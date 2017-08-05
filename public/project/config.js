@@ -65,6 +65,23 @@
                     currentUser: checkCurrentUser
                 }
             })
+            .when('/users', {
+                templateUrl: 'Views/User/Templates/user-list.view.client.html',
+                controller: 'userController',
+                controllerAs: 'vm_user',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
+
+            .when('/user/:username', {
+                templateUrl: 'Views/User/Templates/user-profile.view.client.html',
+                controller: 'userProfileController',
+                controllerAs: 'vm_user',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
     }
 
 
