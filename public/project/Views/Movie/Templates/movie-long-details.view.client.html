@@ -63,7 +63,9 @@
 
     <h5> Showtimes </h5>
     <ul>
-        <li ng-repeat="showTime in vm_movie.movieDetail.showtimes">
+        <li ng-click="vm_movie.bookSeats(showTime)"
+            class="list-group-item wd-ul-li"
+            ng-repeat="showTime in vm_movie.movieDetail.showtimes">
             {{showTime.theatre.name}} {{showTime.dateTime}}
         </li>
     </ul>

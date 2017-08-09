@@ -80,7 +80,14 @@
                     currentUser: checkLoggedIn
                 }
             })
-
+            .when('/zip/:zip/movie/:movieId/bookseats/theatre/:theatreId/:showtime', {
+                templateUrl: 'Views/User/Templates/book-seats.view.client.html',
+                controller: 'userBookSeatController',
+                controllerAs: 'vm_user',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
             .when('/user/:username', {
                 templateUrl: 'Views/User/Templates/user-profile.view.client.html',
                 controller: 'userProfileController',

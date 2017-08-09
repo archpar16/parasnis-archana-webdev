@@ -129,6 +129,7 @@ projectapp.put    ('/api/project/follow', followUser);
 projectapp.put    ('/api/project/unfavoritetheatre', unfavoriteTheatre);
 projectapp.put    ('/api/project/removebookmarkmovie', removeBookmarkMovie);
 projectapp.put    ('/api/project/unfollow', unfollowUser);
+projectapp.put    ('/api/project/bookseats', bookYourSeats);
 projectapp.delete ('/api/project/user/:userId', isAdmin, deleteUser);
 projectapp.post   ('/api/project/user', isAdmin, createUser);
 
@@ -191,6 +192,39 @@ function updateUser(req, res) {
         });
 
 }
+
+function bookYourSeats(req, res) {
+    var order = req.body;
+    if (req.isAuthenticated() && req.user.role === 'Agent') {
+        projectUserModel
+            .findUserByUsername(order.username)
+            .then(function (user) {
+                if (user != null) {
+                    var userId = user._id;
+                    user.orders.push(order);;
+                    projectUserModel
+                        .updateUser(userId, user)
+                        .then(function (user) {
+                            res.send(user);
+                        });
+                } else {
+                    res.sendStatus(400);
+                }
+            });
+    }
+    else {
+        var userId = req.user._id;
+        var user = req.user;
+        user.orders.push(order);
+        projectUserModel
+            .updateUser(userId, user)
+            .then(function (user) {
+                res.send(user);
+            });
+    }
+
+}
+
 
 function findUserByUsername(req, res) {
     var username = req.query['username'];

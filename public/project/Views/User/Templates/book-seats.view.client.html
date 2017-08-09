@@ -1,0 +1,101 @@
+
+
+<nav class = "navbar navbar-default navbar-fixed-top">
+    <div class = "container-fluid">
+        <div class = "navbar-header">
+            <a class = "wd-home-navbar-brand">
+                Book Your Seats
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<div class = "container-fluid">
+    <div ng-show="vm_user.message" class="alert alert-danger">
+        {{vm_user.message}}
+    </div>
+
+    <h4> Each Seat will cost you $25 </h4>
+    <label for = "username"
+           ng-if="vm_user.user.role === 'Agent'">
+        Enter username for whom you are booking tickets
+    </label>
+    <input id = "username"
+           ng-if="vm_user.user.role === 'Agent'"
+           ng-model = "vm_user.username"
+           type = "text"
+           class = "form-control wd-input-bg"
+           placeholder = "Username"/>
+
+    <label for="user-numseats"> Number of Seats to book </label>
+    <select class="form-control wd-input-bg"
+            required
+            ng-model="vm_user.numOfSeats"
+            ng-options="option.name for option in vm_user.numSeats track by option.value"
+            id="user-numseats">
+    </select>
+
+    <label for="user-seats"> Select desired Seats </label>
+    <select multiple
+            required
+            property="max-"
+            class="form-control wd-input-bg"
+            ng-model="vm_user.seats"
+            ng-options="option.name for option in vm_user.seatNumbers track by option.value"
+            id="user-seats">
+    </select>
+
+    <label for = "cc"> Enter credit card number </label>
+    <input id = "cc"
+           ng-model = "vm_user.cc"
+           type = "text"
+           class = "form-control wd-input-bg"
+           placeholder = "Credit card number"/>
+
+    <label for = "expiry"> Enter credit card expiry </label>
+    <input id = "expiry"
+           ng-model = "vm_user.expiry"
+           type = "date"
+           class = "form-control wd-input-bg"
+           placeholder = "Credit card expiry"/>
+
+
+    <a ng-click="vm_user.bookYourSeats(vm_user.username, vm_user.numOfSeats,
+            vm_user.seats, vm_user.cc, vm_user.expiry)"
+       class = "btn btn-success  btn-block wd-btn-style">
+        Book Your Seats
+    </a>
+</div>
+
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+        <div>
+            <a href="#!/profile"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Profile">
+                <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+            </a>
+        </div>
+
+        <div>
+            <a href="#!/"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Home">
+                <span class = "glyphicon glyphicon-home wd-home-icon"></span>
+            </a>
+        </div>
+
+        <div ng-if="vm_user.admin._id">
+            <a
+                    href="#!/admin"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Admin">
+                <span class = "glyphicon glyphicon-eye-open wd-admin-icon"></span>
+            </a>
+        </div>
+    </div>
+</nav>

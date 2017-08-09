@@ -10,6 +10,7 @@
 
         ctlr.currentUser = currentUser;
         ctlr.logout = logout;
+        ctlr.bookSeats = bookSeats;
 
         init();
 
@@ -34,6 +35,13 @@
                 .then(function () {
                     $location.url('/');
                 });
+        }
+
+        function bookSeats(showtime) {
+            var movieId = $routeParams['movieId'];
+            var zip = $routeParams['zip'];
+            $location.url('/zip/' + zip + '/movie/' + movieId + '/bookseats/theatre/'
+                + showtime.theatre.id + '/' + showtime.dateTime);
         }
     }
 })();

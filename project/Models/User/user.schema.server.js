@@ -35,6 +35,14 @@ var projectUserSchema = mongoose.Schema({
         zip: String,
         id:   String
     }],
+    orders: [{
+        movieId: String,
+        zip: String,
+        theatreId: String,
+        numOfSeats: String,
+        seats: [{type: String}],
+        showtime: String
+    }],
     dateCreated: {type: Date, default: Date.now}
 }, {collection: "ProjectUser"});
 

@@ -29,8 +29,6 @@
                 ctlr.message = username + " not found or password isn't correct, please try again";
             }
         }
-
-
     }
 
 })();

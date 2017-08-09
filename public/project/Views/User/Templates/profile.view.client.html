@@ -110,6 +110,21 @@
         </li>
     </ul>
 
+    <label ng-if="vm_profile.user.orders[0]"> Your Orders </label>
+
+    <ul class="list-group wd-ul">
+
+        <li ng-repeat="order in vm_profile.user.orders"
+            class="list-group-item wd-ul-li">
+
+            <div ng-click="vm_profile.movieLongDetails(movie.zip, movie.id)"
+                 class="wd-cont-initial">
+                {{order.movieId}} {{order.showtime}} {{order.seats}}
+            </div>
+
+        </li>
+    </ul>
+
     <label ng-if="vm_profile.user.follows[0]"> You are following </label>
 
     <ul class="list-group wd-ul">
@@ -146,8 +161,8 @@
         Search Movies in Local theatres
     </a>
 
-    <a ng-if="!vm_profile.admin._id"
-            ng-click="vm_profile.searchOtherUsers()"
+    <a ng-if="vm_profile.user.role === 'User'"
+       ng-click="vm_profile.searchOtherUsers()"
        class = "btn btn-success  btn-block wd-btn-style">
         Search other users
     </a>
