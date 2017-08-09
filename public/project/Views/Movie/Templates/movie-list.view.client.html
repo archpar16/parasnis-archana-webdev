@@ -7,7 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="wd-home-navbar-brand" href="#">Reserve Your Seat
+            <a class="wd-home-navbar-brand" href="#">
+                Reserve Your Seat
             </a>
         </div>
 
@@ -33,13 +34,13 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div>
+<div class="container-fluid">
+    <h4 ng-if="!vm_movie.movies[0]"> No movies playing today</h4>
+    <h3 ng-if="vm_movie.movies[0]"> Movies playing at {{vm_movie.movies[0].showtimes[0].theatre.name}}</h3>
+
     <div ng-show="vm_movie.msg" class="alert alert-danger">
         {{vm_movie.msg}}
     </div>
-
-    <h4 ng-if="!vm_movie.movies[0]"> No movies playing today</h4>
-    <h3 ng-if="vm_movie.movies[0]"> Movies playing at {{vm_movie.movies[0].showtimes[0].theatre.name}}</h3>
 
     <ul class="list-group wd-ul">
         <li ng-repeat="movie in vm_movie.movies"

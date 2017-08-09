@@ -3,8 +3,8 @@
 <nav class = "navbar navbar-default navbar-fixed-top">
     <div class = "container-fluid">
         <div class = "navbar-header">
-            <a class = "wd-home-navbar-brand">
-                Profile
+            <a class = "wd-home-navbar-brand" href="#">
+                Reserve Your Seat
             </a>
             <p class = "navbar-text pull-right">
                 <a ng-click="vm_profile.update(vm_profile.user)"
@@ -21,6 +21,7 @@
 
 
 <div class = "container-fluid">
+    <h3> Profile </h3>
     <div ng-show="vm_profile.message" class="alert alert-danger">
         {{vm_profile.message}}
     </div>
