@@ -53,8 +53,32 @@
 a {
     color: indianred;
     text-decoration: none;
+    background-color: inherit;
 }
 
-.linked-in {
+.wd-linked-in {
     font-size: 18px;
+    margin-top: 10px;
+}
+
+.wd-para {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+
+.logo-container .brand>a:hover {
+    text-decoration: none;
+    color: indianred;
+    background-color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: indianred;
+    background-color: inherit;
 }
