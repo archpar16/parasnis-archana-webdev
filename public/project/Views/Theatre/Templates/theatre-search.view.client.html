@@ -16,17 +16,17 @@
         <div class="collapse navbar-collapse" id="wd-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li ng-if="!vm_theatre.currentUser._id"
-                class="wd-x">
-                <a href="#!/login">Login</a>
+                    class="wd-x">
+                    <a href="#!/login">Login</a>
                 </li>
                 <li ng-if="!vm_theatre.currentUser._id">
-                <a href="#!/register">Register</a>
+                    <a href="#!/register">Register</a>
                 </li>
                 <li ng-if="vm_theatre.currentUser._id">
-                <a href="#!/profile">Profile</a>
+                    <a href="#!/profile">Profile</a>
                 </li>
                 <li ng-if="vm_theatre.currentUser._id">
-                <a ng-click="vm_theatre.logout()">Logout</a>
+                    <a ng-click="vm_theatre.logout()">Logout</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -36,20 +36,20 @@
 <div class="container-fluid header-theatre wd-theatre-image img-responsive">
 
     <div>
-<h3> Search theatres in your area </h3>
-        <div class="input-group wd-search-box">
+        <h3> Search theatres in your area </h3>
+        <div class="input-group wd-search-box col-xs-12 col-sm-6">
             <input ng-model="vm_theatre.zipcode"
                    type="text"
                    class="form-control wd-input-bg"
                    placeholder="Enter zipcode to search theatres">
-            <span class="input-group-btn">
 
-        <a ng-click="vm_theatre.searchTheatresForZipcode(vm_theatre.zipcode)"
-           class="btn btn-default wd-input-bg"
-           type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-    </span>
+            <span class="input-group-btn">
+                <a ng-click="vm_theatre.searchTheatresForZipcode(vm_theatre.zipcode)"
+                   class="btn btn-default wd-input-bg"
+                   type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </span>
         </div>
 
 

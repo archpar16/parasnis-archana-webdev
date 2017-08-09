@@ -87,7 +87,6 @@ function findUserById(userId) {
 function createUser(user) {
     if (typeof user.password !== 'undefined') {
         user.password = bcrypt.hashSync(user.password);
-        console.log(user.password);
     }
     return projectUserModel.create(user);
 }

@@ -98,6 +98,15 @@
                     currentUser: checkAdmin
                 }
             })
+
+            .when('/createuser', {
+                templateUrl: 'Views/Admin/Templates/admin-user-create.view.client.html',
+                controller: 'adminCreateController',
+                controllerAs: 'vm_admin',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
     }
 
 

@@ -130,7 +130,7 @@ projectapp.put    ('/api/project/unfavoritetheatre', unfavoriteTheatre);
 projectapp.put    ('/api/project/removebookmarkmovie', removeBookmarkMovie);
 projectapp.put    ('/api/project/unfollow', unfollowUser);
 projectapp.delete ('/api/project/user/:userId', isAdmin, deleteUser);
-projectapp.post   ('/api/project/user', createUser);
+projectapp.post   ('/api/project/user', isAdmin, createUser);
 
 
 projectapp.post  ('/api/project/login', projectPassport.authenticate('local'), login);
@@ -160,7 +160,6 @@ function localStrategy(username, password, done) {
 
 function createUser(req, res) {
     var user = req.body;
-    user.password = bcrypt.hashSync(user.password);
     projectUserModel
         .createUser(user)
         .then(function (user) {
@@ -170,12 +169,10 @@ function createUser(req, res) {
 
 function deleteUser(req, res) {
     var userId = req.params['userId'];
-    console.log('server got userid = ' + userId);
-
     projectUserModel
         .deleteUser(userId)
         .then(function () {
-            res.send(200);
+            res.sendStatus(200);
         });
 }
 
@@ -183,13 +180,9 @@ function updateUser(req, res) {
     var user = req.body;
     if (req.isAuthenticated() && req.user.role === 'Admin') {
         var userId = user._id;
-        console.log('update by admin');
-        console.log(userId);
     }
     else {
         var userId = req.user._id;
-        console.log('update by user');
-        console.log(userId);
     }
     projectUserModel
         .updateUser(userId, user)
@@ -301,7 +294,6 @@ function bookmarkMovie(req, res) {
     var user = req.user;
     var bookmark = req.body;
 
-    console.log( bookmark);
     user.bookmarks.push(bookmark);
     projectUserModel
         .updateUser(user._id, user)
@@ -329,7 +321,6 @@ function followUser(req, res) {
     var who = req.user;
 
     who.follows.push(whom.username);
-    console.log(who.username + ' follows' + who.follows)
     projectUserModel
         .updateUser(who._id, who)
         .then(function (user) {
@@ -350,14 +341,13 @@ function unfollowUser(req, res) {
     var index = who.follows.indexOf(whom.username);
     who.follows.splice(index, 1);
 
-    console.log(who.username + ' unfollows ' + who.follows);
     projectUserModel
         .updateUser(who._id, who)
         .then(function () {
             projectUserModel
                 .findUserByUsername(whom.username)
                 .then(function (user) {
-                    console.log(user);
+
                     var index1 = user.following.indexOf(who.username);
                     user.following.splice(index1, 1);
                     projectUserModel
@@ -374,10 +364,15 @@ function unfavoriteTheatre(req, res) {
     var theatre = req.body;
     var user = req.user;
 
-    var index = user.favorite_theatre.indexOf(theatre);
-    user.favorite_theatre.splice(index, 1);
+    for (var i = 0; i < user.favorite_theatre.length; i++) {
+        if (user.favorite_theatre[i].name === theatre.name &&
+            user.favorite_theatre[i].id === theatre.id &&
+            user.favorite_theatre[i].zip === theatre.zip) {
+            break;
+        }
+    }
+    user.favorite_theatre.splice(i, 1);
 
-    console.log(user.favorite_theatre);
     projectUserModel
         .updateUser(user._id, user)
         .then(function (user) {
@@ -390,10 +385,14 @@ function removeBookmarkMovie(req, res) {
     var movie = req.body;
     var user = req.user;
 
-    var index = user.bookmarks.indexOf(movie);
-    user.bookmarks.splice(index, 1);
-
-    console.log(user.bookmarks);
+    for (var i = 0; i < user.bookmarks.length; i++) {
+        if (user.bookmarks[i].title === movie.title &&
+            user.bookmarks[i].id === movie.id &&
+            user.bookmarks[i].zip === movie.zip) {
+            break;
+        }
+    }
+    user.bookmarks.splice(i, 1);
     projectUserModel
         .updateUser(user._id, user)
         .then(function (user) {

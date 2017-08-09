@@ -105,7 +105,7 @@ a {
     background-color: inherit;
 }
 
-a:hover {
+.navbar-default .navbar-nav>li>a:hover {
     text-decoration: none;
     color: whitesmoke;
     background-color: inherit;
@@ -114,23 +114,13 @@ a:hover {
 .wd-btn-style {
     margin-top: 15px;
     margin-bottom: 20px;
-}
-
-.wd-widget {
-    position: relative;
-    padding-bottom: 15px;
-}
-.wd-video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px;
-    height: 0;
-    overflow: hidden;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .wd-body-style {
     overflow-x: hidden;
-    background-color: chocolate;
+    background-color: bisque;
 }
 
 .wd-text-align {
@@ -138,11 +128,11 @@ a:hover {
 }
 
 .wd-ul {
-    background-color: chocolate;
+    background-color: bisque;
 }
 
 .wd-ul-li {
-    background-color: gold;
+    background-color: lightcoral;
     border-radius: 6px;
     margin-bottom: 10px;
 }
@@ -172,8 +162,6 @@ a:hover {
 .wd-search-box {
     padding: 30px;
     text-align: center;
-    margin-left: 80px;
-    margin-right: 80px;
 }
 
 .btn-block+.btn-block {
@@ -206,7 +194,7 @@ a:hover {
     right: 100px;
 }
 .wd-btn-color {
-    background-color: gold;
+    background-color: brown;
     color: black;
 }
 
@@ -216,4 +204,8 @@ a:hover {
 
 .wd-cont-initial {
     display: inline-block;
+}
+
+.wd-home {
+    margin-bottom: 50px;
 }
