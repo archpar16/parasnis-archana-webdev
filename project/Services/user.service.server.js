@@ -129,12 +129,13 @@ projectapp.put    ('/api/project/follow', followUser);
 projectapp.put    ('/api/project/unfavoritetheatre', unfavoriteTheatre);
 projectapp.put    ('/api/project/removebookmarkmovie', removeBookmarkMovie);
 projectapp.put    ('/api/project/unfollow', unfollowUser);
-projectapp.delete ('/api/project/user/:userId', deleteUser);
+projectapp.delete ('/api/project/user/:userId', isAdmin, deleteUser);
 projectapp.post   ('/api/project/user', createUser);
 
 
 projectapp.post  ('/api/project/login', projectPassport.authenticate('local'), login);
 projectapp.get   ('/api/project/checkLoggedIn', checkLoggedIn);
+projectapp.get   ('/api/project/checkadmin', checkAdmin);
 projectapp.post  ('/api/project/logout', logout);
 projectapp.post  ('/api/project/register', register);
 
@@ -180,13 +181,22 @@ function deleteUser(req, res) {
 
 function updateUser(req, res) {
     var user = req.body;
-    var userId = req.user._id;
-    console.log(user + ' ' + userId);
+    if (req.isAuthenticated() && req.user.role === 'Admin') {
+        var userId = user._id;
+        console.log('update by admin');
+        console.log(userId);
+    }
+    else {
+        var userId = req.user._id;
+        console.log('update by user');
+        console.log(userId);
+    }
     projectUserModel
         .updateUser(userId, user)
         .then(function (user) {
             res.send(user);
         });
+
 }
 
 function findUserByUsername(req, res) {
@@ -205,13 +215,27 @@ function findUserByUsername(req, res) {
 }
 
 function findAllUsers(req, res) {
-    projectUserModel
-        .findAllUsers()
+    var user = req.user;
+    if (user.role === 'Admin') {
+        projectUserModel
+            .findAllUsers()
+            .then(function (users) {
+                res.json(users);
+            }, function (err) {
+                res.sendStatus(500);
+            });
+    } else if (user.role === 'Agent') {
+        res.sendStatus(401);
+    } else if (user.role === 'User'){
+        projectUserModel
+        .userFindAllUsers()
         .then(function (users) {
             res.json(users);
         }, function (err) {
             res.sendStatus(500);
         });
+    } else
+        res.sendStatus(401);
 }
 function serializeUser(user, done) {
     done(null, user);
@@ -245,6 +269,22 @@ function checkLoggedIn(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
 }
 
+
+function checkAdmin(req, res) {
+    if (req.isAuthenticated() && req.user.role === 'Admin') {
+        res.send(req.user);
+    } else {
+        res.send('0');
+    }
+}
+
+function isAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.role === 'Admin') {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
 function register(req, res) {
     var user = req.body;
     projectUserModel

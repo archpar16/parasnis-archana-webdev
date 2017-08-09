@@ -11,11 +11,12 @@
 
         init();
         // event handlers
-        ctlr.logout = logout;
         ctlr.searchOtherUsers = searchOtherUsers;
         ctlr.showUserProfile = showUserProfile;
+        ctlr.removeUser = removeUser;
 
         function init() {
+            checkAdmin();
             searchOtherUsers();
         }
 
@@ -29,16 +30,29 @@
 
         // Implementation of event handlers
 
-        function logout() {
+        function showUserProfile(user) {
+            if(ctlr.admin === null)
+                $location.url('/user/' + user.username);
+            else
+                $location.url('/userUpdate/' + user.username);
+        }
+
+        function checkAdmin() {
             userService
-                .logout()
-                .then(function () {
-                    $location.url('/');
+                .checkAdmin()
+                .then(function (currentUser) {
+                    if (currentUser === '0') {
+                        ctlr.admin = null;
+                    } else {
+                        ctlr.admin = currentUser;
+                    }
                 });
         }
 
-        function showUserProfile(user) {
-            $location.url('/user/' + user.username);
+        function removeUser(user) {
+            userService
+                .deleteUser(user)
+                .then(searchOtherUsers);
         }
     }
 

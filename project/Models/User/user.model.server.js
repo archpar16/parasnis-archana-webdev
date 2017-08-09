@@ -15,6 +15,7 @@ projectUserModel.findUserByUsername = findUserByUsername;
 projectUserModel.findUserByFacebookId = findUserByFacebookId;
 projectUserModel.findUserByGoogleId = findUserByGoogleId;
 projectUserModel.findAllUsers = findAllUsers;
+projectUserModel.userFindAllUsers = userFindAllUsers;
 
 module.exports = projectUserModel;
 
@@ -95,6 +96,10 @@ function findUserByUsername(username) {
     return projectUserModel.findOne({username: username});
 }
 
+
+function userFindAllUsers() {
+    return projectUserModel.find({role: 'User'});
+}
 
 function findAllUsers() {
     return projectUserModel.find();

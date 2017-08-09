@@ -1,0 +1,96 @@
+
+
+<nav class = "navbar navbar-default navbar-fixed-top">
+    <div class = "container-fluid">
+        <div class = "navbar-header">
+            <a class = "wd-home-navbar-brand">
+                Update User
+            </a>
+            <p class = "navbar-text pull-right">
+                <a ng-click="vm_admin.update(vm_admin.user)"
+                   class = "navbar-link"
+                   data-toggle="tooltip"
+                   data-placement="right"
+                   title="Save">
+                    <span class = "wd-navbar-right glyphicon glyphicon-ok pull-right"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+<div class = "container-fluid">
+    <div ng-show="vm_admin.message" class="alert alert-danger">
+        {{vm_admin.message}}
+    </div>
+    
+    <form>
+        <label for = "username">Username</label>
+        <input ng-model = "vm_admin.user.username"
+               value = "Jim"
+               type = "text"
+               class = "form-control wd-input-bg"
+               id = "username">
+
+        <label for = "email">Email address</label>
+        <input type = "email"
+               ng-model = "vm_admin.user.email"
+               class = "form-control wd-input-bg"
+               id = "email"
+               placeholder = "user@yourdomain.com">
+
+        <label for = "first-name">First Name</label>
+        <input type = "text"
+               ng-model = "vm_admin.user.firstName"
+               class = "form-control wd-input-bg "
+               id = "first-name"
+               placeholder = "Your First name">
+
+        <label for = "last-name">Last Name</label>
+        <input type = "text"
+               ng-model = "vm_admin.user.lastName"
+               class = "form-control wd-input-bg"
+               id = "last-name"
+               placeholder = "Your Last name">
+
+        <label for = "password"> Change Passowrd </label>
+        <input id = "password"
+               ng-model = "vm_admin.user.pwd1"
+               type = "password"
+               class = "form-control wd-input-bg"
+               placeholder = "Choose new password"/>
+
+        <label for = "verifypassword"> Verify Passowrd </label>
+        <input id = "verifypassword"
+               ng-model = "vm_admin.user.pwd2"
+               type = "password"
+               class = "form-control wd-input-bg"
+               placeholder = "Verify password"/>
+    </form>
+
+    
+</div>
+
+<nav class = "navbar navbar-default navbar-fixed-bottom">
+    <div class = "container">
+        <div>
+            <a href="#!/profile"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Profile">
+                <span class = "wd-navbar-right glyphicon glyphicon-user pull-right"></span>
+            </a>
+        </div>
+
+        <div>
+            <a href="#!/"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Home">
+                <span class = "glyphicon glyphicon-home wd-home-icon"></span>
+            </a>
+        </div>
+        
+    </div>
+</nav>

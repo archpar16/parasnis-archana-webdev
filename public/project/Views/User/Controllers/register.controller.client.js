@@ -25,7 +25,8 @@
                     if (typeof user.username === 'undefined') {
                         var newuser = {
                                     username: username,
-                                    password: password
+                                    password: password,
+                                    role: 'User'
                                 };
                                 userService
                                     .register(newuser)

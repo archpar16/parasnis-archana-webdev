@@ -18,6 +18,7 @@
             removeBookmarkMovie: removeBookmarkMovie,
             findAllUsers: findAllUsers,
             checkLoggedIn: checkLoggedIn,
+            checkAdmin: checkAdmin,
             logout: logout,
             register: register,
             login: login
@@ -33,6 +34,15 @@
 
         function checkLoggedIn() {
             var url = "/api/project/checkLoggedIn";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+
+        function checkAdmin() {
+            var url = "/api/project/checkadmin";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
@@ -75,8 +85,8 @@
                 );
         }
 
-        function deleteUser(userId) {
-            var url = '/api/project/user/' + userId;
+        function deleteUser(user) {
+            var url = '/api/project/user/' + user._id;
             return $http.delete(url)
                 .then(function (response) {
                         return response.data;

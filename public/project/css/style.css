@@ -199,6 +199,12 @@ a:hover {
     right: 70px;
 }
 
+.wd-admin-icon {
+    top: 17px;
+    color: whitesmoke;
+    position: absolute;
+    right: 100px;
+}
 .wd-btn-color {
     background-color: gold;
     color: black;

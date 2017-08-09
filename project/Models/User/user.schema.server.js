@@ -8,9 +8,9 @@ var projectUserSchema = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
-    // follows: [{
-    //     type: mongoose.Schema.Types.ObjectId, ref:"ProjectUserModel"
-    // }],
+
+    role: {type: String, default: 'User', enum: ['User', 'Admin', 'Agent']},
+
     follows: [{
         type: String
     }],

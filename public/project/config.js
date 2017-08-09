@@ -13,7 +13,14 @@
                     currentUser: checkCurrentUser
                 }
             })
-
+            .when('/admin', {
+                templateUrl: 'Views/Admin/Templates/admin.view.client.html',
+                controller: 'adminController',
+                controllerAs: 'vm_admin',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
             .when('/login', {
                 templateUrl: 'Views/User/Templates/login.view.client.html',
                 controller: 'loginController',
@@ -70,7 +77,7 @@
                 controller: 'userController',
                 controllerAs: 'vm_user',
                 resolve: {
-                    currentUser: checkCurrentUser
+                    currentUser: checkLoggedIn
                 }
             })
 
@@ -80,6 +87,15 @@
                 controllerAs: 'vm_user',
                 resolve: {
                     currentUser: checkCurrentUser
+                }
+            })
+
+            .when('/userUpdate/:username', {
+                templateUrl: 'Views/Admin/Templates/admin-user-update.view.client.html',
+                controller: 'adminUpdateController',
+                controllerAs: 'vm_admin',
+                resolve: {
+                    currentUser: checkAdmin
                 }
             })
     }
@@ -107,6 +123,21 @@
                 if(currentUser === '0') {
                     deferred.reject();
                     $location.url('/login');
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function checkAdmin($q, $location, userService) {
+        var deferred = $q.defer();
+        userService
+            .checkAdmin()
+            .then(function (currentUser) {
+                if(currentUser === '0') {
+                    deferred.resolve({});
+                    $location.url('/');
                 } else {
                     deferred.resolve(currentUser);
                 }

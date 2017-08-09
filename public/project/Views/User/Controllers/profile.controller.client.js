@@ -3,12 +3,17 @@
         .module('ReserveYourSeat')
         .controller('profileController', profileController);
 
-    function profileController(currentUser, $location, userService, theatreMovieService) {
+    function profileController(currentUser, $location, userService) {
         console.log('in profile controller now');
         var ctlr = this;
 
         ctlr.user = currentUser;
 
+        init();
+
+        function init() {
+            checkAdmin();
+        }
         // event handlers
         ctlr.update = update;
         ctlr.logout = logout;
@@ -20,6 +25,7 @@
         ctlr.unfollowUser = unfollowUser;
         ctlr.unfavoriteTheatre = unfavoriteTheatre;
         ctlr.removeBookmarkMovie = removeBookmarkMovie;
+        // ctlr.checkAdmin = checkAdmin;
 
         // Implementation of event handlers
 
@@ -68,7 +74,7 @@
             userService
                 .unfollowUser(username)
                 .then(function () {
-                    ctlr.message = "You un-followed " + username;
+                    getUserInfo(ctlr.user.username);
                 });
         }
 
@@ -76,7 +82,7 @@
             userService
                 .unfavoriteTheatre(theatre)
                 .then(function () {
-                    ctlr.message = theatre.name + " is removed from your favorites ";
+                    getUserInfo(ctlr.user.username);
                 });
         }
 
@@ -85,7 +91,27 @@
             userService
                 .removeBookmarkMovie(movie)
                 .then(function () {
-                    ctlr.message = movie.title + " is removed from your bookmarks ";
+                    getUserInfo(ctlr.user.username);
+                });
+        }
+
+        function checkAdmin() {
+            userService
+                .checkAdmin()
+                .then(function (currentUser) {
+                    if (currentUser === '0') {
+                        ctlr.admin = null;
+                    } else {
+                        ctlr.admin = currentUser;
+                    }
+                });
+        }
+
+        function getUserInfo(username) {
+            userService
+                .findUserByUsername(username)
+                .then(function (user) {
+                    ctlr.user = user;
                 });
         }
     }

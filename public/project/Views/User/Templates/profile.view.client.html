@@ -140,12 +140,14 @@
         </li>
     </ul>
 
-    <a ng-click="vm_profile.searchMovies()"
+    <a ng-if="!vm_profile.admin._id"
+       ng-click="vm_profile.searchMovies()"
        class = "btn btn-primary  btn-block wd-btn-style">
         Search Movies in Local theatres
     </a>
 
-    <a ng-click="vm_profile.searchOtherUsers()"
+    <a ng-if="!vm_profile.admin._id"
+            ng-click="vm_profile.searchOtherUsers()"
        class = "btn btn-success  btn-block wd-btn-style">
         Search other users
     </a>
@@ -173,6 +175,16 @@
                data-placement="right"
                title="Home">
                 <span class = "glyphicon glyphicon-home wd-home-icon"></span>
+            </a>
+        </div>
+
+        <div ng-if="vm_profile.admin._id">
+            <a
+               href="#!/admin"
+               data-toggle="tooltip"
+               data-placement="right"
+               title="Admin">
+                <span class = "glyphicon glyphicon-eye-open wd-admin-icon"></span>
             </a>
         </div>
     </div>
