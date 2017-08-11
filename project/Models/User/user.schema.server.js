@@ -28,6 +28,7 @@ var projectUserSchema = mongoose.Schema({
     bookmarks: [{
         title: String,
         zip: String,
+        theatreId: String,
         id:    String
     }],
     favorite_theatre: [{

@@ -54,8 +54,8 @@
             $location.url('/theatres')
         }
 
-        function movieLongDetails(zip, movieTmsId) {
-            $location.url('/zip/'+ zip + '/movie/' + movieTmsId);
+        function movieLongDetails(zip, theatreId, movieTmsId) {
+            $location.url('/zip/'+ zip + '/theatre/'+ theatreId + '/movie/' + movieTmsId);
         }
 
         function searchOtherUsers() {

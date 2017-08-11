@@ -48,6 +48,7 @@
             var bookmark = {
                 title: movie.title,
                 id: movie.tmsId,
+                theatreId: ctlr.theatreId,
                 zip: zip
             };
             userService

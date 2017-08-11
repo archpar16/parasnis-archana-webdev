@@ -80,7 +80,7 @@
         <li ng-repeat="movie in vm_profile.user.bookmarks"
             class="list-group-item wd-ul-li">
 
-            <div ng-click="vm_profile.movieLongDetails(movie.zip, movie.id)"
+            <div ng-click="vm_profile.movieLongDetails(movie.zip, movie.theatreId, movie.id)"
                  class="wd-cont-initial">
                 {{movie.title}}
             </div>
