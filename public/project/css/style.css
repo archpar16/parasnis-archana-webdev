@@ -16,7 +16,7 @@ select.form-control {
 }
 
 .navbar-default .navbar-header .wd-home-navbar-brand {
-    left: 0px;
+    left: 50px;
     float: left;
     height: 50px;
     padding: 15px 15px;
@@ -204,8 +204,16 @@ a {
 
 .wd-cont-initial {
     display: inline-block;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .wd-home {
     margin-bottom: 50px;
+}
+
+.wd-heart-pos {
+    top: 15px;
+    position: absolute;
+    right: 15px;
 }

@@ -1,72 +1,18 @@
-var app = require('../../express');
-var userModel = require('../Models/User/user.model.server');
+var assignmentapp = require('../../express');
+var assignmentuserModel = require('../Models/User/user.model.server');
 
 var assignmentPassport = require('passport');
 
 // For local Strategy
 var assignmentLocalStrategy = require('passport-local').Strategy;
-assignmentPassport.use(new assignmentLocalStrategy(localStrategy));
-assignmentPassport.serializeUser(serializeUser);
-assignmentPassport.deserializeUser(deserializeUser);
-
-// // For facebook strategy
-// var assignmentFacebookStrategy = require('passport-facebook').Strategy;
-// app.get ('/auth/assignment/facebook', assignmentPassport.authenticate('assignmentFacebook', { scope : 'email' }));
-//
-// var facebookConfig = {
-//     clientID     : process.env.FACEBOOK_CLIENT_ID,
-//     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-//     callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-// };
-//
-// assignmentPassport.use(new assignmentFacebookStrategy(facebookConfig, facebookStrategy));
-//
-// function facebookStrategy(token, refreshToken, profile, done) {
-//     console.log(' in facebook' );
-//     console.log(profile);
-//     userModel
-//         .findUserByFacebookId(profile.id)
-//         .then(
-//             function(user) {
-//                 if(user) {
-//                     return done(null, user);
-//                 } else {
-//                     var newFacebookUser = {
-//                         username:  profile.displayName,
-//                         firstName: profile.name.givenName,
-//                         lastName:  profile.name.familyName,
-//                         email:     profile.email,
-//                         facebook: {
-//                             id:    profile.id,
-//                             token: token
-//                         }
-//                     };
-//                     return userModel.createUser(newFacebookUser);
-//                 }
-//             },
-//             function(err) {
-//                 if (err) { return done(err); }
-//             }
-//         )
-//         .then(
-//             function(user){
-//                 return done(null, user);
-//             },
-//             function(err){
-//                 if (err) { return done(err); }
-//             }
-//         );
-// }
-// app.get('/auth/assignment/facebook/callback',
-//     assignmentPassport.authenticate('assignmentFacebook', {
-//         successRedirect: '/assignment/index.html#!/profile',
-//         failureRedirect: '/assignment/index.html#!/login'
-//     }));
-
+assignmentPassport.use(new assignmentLocalStrategy(assignmentlocalStrategy));
+assignmentPassport.serializeUser(assignmentSerializeUser);
+assignmentPassport.deserializeUser(assignmentDeserializeUser);
 
 // For google strategy
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-app.get('/auth/assignment/google', assignmentPassport.authenticate('google', { scope : ['profile', 'email'] }));
+assignmentapp.get('/auth/assignment/google',
+    assignmentPassport.authenticate('google', { scope : ['profile', 'email'] }));
 
 var googleConfig = {
     clientID     : process.env.GOOGLE_CLIENT_ID,
@@ -76,14 +22,14 @@ var googleConfig = {
 
 assignmentPassport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
-app.get('/oauth/google/assignment/callback-myapp',
+assignmentapp.get('/oauth/google/assignment/callback-myapp',
     assignmentPassport.authenticate('google', {
         successRedirect: '/assignment/index.html#!/profile',
         failureRedirect: '/assignment/index.html#!/login'
     }));
 
 function googleStrategy(token, refreshToken, profile, done) {
-    userModel
+    assignmentuserModel
         .findUserByGoogleId(profile.id)
         .then(
             function(user) {
@@ -102,7 +48,7 @@ function googleStrategy(token, refreshToken, profile, done) {
                             token: token
                         }
                     };
-                    return userModel.createUser(newGoogleUser);
+                    return assignmentuserModel.createUser(newGoogleUser);
                 }
             },
             function(err) {
@@ -120,24 +66,24 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 }
 
-app.get('/api/assignment/user/:userId', findUserById);
-app.get('/api/assignment/user', findUserByCredentials);
-app.get('/api/assignment/username', findUserByUsername);
-app.put('/api/assignment/updateUser', updateUser);
+assignmentapp.get('/api/assignment/user/:userId', findUserById);
+assignmentapp.get('/api/assignment/user', findUserByCredentials);
+assignmentapp.get('/api/assignment/username', findUserByUsername);
+assignmentapp.put('/api/assignment/updateUser', updateUser);
 
-app.delete('/api/assignment/user/:userId', deleteUser);
-app.post('/api/assignment/user', createUser);
-
-
-app.post  ('/api/assignment/login', assignmentPassport.authenticate('local'), login);
-app.get   ('/api/assignment/checkLoggedIn', checkLoggedIn);
-app.post  ('/api/assignment/logout', logout);
-app.post  ('/api/assignment/register', register);
+assignmentapp.delete('/api/assignment/user/:userId', deleteUser);
+assignmentapp.post('/api/assignment/user', createUser);
 
 
-function localStrategy(username, password, done) {
+assignmentapp.post  ('/api/assignment/login', assignmentPassport.authenticate('local'), login);
+assignmentapp.get   ('/api/assignment/checkLoggedIn', checkLoggedIn);
+assignmentapp.post  ('/api/assignment/logout', logout);
+assignmentapp.post  ('/api/assignment/register', register);
+
+
+function assignmentlocalStrategy(username, password, done) {
     console.log('finding user ' + username + password);
-    userModel
+    assignmentuserModel
         .findUserByCredentials(username, password)
         .then(
             function(user) {
@@ -155,7 +101,7 @@ function localStrategy(username, password, done) {
 }
 function findUserById(req, res) {
     var userId = req.params['userId'];
-    userModel
+    assignmentuserModel
         .findUserById(userId)
         .then(function (user) {
             res.send(user);
@@ -168,7 +114,7 @@ function findUserByCredentials(req, res) {
     var password = req.query['password'];
 
     console.log(username + password);
-    userModel
+    assignmentuserModel
         .findUserByCredentials(username, password)
         .then(function (user) {
             if(user != null) {
@@ -185,7 +131,7 @@ function findUserByCredentials(req, res) {
 function createUser(req, res) {
     var user = req.body;
     user.password = bcrypt.hashSync(user.password);
-    userModel
+    assignmentuserModel
         .createUser(user)
         .then(function (user) {
             res.send(user);
@@ -196,7 +142,7 @@ function deleteUser(req, res) {
     var userId = req.params['userId'];
     console.log('server got userid = ' + userId);
 
-    userModel
+    assignmentuserModel
         .deleteUser(userId)
         .then(function () {
             res.send(200);
@@ -207,7 +153,7 @@ function updateUser(req, res) {
     var user = req.body;
     var userId = req.user._id;
     console.log(user + ' ' + userId);
-    userModel
+    assignmentuserModel
         .updateUser(userId, user)
         .then(function (user) {
             res.send(user);
@@ -216,7 +162,7 @@ function updateUser(req, res) {
 
 function findUserByUsername(req, res) {
     var username = req.query['username'];
-    userModel
+    assignmentuserModel
         .findUserByUsername(username)
         .then(function (user) {
             if(user != null) {
@@ -229,12 +175,14 @@ function findUserByUsername(req, res) {
         });
 }
 
-function serializeUser(user, done) {
+function assignmentSerializeUser(user, done) {
     done(null, user);
 }
 
-function deserializeUser(user, done) {
-    userModel
+function assignmentDeserializeUser(user, done) {
+    console.log('in assign');
+    console.log(user);
+    assignmentuserModel
         .findUserById(user._id)
         .then(
             function(user){
@@ -263,7 +211,7 @@ function checkLoggedIn(req, res) {
 
 function register(req, res) {
     var user = req.body;
-    userModel
+    assignmentuserModel
         .createUser(user)
         .then(function (user) {
             req.login(user, function (status) {

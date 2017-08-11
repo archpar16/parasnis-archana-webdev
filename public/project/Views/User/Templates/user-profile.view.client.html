@@ -2,6 +2,9 @@
 <nav class = "navbar navbar-default navbar-fixed-top">
     <div class = "container-fluid">
         <div class = "navbar-header">
+            <a href="#!/users">
+                <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
             <a class = "wd-home-navbar-brand" href="#">
                 Reserve Your Seat
             </a>
@@ -18,17 +21,17 @@
 
 
 <div class = "container-fluid">
-    <h3> {{vm_user.viewingUser.username}}'s Profile </h3>
-
     <div ng-show="vm_user.msg" class="alert alert-danger">
         {{vm_user.msg}}
     </div>
+
+    <h3> {{vm_user.viewingUser.username}}'s Profile </h3>
 
     <h5> Username </h5>
     {{vm_user.viewingUser.username}}
 
     <h5> First Name </h5>
-    {{vm_user.viewingUser.firstName}}
+    {{vm_user.viewingUser.username}}
 
     <h5> Last Name </h5>
     {{vm_user.viewingUser.lastName}}

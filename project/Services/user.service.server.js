@@ -3,13 +3,13 @@ var projectUserModel = require('../Models/User/user.model.server');
 
 var projectPassport = require('passport');
 // For local Strategy
-var LocalStrategy = require('passport-local').Strategy;
-projectPassport.use(new LocalStrategy(localStrategy));
-projectPassport.serializeUser(serializeUser);
-projectPassport.deserializeUser(deserializeUser);
+var projectLocalStrategy = require('passport-local').Strategy;
+projectPassport.use(new projectLocalStrategy(projectlocalStrategy));
+projectPassport.serializeUser(projectSerializeUser);
+projectPassport.deserializeUser(projectDeserializeUser);
 
 // For facebook strategy
-var FacebookStrategy = require('passport-facebook').Strategy;
+var projectFacebookStrategy = require('passport-facebook').Strategy;
 projectapp.get ('/auth/project/facebook', projectPassport.authenticate('facebook', { scope : 'email' }));
 
 var facebookConfig = {
@@ -18,7 +18,7 @@ var facebookConfig = {
     callbackURL  : process.env.FACEBOOK_CALLBACK_URL
 };
 
-projectPassport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+projectPassport.use(new projectFacebookStrategy(facebookConfig, facebookStrategy));
 
 function facebookStrategy(token, refreshToken, profile, done) {
     console.log(' in facebook' );
@@ -121,6 +121,7 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 
 projectapp.get    ('/api/project/username', findUserByUsername);
+projectapp.get    ('/api/project/order', getOrderDetails);
 projectapp.get    ('/api/project/users', findAllUsers);
 projectapp.put    ('/api/project/updateUser', updateUser);
 projectapp.put    ('/api/project/bookmarkmovie', bookmarkMovie);
@@ -141,7 +142,8 @@ projectapp.post  ('/api/project/logout', logout);
 projectapp.post  ('/api/project/register', register);
 
 
-function localStrategy(username, password, done) {
+function projectlocalStrategy(username, password, done) {
+    console.log('in proj local stra');
     projectUserModel
         .findUserByCredentials(username, password)
         .then(
@@ -201,7 +203,7 @@ function bookYourSeats(req, res) {
             .then(function (user) {
                 if (user != null) {
                     var userId = user._id;
-                    user.orders.push(order);;
+                    user.orders.push(order);
                     projectUserModel
                         .updateUser(userId, user)
                         .then(function (user) {
@@ -241,6 +243,32 @@ function findUserByUsername(req, res) {
         });
 }
 
+
+
+function getOrderDetails(req, res) {
+    var orderId = req.query['orderId'];
+    var user = req.user;
+    projectUserModel
+        .findUserById(user._id)
+        .then(function (user) {
+            if(user != null) {
+                for (var i = 0; i < user.orders.length; i++) {
+                    if (user.orders[i]._id.toString() === orderId) {
+                        res.send(user.orders[i]);
+                        return;
+                    }
+                }
+                res.sendStatus(404);
+            } else {
+                res.send(user);
+            }
+        }, function (err) {
+            res.sendStatus(500);
+        });
+}
+
+
+
 function findAllUsers(req, res) {
     var user = req.user;
     if (user.role === 'Admin') {
@@ -264,11 +292,11 @@ function findAllUsers(req, res) {
     } else
         res.sendStatus(401);
 }
-function serializeUser(user, done) {
+function projectSerializeUser(user, done) {
     done(null, user);
 }
 
-function deserializeUser(user, done) {
+function projectDeserializeUser(user, done) {
     projectUserModel
         .findUserById(user._id)
         .then(

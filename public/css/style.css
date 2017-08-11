@@ -8,15 +8,21 @@
 }
 
 .wd-header-image {
-    background-image: url(../Images/IMG_0128.JPG);
+    background-image: url(http://nuweb15.neu.edu/drc/wp-content/uploads/2014/11/drc-slider2.jpg);
     width: 100%;
 }
 
 .wd-motto {
-    color: cyan;
-    padding-top: 15%;
+    color: firebrick;
+    padding-top: 20%;
     text-align: center;
     z-index: 3;
+}
+
+@media (max-width: 768px) {
+    .wd-motto {
+        padding-top: 35%;
+    }
 }
 
 .wd-body {

@@ -8,6 +8,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a href="#!/zip/{{vm_theatre.zip}}">
+                <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
             <a class="wd-home-navbar-brand" href="#">
                 Reserve Your Seat
             </a>
@@ -42,7 +45,7 @@
     <h5> {{vm_theatre.theatreDetails.location.address.state}} </h5>
     <h5> {{vm_theatre.theatreDetails.location.telephone}} </h5>
 
-    <button class="btn  wd-btn-color"
+    <button class="btn  wd-btn-style wd-btn-color"
             ng-click="vm_theatre.searchMovies(vm_theatre.theatreDetails.theatreId)">
         Find Movies in this theatre
      </button>

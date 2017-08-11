@@ -48,6 +48,22 @@
                     currentUser: checkCurrentUser
                 }
             })
+            .when('/zip/:zip', {
+                templateUrl: 'Views/Theatre/Templates/theatre-search-results.view.client.html',
+                controller: 'theatreListController',
+                controllerAs: 'vm_theatre',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
+            .when('/order/:orderId', {
+                templateUrl: 'Views/User/Templates/order-details.view.client.html',
+                controller: 'orderController',
+                controllerAs: 'vm_order',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
+            })
             .when('/zip/:zip/theatre/:theatreId', {
                 templateUrl: 'Views/Theatre/Templates/theatre-details.view.client.html',
                 controller: 'theatreDetailsController',
@@ -64,7 +80,7 @@
                     currentUser: checkCurrentUser
                 }
             })
-            .when('/zip/:zip/movie/:movieId', {
+            .when('/zip/:zip/theatre/:theatreId/movie/:movieId', {
                 templateUrl: 'Views/Movie/Templates/movie-long-details.view.client.html',
                 controller: 'movieLongDetailController',
                 controllerAs: 'vm_movie',

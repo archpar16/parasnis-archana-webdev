@@ -5,7 +5,7 @@
             <a href="#!/profile">
                 <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
             </a>
-            <a class = "wd-home-navbar-brand"  href="#">
+            <a class = "wd-home-navbar-brand" href="#">
                 Reserve Your Seat
             </a>
 
@@ -16,29 +16,27 @@
 
 <div class = "container-fluid">
 
-    <h3> Users registered with Reserve Your Seat </h3>
+    <h3> Order Details </h3>
 
-    <ul class="list-group wd-ul">
-        <li ng-repeat="user in vm_user.users"
-            class="list-group-item wd-ul-li">
-            <div class="wd-cont-initial"
-                 ng-click="vm_user.showUserProfile(user)">
-                <h5>Username</h5>
-                {{user.username}}
-                <h5>First Name</h5>
-                {{user.firstName}}
-                <h5>Last Name</h5>
-                {{user.lastName}}
-            </div>
-            <a ng-if="vm_user.admin._id"
-               ng-click="vm_user.removeUser(user)"
-               data-toggle="tooltip"
-               data-placement="right"
-               title="Remove this User!">
-                <span class=" glyphicon glyphicon-remove pull-right"></span>
-            </a>
-        </li>
-    </ul>
+    <h5> Movie </h5>
+    {{vm_order.movieName}}
+
+    <h5> No. of Seats </h5>
+    {{vm_order.details.numOfSeats}}
+
+    <h5> Seats </h5>
+    {{vm_order.details.seats}}
+
+    <h5> Show Date and Time </h5>
+    {{vm_order.details.showtime}}
+
+    <h5> Theatre </h5>
+    {{vm_order.theatreName}}
+
+    <h5> Total cost </h5>
+    ${{vm_order.cost}}
+
+    
 </div>
 
 <nav class = "navbar navbar-default navbar-fixed-bottom">

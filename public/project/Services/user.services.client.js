@@ -17,6 +17,7 @@
             unfollowUser: unfollowUser,
             unfavoriteTheatre: unfavoriteTheatre,
             removeBookmarkMovie: removeBookmarkMovie,
+            getOrderDetails: getOrderDetails,
             findAllUsers: findAllUsers,
             checkLoggedIn: checkLoggedIn,
             checkAdmin: checkAdmin,
@@ -183,5 +184,16 @@
                     }
                 );
         }
+
+
+        function getOrderDetails(orderId) {
+            var url = '/api/project/order?orderId=' + orderId;
+            return $http.get(url)
+                .then(function (response) {
+                        return response.data;
+                    }
+                );
+        }
+
     }
 })();

@@ -16,10 +16,11 @@
         ctlr.currentUser = currentUser;
 
         function init() {
-            var theatreId = $routeParams['theatreId'];
+             ctlr.theatreId = $routeParams['theatreId'];
+             ctlr.zip = $routeParams['zip'];
 
-            if (typeof theatreId !== 'undefined') {
-                searchMoviesForTheatre(theatreId);
+            if (typeof ctlr.theatreId !== 'undefined') {
+                searchMoviesForTheatre(ctlr.theatreId);
             }
         }
 
@@ -34,7 +35,7 @@
         function movieLongDetails(movie) {
             console.log(movie.tmsId);
             var zip = $routeParams['zip'];
-            $location.url('/zip/' + zip + '/movie/' + movie.tmsId);
+            $location.url('/zip/' + zip + '/theatre/' + ctlr.theatreId + '/movie/' + movie.tmsId);
         }
 
         function bookmarkMovie(movie) {

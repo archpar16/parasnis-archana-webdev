@@ -15,6 +15,8 @@
         init();
 
         function init() {
+            ctlr.theatreId = $routeParams['theatreId'];
+            ctlr.zip = $routeParams['zip'];
             getMovieLongDetails();
         }
 

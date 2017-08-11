@@ -25,7 +25,7 @@
         ctlr.unfollowUser = unfollowUser;
         ctlr.unfavoriteTheatre = unfavoriteTheatre;
         ctlr.removeBookmarkMovie = removeBookmarkMovie;
-        // ctlr.checkAdmin = checkAdmin;
+        ctlr.orderDetails = orderDetails;
 
         // Implementation of event handlers
 
@@ -95,16 +95,8 @@
                 });
         }
 
-        function checkAdmin() {
-            userService
-                .checkAdmin()
-                .then(function (currentUser) {
-                    if (currentUser === '0') {
-                        ctlr.admin = null;
-                    } else {
-                        ctlr.admin = currentUser;
-                    }
-                });
+        function orderDetails(orderId) {
+            $location.url('/order/' + orderId);
         }
 
         function getUserInfo(username) {
@@ -112,6 +104,18 @@
                 .findUserByUsername(username)
                 .then(function (user) {
                     ctlr.user = user;
+                });
+        }
+
+        function checkAdmin() {
+            userService
+                .checkAdmin()
+                .then(function (currentUser) {
+                    if(currentUser === '0') {
+                        ctlr.admin = null;
+                    } else {
+                        ctlr.admin = currentUser;
+                    }
                 });
         }
     }

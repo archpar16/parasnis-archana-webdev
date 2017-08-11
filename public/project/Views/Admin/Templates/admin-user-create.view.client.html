@@ -3,6 +3,9 @@
 <nav class = "navbar navbar-default navbar-fixed-top">
     <div class = "container-fluid">
         <div class = "navbar-header">
+            <a href="#!/admin">
+                <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
             <a class = "wd-home-navbar-brand" href="#">
                 Reserve Your Seat
             </a>
@@ -26,55 +29,60 @@
         {{vm_admin.message}}
     </div>
 
-        <label for = "username">Username</label>
-        <input ng-model = "vm_admin.user.username"
-               placeholder="Choose username - should be unique"
-               type = "text"
-               class = "form-control wd-input-bg"
-               id = "username">
+    <label for = "username">Username</label>
+    <input ng-model = "vm_admin.user.username"
+           placeholder="Choose username - should be unique"
+           type = "text"
+           class = "form-control wd-input-bg"
+           id = "username">
 
-        <label for = "email">Email address</label>
-        <input type = "email"
-               ng-model = "vm_admin.user.email"
-               class = "form-control wd-input-bg"
-               id = "email"
-               placeholder = "user@domain.com">
+    <label for = "email">Email address</label>
+    <input type = "email"
+           ng-model = "vm_admin.user.email"
+           class = "form-control wd-input-bg"
+           id = "email"
+           placeholder = "user@domain.com">
 
-        <label for = "first-name">First Name</label>
-        <input type = "text"
-               ng-model = "vm_admin.user.firstName"
-               class = "form-control wd-input-bg "
-               id = "first-name"
-               placeholder = "First name">
+    <label for = "first-name">First Name</label>
+    <input type = "text"
+           ng-model = "vm_admin.user.firstName"
+           class = "form-control wd-input-bg "
+           id = "first-name"
+           placeholder = "First name">
 
-        <label for = "last-name">Last Name</label>
-        <input type = "text"
-               ng-model = "vm_admin.user.lastName"
-               class = "form-control wd-input-bg"
-               id = "last-name"
-               placeholder = "Last name">
+    <label for = "last-name">Last Name</label>
+    <input type = "text"
+           ng-model = "vm_admin.user.lastName"
+           class = "form-control wd-input-bg"
+           id = "last-name"
+           placeholder = "Last name">
 
-        <label for = "password"> Change Passowrd </label>
-        <input id = "password"
-               ng-model = "vm_admin.user.pwd1"
-               type = "password"
-               class = "form-control wd-input-bg"
-               placeholder = "Choose new password"/>
+    <label for = "password"> Change Passowrd </label>
+    <input id = "password"
+           ng-model = "vm_admin.user.pwd1"
+           type = "password"
+           class = "form-control wd-input-bg"
+           placeholder = "Choose new password"/>
 
-        <label for = "verifypassword"> Verify Passowrd </label>
-        <input id = "verifypassword"
-               ng-model = "vm_admin.user.pwd2"
-               type = "password"
-               class = "form-control wd-input-bg"
-               placeholder = "Verify password"/>
+    <label for = "verifypassword"> Verify Passowrd </label>
+    <input id = "verifypassword"
+           ng-model = "vm_admin.user.pwd2"
+           type = "password"
+           class = "form-control wd-input-bg"
+           placeholder = "Verify password"/>
 
-        <label for="user-role"> Role </label>
-        <select class="form-control wd-input-bg"
-                ng-model="vm_admin.user.role"
-                ng-options="option.name for option in vm_admin.roles track by option.value"
-                id="user-role">
-        </select>
-    
+    <label for="user-role"> Role </label>
+    <select class="form-control wd-input-bg"
+            ng-model="vm_admin.user.role"
+            ng-options="option.name for option in vm_admin.roles track by option.value"
+            id="user-role">
+    </select>
+
+    <a href="#!/admin"
+       class="btn btn-danger btn-block wd-btn-style">
+        Cancel
+    </a>
+
 </div>
 
 <nav class = "navbar navbar-default navbar-fixed-bottom">
@@ -96,6 +104,6 @@
                 <span class = "glyphicon glyphicon-home wd-home-icon"></span>
             </a>
         </div>
-        
+
     </div>
 </nav>

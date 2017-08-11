@@ -51,6 +51,8 @@
                 {name: "6D", value: "6D" },
                 {name: "6E", value: "6E" }
             ];
+            ctlr.movieId = $routeParams['movieId'];
+            ctlr.zip = $routeParams['zip'];
         }
         // event handlers
         ctlr.bookYourSeats = bookYourSeats;
@@ -58,7 +60,7 @@
         // Implementation of event handlers
         function bookYourSeats(username, numOfSeats, seats, cc, expiry) {
             if (numOfSeats.value !== seats.length.toString()) {
-                ctlr.message = " Number of seats selected is not same as seats selected";
+                ctlr.message = " Number of seats is not same as seats selected";
                 return;
             }
             var exp = $filter('date')(expiry, 'MM/yyyy');

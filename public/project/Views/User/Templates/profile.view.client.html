@@ -3,6 +3,9 @@
 <nav class = "navbar navbar-default navbar-fixed-top">
     <div class = "container-fluid">
         <div class = "navbar-header">
+            <a href="#!/">
+                <span class="wd-back glyphicon glyphicon-chevron-left pull-left"></span>
+            </a>
             <a class = "wd-home-navbar-brand" href="#">
                 Reserve Your Seat
             </a>
@@ -118,9 +121,9 @@
         <li ng-repeat="order in vm_profile.user.orders"
             class="list-group-item wd-ul-li">
 
-            <div ng-click="vm_profile.movieLongDetails(movie.zip, movie.id)"
-                 class="wd-cont-initial">
-                {{order.movieId}} {{order.showtime}} {{order.seats}}
+            <div ng-click="vm_profile.orderDetails(order._id)"
+                    class="wd-cont-initial">
+                {{order._id}}
             </div>
 
         </li>

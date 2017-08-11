@@ -1,35 +1,35 @@
 
 var mongoose = require('mongoose');
 var userSchema = require('./user.schema.server');
-var userModel = mongoose.model('UserModel', userSchema);
+var assignmentuserModel = mongoose.model('UserModel', userSchema);
 
 
 var bcrypt = require("bcrypt-nodejs");
 
-userModel.createUser = createUser;
-userModel.findUserById = findUserById;
-userModel.findUserByCredentials = findUserByCredentials;
-userModel.deleteUser = deleteUser;
-userModel.updateUser = updateUser;
-userModel.addWebsite = addWebsite;
-userModel.removeWebsite = removeWebsite;
-userModel.findUserByUsername = findUserByUsername;
-userModel.findUserByFacebookId = findUserByFacebookId;
-userModel.findUserByGoogleId = findUserByGoogleId;
+assignmentuserModel.createUser = createUser;
+assignmentuserModel.findUserById = findUserById;
+assignmentuserModel.findUserByCredentials = findUserByCredentials;
+assignmentuserModel.deleteUser = deleteUser;
+assignmentuserModel.updateUser = updateUser;
+assignmentuserModel.addWebsite = addWebsite;
+assignmentuserModel.removeWebsite = removeWebsite;
+assignmentuserModel.findUserByUsername = findUserByUsername;
+assignmentuserModel.findUserByFacebookId = findUserByFacebookId;
+assignmentuserModel.findUserByGoogleId = findUserByGoogleId;
 
-module.exports = userModel;
+module.exports = assignmentuserModel;
 
 
 function findUserByFacebookId(facebookId) {
-    return userModel.findOne({'facebook.id': facebookId});
+    return assignmentuserModel.findOne({'facebook.id': facebookId});
 }
 
 function findUserByGoogleId(googleId) {
-    return userModel.findOne({'google.id': googleId});
+    return assignmentuserModel.findOne({'google.id': googleId});
 }
 
 function removeWebsite(userId, websiteId) {
-    return userModel
+    return assignmentuserModel
         .findById(userId)
         .then(function (user) {
             var index = user.websites.indexOf(websiteId);
@@ -39,7 +39,7 @@ function removeWebsite(userId, websiteId) {
 }
 
 function addWebsite(userId, websiteId) {
-    return userModel
+    return assignmentuserModel
         .findById(userId)
         .then(function (user) {
             user.websites.push(websiteId);
@@ -49,7 +49,7 @@ function addWebsite(userId, websiteId) {
 
 function updateUser(userId, newUser) {
     delete newUser.username;
-    return userModel.update({_id: userId}, {
+    return assignmentuserModel.update({_id: userId}, {
         $set : {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
@@ -60,11 +60,11 @@ function updateUser(userId, newUser) {
 }
 
 function deleteUser(userId) {
-    return userModel.remove({_id: userId});
+    return assignmentuserModel.remove({_id: userId});
 }
 
 function findUserByCredentials(username, password) {
-    return userModel.findOne({username: username})
+    return assignmentuserModel.findOne({username: username})
         .then(function (user) {
             if(user && bcrypt.compareSync(password, user.password)) {
                 return user;
@@ -75,16 +75,16 @@ function findUserByCredentials(username, password) {
 }
 
 function findUserById(userId) {
-    return userModel.findById(userId);
+    return assignmentuserModel.findById(userId);
 }
 
 function createUser(user) {
     if (typeof user.password !== 'undefined') {
         user.password = bcrypt.hashSync(user.password);
     }
-    return userModel.create(user);
+    return assignmentuserModel.create(user);
 }
 
 function findUserByUsername(username) {
-    return userModel.findOne({username: username});
+    return assignmentuserModel.findOne({username: username});
 }
