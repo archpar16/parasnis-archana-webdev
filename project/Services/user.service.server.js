@@ -33,6 +33,7 @@ function facebookStrategy(token, refreshToken, profile, done) {
                 } else {
                     var newFacebookUser = {
                         username:  profile.displayName,
+                        appSource: 'project',
                         firstName: profile.name.givenName,
                         lastName:  profile.name.familyName,
                         email:     profile.email,
@@ -94,6 +95,7 @@ function googleStrategy(token, refreshToken, profile, done) {
                     var emailParts = email.split("@");
                     var newGoogleUser = {
                         username:  emailParts[0],
+                        appSource: 'project',
                         firstName: profile.name.givenName,
                         lastName:  profile.name.familyName,
                         email:     email,
