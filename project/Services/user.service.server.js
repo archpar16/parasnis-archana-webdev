@@ -67,18 +67,20 @@ projectapp.get('/oauth/facebook/callback',
 
 // For google strategy
 var projectGoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-projectapp.get('/auth/project/google', projectPassport.authenticate('google', { scope : ['profile', 'email'] }));
 
-var googleConfig = {
+var projectGoogleConfig = {
     clientID     : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
     callbackURL  : process.env.GOOGLE_PROJECT_CALLBACK_URL
 };
 
-projectPassport.use(new projectGoogleStrategy(googleConfig, googleStrategy));
+projectPassport.use("projectGoogle", new projectGoogleStrategy(projectGoogleConfig, googleStrategy));
+
+projectapp.get('/auth/project/google', projectPassport.authenticate('projectGoogle', { scope : ['profile', 'email'] }));
+
 
 projectapp.get('/oauth/google/project/callback-myapp',
-    projectPassport.authenticate('google', {
+    projectPassport.authenticate('projectGoogle', {
         successRedirect: '/project/index.html#!/profile',
         failureRedirect: '/project/index.html#!/login'
     }));
