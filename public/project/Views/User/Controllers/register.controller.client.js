@@ -2,7 +2,7 @@
     angular
         .module('ReserveYourSeat')
         .controller('registerController', registerController);
-    
+
     function registerController($location, userService) {
         console.log('in register controller now');
         var ctlr = this;
@@ -24,15 +24,16 @@
                 .then(function (user) {
                     if (typeof user.username === 'undefined') {
                         var newuser = {
-                                    username: username,
-                                    password: password,
-                                    role: 'User'
-                                };
-                                userService
-                                    .register(newuser)
-                                    .then(function (u) {
-                                        $location.url('/profile');
-                                    });
+                            username: username,
+                            password: password,
+                            appSource: 'project',
+                            role: 'User'
+                        };
+                        userService
+                            .register(newuser)
+                            .then(function (u) {
+                                $location.url('/profile');
+                            });
                     } else {
                         ctlr.error = " Username is not unique, please choose another";
                     }

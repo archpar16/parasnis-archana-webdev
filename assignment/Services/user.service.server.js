@@ -5,7 +5,7 @@ var assignmentPassport = require('passport');
 
 // For local Strategy
 var assignmentLocalStrategy = require('passport-local').Strategy;
-assignmentPassport.use(new assignmentLocalStrategy(assignmentlocalStrategy));
+assignmentPassport.use("assignmentLocal", new assignmentLocalStrategy(assignmentlocalStrategy));
 assignmentPassport.serializeUser(assignmentSerializeUser);
 assignmentPassport.deserializeUser(assignmentDeserializeUser);
 
@@ -75,7 +75,7 @@ assignmentapp.delete('/api/assignment/user/:userId', deleteUser);
 assignmentapp.post('/api/assignment/user', createUser);
 
 
-assignmentapp.post  ('/api/assignment/login', assignmentPassport.authenticate('local'), login);
+assignmentapp.post  ('/api/assignment/login', assignmentPassport.authenticate('assignmentLocal'), login);
 assignmentapp.get   ('/api/assignment/checkLoggedIn', checkLoggedIn);
 assignmentapp.post  ('/api/assignment/logout', logout);
 assignmentapp.post  ('/api/assignment/register', register);

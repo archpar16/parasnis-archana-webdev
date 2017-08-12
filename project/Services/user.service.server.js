@@ -1,10 +1,11 @@
 var projectapp = require('../../express');
 var projectUserModel = require('../Models/User/user.model.server');
+var assignmentuserModel = require('../../assignment/Models/User/user.model.server');
 
 var projectPassport = require('passport');
 // For local Strategy
 var projectLocalStrategy = require('passport-local').Strategy;
-projectPassport.use(new projectLocalStrategy(projectlocalStrategy));
+projectPassport.use("projectLocal", new projectLocalStrategy(projectlocalStrategy));
 projectPassport.serializeUser(projectSerializeUser);
 projectPassport.deserializeUser(projectDeserializeUser);
 
@@ -135,7 +136,7 @@ projectapp.delete ('/api/project/user/:userId', isAdmin, deleteUser);
 projectapp.post   ('/api/project/user', isAdmin, createUser);
 
 
-projectapp.post  ('/api/project/login', projectPassport.authenticate('local'), login);
+projectapp.post  ('/api/project/login', projectPassport.authenticate('projectLocal'), login);
 projectapp.get   ('/api/project/checkLoggedIn', checkLoggedIn);
 projectapp.get   ('/api/project/checkadmin', checkAdmin);
 projectapp.post  ('/api/project/logout', logout);
@@ -297,16 +298,30 @@ function projectSerializeUser(user, done) {
 }
 
 function projectDeserializeUser(user, done) {
-    projectUserModel
-        .findUserById(user._id)
-        .then(
-            function(user){
-                done(null, user);
-            },
-            function(err){
-                done(err, null);
-            }
-        );
+    if (user.appSource === 'project') {
+        projectUserModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    } else {
+        assignmentuserModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
+
 }
 
 

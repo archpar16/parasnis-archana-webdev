@@ -33,7 +33,7 @@ app.use(assignmentpassport.session());
 app.use(app.express.static(__dirname + '/public'));
 
 require("./project/app.js");
-// require("./assignment/app.js");
+require("./assignment/app.js");
 
 
 var port = process.env.PORT || 4000;

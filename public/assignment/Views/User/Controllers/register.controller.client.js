@@ -31,7 +31,8 @@
             function usernameAvailable() {
                 var user = {
                     username: username,
-                    password: password
+                    password: password,
+                    appSource: 'assignment'
                 };
                 userService
                     .register(user)
