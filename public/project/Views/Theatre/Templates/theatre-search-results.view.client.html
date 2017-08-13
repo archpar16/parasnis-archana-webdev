@@ -36,29 +36,33 @@
 
 <div class="container-fluid header-theatre wd-theatre-image img-responsive">
 
-        <div ng-if="vm_theatre.theatres">
-            <h3> Search Results for {{vm_theatre.zip}} </h3>
-
-            <div ng-show="vm_theatre.msg" class="alert alert-danger">
-                {{vm_theatre.msg}}
-            </div>
-
-
-            <ul class="list-group wd-ul">
-                <li ng-repeat="theatre in vm_theatre.theatres"
-                    class="list-group-item wd-ul-li">
-                    <div class="wd-cont-initial"
-                         ng-click="vm_theatre.searchTheatreDetailsForTheatreId(theatre.theatreId)">
-                        {{theatre.name}}
-                    </div>
-                    <a ng-click="vm_theatre.favoriteTheatre(theatre)">
-                        <span class=" glyphicon glyphicon-heart-empty pull-right wd-heart-pos"></span>
-                    </a>
-
-                </li>
-            </ul>
-        </div>
+    <div ng-if="!vm_theatre.theatres">
+        <h4> No theatres found in 5 mile radius of zip entered</h4>
     </div>
+
+    <div ng-if="vm_theatre.theatres">
+        <h3> Search Results for {{vm_theatre.zip}} </h3>
+
+        <div ng-show="vm_theatre.msg" class="alert alert-danger">
+            {{vm_theatre.msg}}
+        </div>
+
+
+        <ul class="list-group wd-ul">
+            <li ng-repeat="theatre in vm_theatre.theatres"
+                class="list-group-item wd-ul-li">
+                <div class="wd-cont-initial"
+                     ng-click="vm_theatre.searchTheatreDetailsForTheatreId(theatre.theatreId)">
+                    {{theatre.name}}
+                </div>
+                <a ng-click="vm_theatre.favoriteTheatre(theatre)">
+                    <span class=" glyphicon glyphicon-heart-empty pull-right wd-heart-pos"></span>
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</div>
 
 </div>
 
